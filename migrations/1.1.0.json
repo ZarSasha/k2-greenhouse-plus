@@ -1,0 +1,28 @@
+{
+  "entity": [
+    ["k2gp-greenhouse-for-wood",               "k2gp-greenhouse-for-tree"                 ],
+    ["k2gp-greenhouse-for-yumako",             "k2gp-greenhouse-for-yumako-tree"          ],
+    ["k2gp-greenhouse-for-jellynut",           "k2gp-greenhouse-for-jellystem"            ]
+  ],
+  "item": [
+    ["k2gp-greenhouse-for-wood",               "k2gp-greenhouse-for-tree"                 ],
+    ["k2gp-greenhouse-for-yumako",             "k2gp-greenhouse-for-yumako-tree"          ],
+    ["k2gp-greenhouse-for-jellynut",           "k2gp-greenhouse-for-jellystem"            ]
+  ],
+  "recipe": [
+    ["k2gp-greenhouse-wood-growth",            "k2gp-greenhouse-tree-growth"              ],
+    ["k2gp-greenhouse-yumako-growth",          "k2gp-greenhouse-yumako-tree-growth"       ],
+    ["k2gp-greenhouse-jellynut-growth",        "k2gp-greenhouse-jellystem-growth"         ]
+  ],
+  "recipe-category": [
+    ["k2gp-greenhouse-wood-recipes",           "k2gp-greenhouse-tree-recipes"             ],
+    ["k2gp-greenhouse-yumako-recipes",         "k2gp-greenhouse-yumako-tree-recipes"      ],
+    ["k2gp-greenhouse-jellynut-recipes",       "k2gp-greenhouse-jellystem-recipes"        ]
+  ],
+  "mod-setting": [
+    ["k2gp-enable-gleba-greenhouses",          "k2gp-enable-main-gleba-greenhouses"       ],
+    ["k2gp-greenhouse-wood-output-pr-sec",     "k2gp-greenhouse-tree-output-pr-sec"       ],
+    ["k2gp-greenhouse-yumako-output-pr-sec",   "k2gp-greenhouse-yumako-tree-output-pr-sec"],
+    ["k2gp-greenhouse-jellynut-output-pr-sec", "k2gp-greenhouse-jellystem-output-pr-sec"  ]
+  ]
+}

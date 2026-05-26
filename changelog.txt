@@ -1,0 +1,158 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.2.0
+Date: 2025-10-29
+  Minor Features:
+    - Created new startup settings, allowing for more flexibility in relation to other mods:
+      - Disable one or both of the wood pyrolysis recipes.
+      - Disable the tree greenhouse.
+  Info:
+    - Added new descriptions, updated some existing ones.
+  Translation:
+    - Updated Chinese translation through careful use of DeepL, fixed some formatting.
+  Internal:
+    - Made the use of localised descriptions more consistent.
+---------------------------------------------------------------------------------------------------
+Version: 1.1.5
+Date: 2025-09-04
+  Translation:
+    - Added Chinese translation, contributed by user Houraiji_Kyuusyou.
+---------------------------------------------------------------------------------------------------
+Version: 1.1.4
+Date: 2025-05-27
+  Bugfixes:
+    - Mod now checks whether sand & glass recipes from "Crushing Industry" have been enabled. This
+      fixes a crash when the option for that is disabled.
+---------------------------------------------------------------------------------------------------
+Version: 1.1.3
+Date: 2025-03-21
+  Changes:
+    - Adapted mod to also make use of the glass added by "Crushing Industry", if present.
+  Balancing:
+    - Rebalanced glass cost for greenhouses depending on the mod installed to somewhat reflect the
+      cost of producing that glass.
+---------------------------------------------------------------------------------------------------
+Version: 1.1.2
+Date: 2025-03-04
+  Balancing:
+    - Greatly reduced seed cost for the normal tree greenhouse (25 -> 10 tree seeds).
+    - Halved the time it takes to extract tree seeds from wood, to match similar recipes.
+  Graphics:
+    - Slightly decreased size of the thumbnail's motif, to better fit style of Mod Portal.
+---------------------------------------------------------------------------------------------------
+Version: 1.1.1
+Date: 2025-02-26
+  Graphics:
+    - Changed ordering/use of working animation graphics for the greenhouses. As a result, they
+      have very slightly darker colors during the day, and they also glow a bit during the night.
+  Changes:
+    - Very slightly reduced collision box size for greenhouses.
+  Internal:
+    - Tidied up.
+---------------------------------------------------------------------------------------------------
+Version: 1.1.0
+Date: 2025-02-20
+  Minor Features:
+    - Added new greenhouse variants that may be unlocked with Agriculture: Slipstack variant that
+      outputs stone and spoilage, Sunnycomb variant that outputs only spoilage.
+  Changes:
+    - Adjusted batch size & production time for greenhouses, for the sake of uniformity.
+  Balancing:
+    - Adjusted default output for yumako tree & jellystem greenhouses slightly upwards.
+    - Removed allow_productivity property for greenhouses, because the game only uses that for
+      intermediate products.
+  Info:
+    - Updated descriptions to be more accurate and consistent.
+  Graphics:
+    - Adjusted greenhouse colors.
+    - Adjusted advanced pyrolysis recipe effect colors.
+  Internal:
+    - Refactored code.
+    - Updated internal names to be more accurate and consistent. Migrations added.
+    - Tidied up.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.3
+Date: 2025-02-19
+  Balancing:
+    - Removed surface restriction on wood processing recipe.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.2
+Date: 2025-02-17
+  Bugfixes:
+    - Fixed icons for greenhouse entities so "Made in" shows the correct variant for the yumako and
+      jellynut recipes.
+  Internal:
+    - Fixed a comment on recipe output efficiency.
+    - Tidied up.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.1
+Date: 2025-02-15
+  Balancing:
+    - Increased production speed for the basic pyrolysis recipe.
+  Info:
+    - Removed README.md file, not really needed.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+Date: 2025-02-15
+  Changes:
+    - Initial release.
+    - Extracted code and assets for the greenhouse from "Krastorio 2" by raiguard and ported them
+      to Factorio 2.0. Included the GNU LGPLv3 license, which applies to most of the assets.
+    - Adapted mod to work with the Space Age DLC and various other mods.
+    - Requires base >= 2.0.7 for automatic technology effect reset on configuration changed.
+  Minor Features:
+    - Created 3 greenhouse variants that produce either wood, yumako fruits or jellynuts. The first
+      one absorbs pollution, but the rest release spores in proportion to their production speed.
+    - Created pyrolysis recipes for creating coal and oil from wood:
+      - Basic wood pyrolysis (furnace): 6 wood -> 3 coal.
+      - Advanced wood pyrolysis (chemical plant): 15 wood -> 20 crude oil, 15 petroleum, 3 coal.
+    - Created several startup settings:
+      - Enable greenhouses for yumako fruits and jellynuts. Can be set to require overgrowth soil
+        or just artificial soil for their recipes.
+      - Enable early research of Coal Liquefaction tech.
+      - Configure the amount of module slots available in all greenhouses.
+      - Individually configure output rate for each of the 3 greenhouses.
+    - Added circuit wire connections to greenhouses.
+    - Compat for "AAI Industry", "Factorio+" and "Glass": Changes greenhouse recipe ingredients,
+      replacing iron plates with some variant of glass.
+  Balancing:
+    - Greenhouse for wood may normally be unlocked after Steel Processing and Landfill tech; the
+      other variants with the appropriate soil technology, depending on startup setting.
+    - Tree seeding will be unlocked early, along with the greenhouse for wood. The relevant tech
+      had its cost lowered to compensate (not removed, since it has dependents).
+    - The basic pyrolysis recipe is available from the start, while the advanced one may be unlocked
+      with Oil Processing (requires only Fluid Handing, has a fairly small research cost).
+    - Coal Liquefaction can be researched right after Advanced Oil Processing, at much lower cost.
+    - All recipes for crop growth are very simple. Just add water!
+    - Carefully balanced both pyrolysis recipes to be useful, but for different production chains.
+    - Modified recipe for greenhouses to require steel plates, iron/glass plates, circuits and the
+      appropriate seeds + soil.
+    - Greatly increased overall cost of greenhouses, mostly because it is a renewable source of
+      energy. Still a lot cheaper than solar panels.
+    - Greenhouse for wood by default outputs as much wood as 37.5 planted trees (about 32 could be
+      manually planted within the same 7x7 area) and outputs 0.25 wood/s. In practice, this seems
+      to net a power output pr. area at least twice that of solar + accu. But:
+    - Greenhouse for wood absorbs only 1.125 pollution/min, which is about 13.5% of what is emitted
+      when burning its wood output in a Boiler, so it's not a clean energy source!
+    - Balanced yumako and jellynut recipes so output with the legendary tier greenhouse is still a
+      bit less pr. area than with the agricultural tower.
+    - Requires certain surface conditions for each greenhouse. The one for wood can be built on
+      Nauvis and Gleba (since wood can be acquired in both places), the rest only on Gleba.
+    - Greenhouse module slot amount set to 0 by default, since planted trees and agricultural
+      towers cannot receive such effects.
+    - Halved the cost of wood for the tree seed recipe, feels nicer.
+    - Note: Higher quality greenhouses work faster, without producing more spores. I cannot fix
+      that with the current API.
+  Graphics:
+    - Created colored variants of the greenhouse for each type of crop.
+    - Removed working animation flickering, barely noticable for the original, and too apparent
+      with other colors. Greatly reduces file size with many color variants!
+    - Created some simple, custom remnants for the greenhouses.
+    - Created a custom explosion effect for the greenhouses.
+    - Added impact category and impact effect for the greenhouses (related to sound as well.)
+    - Increased size of greenhouse alt-view recipe icon.
+    - Created circuit wire connection visuals for greenhouses.
+    - Created a thumbnail with a proper preview of the greenhouse with shadows.
+  Sounds:
+    - Got rid of working sound effect (white noise).
+  Info:
+    - Created a README.md file explaining the mod.
