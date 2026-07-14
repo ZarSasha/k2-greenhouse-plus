@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.3.0
+Date: 2026-07-14
+  Changes:
+    - Updated to work with Factorio 2.1:
+      - Recipes now use the "categories" property instead of "category".
+      - Updated internal name of recipe "wood-processing" to "tree-seed".
+  Sounds:
+    - Greenhouse entities: Added open/close sound effects similar to those of large,
+      fluid-accepting machines.
+  Notes:
+    - Since Factorio 2.1.7, large entities produce a rather grand sound effect when placed down or
+      mined. Don't know how to change that, since the behaviour is not defined by the prototype.
+
+---------------------------------------------------------------------------------------------------
 Version: 1.2.0
 Date: 2025-10-29
   Minor Features:

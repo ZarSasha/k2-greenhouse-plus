@@ -4,6 +4,7 @@
 --  ┗┛┛┗ ┻ ┻ ┻ ┗┛
 ---------------------------------------------------------------------------------------------------
 local hit_effects = require("__base__.prototypes.entity.hit-effects")
+local sounds      = require("__base__.prototypes.entity.sounds")
 ---------------------------------------------------------------------------------------------------
 -- HELPER FUNCTIONS
 ---------------------------------------------------------------------------------------------------
@@ -104,7 +105,9 @@ local function createGreenhouse(Variant)
                 {animation = GraphicsGreenhouseWorking},
                 {animation = GraphicsGreenhouseLight},
             }
-        }
+        },
+        open_sound = sounds.metal_large_open,
+        close_sound = sounds.metal_large_close
     }
     if SPACE_AGE then
         output.surface_conditions = Conditions[Variant]

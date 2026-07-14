@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 --  ┳┓┏┓┏┓┳┏┓┏┓
---  ┣┫┣ ┃ ┃┃┃┣ 
+--  ┣┫┣ ┃ ┃┃┃┣
 --  ┛┗┗┛┗┛┻┣┛┗┛
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ local function createGreenhouseRecipe(Variant, Order)
     output = {
         type     = "recipe",
         name     = PREFIX.."greenhouse-for-"..Variant,
-        category = "crafting",
+        categories = {"crafting"},
         subgroup = SPACE_AGE and "agriculture" or "production-machine",
         order    = (SPACE_AGE and "a" or "g").."[greenhouse]-"..Order.."["..Variant.."]",
         enabled  = false,
@@ -84,7 +84,7 @@ local function createCropGrowthRecipe(Variant, Order)
         type     = "recipe",
         name     = PREFIX.."greenhouse-"..Variant.."-growth",
         icons    = Icons[Variant],
-        category = PREFIX.."greenhouse-"..Variant.."-recipes",
+        categories = {PREFIX.."greenhouse-"..Variant.."-recipes"},
         subgroup = Subgroup,
         order    = "a[greenhouse]-"..Order.."["..Variant.."]",
         enabled  = false,
@@ -109,7 +109,7 @@ local BasicWoodPyrolysisRecipe = {
         { icon = "__base__/graphics/icons/wood.png",
           scale = 0.275, shift = {-3, -3}, draw_background = true }
     },
-    category = "smelting",
+    categories = {"smelting"},
     subgroup = "raw-material",
     order    = "a[burning]-a[charcoal]",
     enabled = true, -- Unlocked right from the start.
@@ -134,7 +134,7 @@ local AdvancedWoodPyrolysisRecipe = {
         { icon = "__base__/graphics/icons/wood.png",
           scale = 0.275, shift = {-3, -3}, draw_background = true }
     },
-    category = "chemistry",
+    categories = {"chemistry"},
     subgroup = "fluid-recipes",
     order    = "a[fluid]-b[oil]-b[petroleum-gas]",
     enabled = false,
@@ -148,7 +148,7 @@ local AdvancedWoodPyrolysisRecipe = {
         { type = "item",  name = "coal",          amount =  3 }
     },
     crafting_machine_tint = {
-        primary    = {r = 0.250, g = 0.200, b = 0.250, a = 1.000}, -- Liquid.     1st output color? 
+        primary    = {r = 0.250, g = 0.200, b = 0.250, a = 1.000}, -- Liquid.     1st output color?
         secondary  = {r = 0.100, g = 0.080, b = 0.100, a = 1.000}, -- Foam.       2nd output color?
         tertiary   = {r = 0.875, g = 0.716, b = 0.586, a = 1.000}, -- Outer smoke. 1st input color?
         quaternary = {r = 1.000, g = 0.614, b = 0.280, a = 1.000}  -- Inner smoke. 2nd input color?
@@ -203,7 +203,7 @@ end
 -- SPACE AGE: TREE PROCESSING
 ---------------------------------------------------------------------------------------------------
 if SPACE_AGE then
-    local seed_rec = data.raw.recipe["wood-processing"]
+    local seed_rec = data.raw.recipe["tree-seed"]
     -- Reduces cost of wood for the extraction of tree seeds from 2 to 1.
     seed_rec.ingredients = {{type = "item", name = "wood", amount = 1}}
     -- Reduces processing time from 2 to 1, to match similar recipes.
