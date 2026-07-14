@@ -37,8 +37,8 @@ local function createGreenhouseTech()
             }
         }
     }
-    if SPACE_AGE then            -- Space Age: Unlock wood processing recipe much earlier
-        table.insert(output.effects, 1, unlock("wood-processing"))
+    if SPACE_AGE then            -- Space Age: Unlocks tree seed recipe much earlier
+        table.insert(output.effects, 1, unlock("tree-seed"))
     end
     if mods["aai-industry"]      -- AAI Industry
     or mods["factorioplus"] then -- Factorio+
@@ -57,7 +57,7 @@ end
 ---------------------------------------------------------------------------------------------------
 -- OIL PROCESSING TECH: ADVANCED WOOD PYROLYSIS + BASIC COAL LIQUEFACTION + COAL LIQUEFACTION
 ---------------------------------------------------------------------------------------------------
--- Unlock advanced wood pyrolysis with Oil Processing, removing the need to find oil or research
+-- Unlocks advanced wood pyrolysis with Oil Processing, removing the need to find oil or research
 -- Oil Gathering. Adds research cost instead.
 if SETTING.PYROLYSIS == "both-recipes" or SETTING.PYROLYSIS == "advanced-recipe" then
     local oil_tech = data.raw.technology["oil-processing"]
