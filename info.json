@@ -1,13 +1,13 @@
 {
   "name": "k2-greenhouse-plus",
   "title": "Krastorio 2 Greenhouse + Wood Pyrolysis",
-  "version": "1.2.0",
-  "factorio_version": "2.0",
+  "version": "1.3.0",
+  "factorio_version": "2.1",
   "author": "ZarSasha",
   "license": "GNU LGPLv3",
   "description": "Easily grow wood in a greenhouse and convert it to coal and oil through wood pyrolysis. Contains an option for unlocking Coal Liquefaction early, as well as for growing several Gleba crops in their own greenhouses. Graphical assets were borrowed from \"Krastorio 2\" by raiguard.",
   "dependencies": [
-    "base >= 2.0.7",
+    "base",
     "? space-age",
     "? aai-industry",
     "? factorioplus",
