@@ -16,15 +16,13 @@ end
 -- amounts required will reflect the cost of producing that glass.
 local function createGreenhouseRecipe(Variant, Order)
     -- Chooses only one glass item name and amount to be used, from among various mods. Ordered so
-    -- that smaller mods and mods adapting to other mods go first. Note that Quirkycat Glass adapts
-    -- to Crushing Industry and AAI Industry, while Crushing Industry adapts to AAI Industry. This
-    -- mod also chooses AAI Industry over Factorio+.
+    -- that smaller mods and mods that modify other mods go first.
     local Glass = ( mods["Glass"]             and {"glass-plate", 32} ) or -- 100% glass : stone
                   ( mods["quirkycat_glass"]   and {"glass",       48} ) or -- 150% glass : stone
                   ( mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
                                               and {"glass",       25} ) or --  80% glass : stone
-                  ( mods["aai-industry"]      and {"glass",       16} ) or --  50% glass : stone
                   ( mods["factorioplus"]      and {"glass-plate", 32} ) or -- 100% glass : stone
+                  ( mods["aai-industry"]      and {"glass",       16} ) or --  50% glass : stone
                   (                               {"iron-plate",  32} )
     local TreeSeed = SPACE_AGE and "tree-seed" or "wood" -- assumes 1 wood to 1 seed
     local Set  = SETTING.GLEBA_GREENHOUSES_1
