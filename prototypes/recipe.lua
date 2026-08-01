@@ -27,7 +27,7 @@ local function createGreenhouseRecipe(Variant, Order)
     local TreeSeed = SPACE_AGE and "tree-seed" or "wood" -- assumes 1 wood to 1 seed
     local Set  = SETTING.GLEBA_GREENHOUSES_1
     local Soil = {
-        ["disabled"]             = "overgrowth", -- won't be used
+        ["disabled"]             = "overgrowth", -- value doesn't matter, greenhouse is disabled
         ["with-overgrowth-soil"] = "overgrowth",
         ["with-artificial-soil"] = "artificial"
     }
@@ -54,7 +54,7 @@ local function createGreenhouseRecipe(Variant, Order)
             { type = "item", name = Crop[Variant].soil[1], amount = Crop[Variant].soil[2] }
         },
         results = {
-            { type = "item", name = PREFIX.."greenhouse-for-"..Variant, amount =        1 }
+            { type = "item", name = PREFIX.."greenhouse-for-"..Variant, amount = 1 }
         }
     }
     return output
