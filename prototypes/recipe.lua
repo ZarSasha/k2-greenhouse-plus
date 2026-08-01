@@ -13,13 +13,16 @@ end
 -- GREENHOUSE ENTITIES
 ---------------------------------------------------------------------------------------------------
 -- Recipes for greenhouse variants. Mods may replace iron plates with some variant of glass. The
--- amounts required will somewhat reflect the cost of producing that glass.
+-- amounts required will reflect the cost of producing that glass.
 local function createGreenhouseRecipe(Variant, Order)
-    local Glass = ( mods["aai-industry"]      and {"glass",       24} ) or -- 2 stone, 1 glass
-                  ( mods["factorioplus"]      and {"glass-plate", 24} ) or -- 2 stone, 1 glass
-                  ( mods["Glass"]             and {"glass-plate", 32} ) or -- 1 stone, 1 glass
+    -- Glass item name and amounts to be used, provided by various mods. Ordered so that smaller
+    -- mods and mods adapting to other mods go first.
+    local Glass = ( mods["quirkycat_glass"]   and {"glass",       48} ) or -- 150% glass : stone
                   ( mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
-                                              and {"glass",       30} ) or -- 5 stone, 4 glass
+                                              and {"glass",       25} ) or --  80% glass : stone
+                  ( mods["Glass"]             and {"glass-plate", 32} ) or -- 100% glass : stone
+                  ( mods["factorioplus"]      and {"glass-plate", 32} ) or -- 100% glass : stone
+                  ( mods["aai-industry"]      and {"glass",       16} ) or --  50% glass : stone
                   (                               {"iron-plate",  32} )
     local TreeSeed = SPACE_AGE and "tree-seed" or "wood" -- assumes 1 wood to 1 seed
     local Set  = SETTING.GLEBA_GREENHOUSES_1
