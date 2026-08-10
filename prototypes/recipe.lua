@@ -15,8 +15,6 @@ end
 -- Recipes for greenhouse variants. Mods may replace iron plates with some variant of glass. The
 -- amounts required will reflect the cost of producing that glass.
 local function createGreenhouseRecipe(Variant, Order)
-    -- Chooses only one glass item name and amount to be used, from among various mods. Ordered so
-    -- that smaller mods and mods that modify other mods go first.
 
     local function item_exists(ModName, Item)
         if data.raw.item[Item] ~= nil then
@@ -29,6 +27,8 @@ local function createGreenhouseRecipe(Variant, Order)
 
     local Glass = {"iron-plate",  32}
 
+    -- Chooses only one glass item name and amount to be used, from among various mods. Ordered so
+    -- that smaller mods and mods that modify other mods go first.
     if     mods["Glass"] and item_exists("Glass", "glass-plate") then
         Glass = {"glass-plate", 32} -- 100% glass : stone
     elseif mods["quirkycat_glass"] and item_exists("quirkycat_glass", "glass") then
