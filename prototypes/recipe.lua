@@ -19,36 +19,27 @@ local function createGreenhouseRecipe(Variant, Order)
     -- that smaller mods and mods that modify other mods go first.
 
     local function item_exists(ModName, Item)
-        if not data.raw.item[Item] then
+        if data.raw.item[Item] ~= nil then
+            return true
+        else
             log("item with ID \""..Item.."\" from the mod \""..ModName.."\" does not exist!")
             return false
-        else
-            return true
         end
     end
 
     local Glass = {"iron-plate",  32}
 
-    if     mods["Glass"] then
-        if item_exists("Glass", "glass-plate") then
-            Glass = {"glass-plate", 32} -- 100% glass : stone
-        end
-    elseif mods["quirkycat_glass"] then
-        if item_exists("quirkycat_glass", "glass") then
-            Glass = {"glass",       48} -- 150% glass : stone
-        end
-    elseif mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value then
-        if item_exists("crushing-industry", "glass") then
-            Glass = {"glass",       25} --  80% glass : stone
-        end
-    elseif mods["factorioplus"] then
-        if item_exists(factorioplus, "glass-plate") then
-            Glass = {"glass-plate", 32} -- 100% glass : stone
-        end
-    elseif mods["aai-industry"] then
-        if item_exists("aai-industry", "glass") then
-            Glass = {"glass",       16} --  50% glass : stone
-        end
+    if     mods["Glass"] and item_exists("Glass", "glass-plate") then
+        Glass = {"glass-plate", 32} -- 100% glass : stone
+    elseif mods["quirkycat_glass"] and item_exists("quirkycat_glass", "glass") then
+        Glass = {"glass",       48} -- 150% glass : stone
+    elseif mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
+    and item_exists("crushing-industry", "glass") then
+        Glass = {"glass",       25} --  80% glass : stone
+    elseif mods["factorioplus"] and item_exists("factorioplus", "glass-plate") then
+        Glass = {"glass-plate", 32} -- 100% glass : stone
+    elseif mods["aai-industry"] and item_exists("aai-industry", "glass") then
+        Glass = {"glass",       16} --  50% glass : stone
     end
 
     local TreeSeed = SPACE_AGE and "tree-seed" or "wood" -- assumes 1 wood to 1 seed
