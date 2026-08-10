@@ -17,13 +17,42 @@ end
 local function createGreenhouseRecipe(Variant, Order)
     -- Chooses only one glass item name and amount to be used, from among various mods. Ordered so
     -- that smaller mods and mods that modify other mods go first.
-    local Glass = ( mods["Glass"]             and {"glass-plate", 32} ) or -- 100% glass : stone
-                  ( mods["quirkycat_glass"]   and {"glass",       48} ) or -- 150% glass : stone
-                  ( mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
-                                              and {"glass",       25} ) or --  80% glass : stone
-                  ( mods["factorioplus"]      and {"glass-plate", 32} ) or -- 100% glass : stone
-                  ( mods["aai-industry"]      and {"glass",       16} ) or --  50% glass : stone
-                  (                               {"iron-plate",  32} )
+    local Glass = {"iron-plate",  32}
+    local raw_item = {
+        ["glass"] = data.raw.item["glass"],
+        ["glass-plate"] = data.raw.item["glass-plate"]
+    }
+    if     mods["Glass"] then
+        if raw_item["glass-plate"] then
+            Glass = {"glass-plate", 32} -- 100% glass : stone
+        else
+            log("item with ID \"glass-plate\" from the mod \"Glass\" does not exist!")
+        end
+    elseif mods["quirkycat_glass"] then
+        if raw_item["glass"] then
+            Glass = {"glass",       48} -- 150% glass : stone
+        else
+            log("item with ID \"glass\" from the mod \"quirkycat_glass\" does not exist!")
+        end
+    elseif mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value then
+        if raw_item["glass"] then
+            Glass = {"glass",       25} --  80% glass : stone
+        else
+            log("item with ID \"glass\" from the mod \"crushing-industry\" does not exist!")
+        end
+    elseif mods["factorioplus"] then
+        if raw_item["glass-plate"] then
+            Glass = {"glass-plate", 32} -- 100% glass : stone
+        else
+            log("item with ID \"glass-plate\" from the mod \"factorioplus\" does not exist!")
+        end
+    elseif mods["aai-industry"] then
+        if raw_item["glass"] then
+            Glass = {"glass",       16} --  50% glass : stone
+        else
+            log("item with ID \"glass\" from the mod \"aai-industry\" does not exist!")
+        end
+    end
     local TreeSeed = SPACE_AGE and "tree-seed" or "wood" -- assumes 1 wood to 1 seed
     local Set  = SETTING.GLEBA_GREENHOUSES_1
     local Soil = {
@@ -38,7 +67,7 @@ local function createGreenhouseRecipe(Variant, Order)
         ["slipstack"]   = { seed = {"spoilage",     50}, soil = {"landfill",                  1} },
         ["sunnycomb"]   = { seed = {"spoilage",     50}, soil = {"landfill",                  1} }
     }
-    output = {
+    local output = {
         type     = "recipe",
         name     = PREFIX.."greenhouse-for-"..Variant,
         categories = {"crafting"},
