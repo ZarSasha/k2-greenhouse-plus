@@ -51,11 +51,8 @@ local function createGreenhouseRecipe(Variant, Order)
     elseif mods["aai-industry"] and not mods["Krastorio2"]
     and item_exists("aai-industry", "glass") then
         Glass = {"glass",       16} -- 50% glass : stone
-    -- Krastorio 2 (with or without AAI Industry)
-    elseif mods["Krastorio2"]
-    and item_exists("Krastorio2", "kr-glass") then
-        Glass = {"kr-glass",    40} -- 125% glass: stone
     end
+    -- See Krastorio 2 further down.
 
     local TreeSeed = SPACE_AGE and "tree-seed" or "wood" -- assumes 1 wood to 1 seed
 
@@ -94,6 +91,19 @@ local function createGreenhouseRecipe(Variant, Order)
             { type = "item", name = PREFIX.."greenhouse-for-"..Variant, amount = 1 }
         }
     }
+
+    -- Krastorio 2: Makes the greenhouse recipes more similar to that of the original.
+    if mods["Krastorio2"] then
+        output.energy_required = 10
+        output.ingredients = {
+            { type = "item", name = "kr-iron-beam",        amount =                    10 },
+            { type = "item", name = "kr-automation-core",  amount =                    10 },
+            { type = "item", name = "kr-glass",            amount =                    20 },
+            { type = "item", name = Crop[Variant].seed[1], amount = Crop[Variant].seed[2] },
+            { type = "item", name = Crop[Variant].soil[1], amount = Crop[Variant].soil[2] }
+        }
+    end
+
     return output
 end
 ---------------------------------------------------------------------------------------------------
