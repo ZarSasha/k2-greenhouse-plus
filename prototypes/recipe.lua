@@ -4,6 +4,18 @@
 --  ┛┗┗┛┗┛┻┣┛┗┛
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
+-- HELPER FUNCTIONS
+---------------------------------------------------------------------------------------------------
+-- Checks for presence of item, returns error in log if missing.
+local function item_exists(ModName, Item)
+    if data.raw.item[Item] ~= nil then
+        return true
+    else
+        log("item with ID \""..Item.."\" from the mod \""..ModName.."\" does not exist!")
+        return false
+    end
+end
+---------------------------------------------------------------------------------------------------
 -- GREENHOUSE: RECIPE CATEGORIES
 ---------------------------------------------------------------------------------------------------
 local function createRecipeCategory(Variant)
@@ -16,21 +28,42 @@ end
 -- amounts required will reflect the cost of producing that glass.
 local function createGreenhouseRecipe(Variant, Order)
     -- Chooses only one glass item name and amount to be used, from among various mods. Ordered so
-    -- that smaller mods and mods that modify other mods go first.
-    local Glass = ( mods["Glass"]             and {"glass-plate", 32} ) or -- 100% glass : stone
-                  ( mods["quirkycat_glass"]   and {"glass",       48} ) or -- 150% glass : stone
-                  ( mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
-                                              and {"glass",       25} ) or --  80% glass : stone
-                  ( mods["factorioplus"]      and {"glass-plate", 32} ) or -- 100% glass : stone
-                  ( mods["aai-industry"]      and {"glass",       16} ) or --  50% glass : stone
-                  (                               {"iron-plate",  32} )
+    -- that smaller mods and mods that modify other mods go first. Special care must be taken with
+    -- AAI Industry and Krastorio 2, since the former chooses the glass name of the latter, if both
+    -- are present.
+
+    -- Default:
+    local Glass = {"iron-plate",  32}
+    -- Glass:
+    if     mods["Glass"] and item_exists("Glass", "glass-plate") then
+        Glass = {"glass-plate", 32} -- 100% glass : stone
+    -- QuirkyCat Glass, Sand and Clay (and minerals) :
+    elseif mods["quirkycat_glass"] and item_exists("quirkycat_glass", "glass") then
+        Glass = {"glass",       48} -- 150% glass : stone
+    -- Crushing Industry:
+    elseif mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
+    and item_exists("crushing-industry", "glass") then
+        Glass = {"glass",       25} --  80% glass : stone
+    -- Factorio+:
+    elseif mods["factorioplus"] and item_exists("factorioplus", "glass-plate") then
+        Glass = {"glass-plate", 32} -- 100% glass : stone
+    -- AAI Industry (but not Krastorio 2):
+    elseif mods["aai-industry"] and not mods["Krastorio2"]
+    and item_exists("aai-industry", "glass") then
+        Glass = {"glass",       16} -- 50% glass : stone
+    end
+    -- See Krastorio 2 further down.
+
     local TreeSeed = SPACE_AGE and "tree-seed" or "wood" -- assumes 1 wood to 1 seed
+
     local Set  = SETTING.GLEBA_GREENHOUSES_1
+
     local Soil = {
         ["disabled"]             = "overgrowth", -- value doesn't matter, greenhouse is disabled
         ["with-overgrowth-soil"] = "overgrowth",
         ["with-artificial-soil"] = "artificial"
     }
+
     local Crop = {
         ["tree"]        = { seed = {TreeSeed,       10}, soil = {"landfill",                  1} },
         ["yumako-tree"] = { seed = {"yumako-seed",   5}, soil = {Soil[Set].."-yumako-soil",   8} },
@@ -38,7 +71,8 @@ local function createGreenhouseRecipe(Variant, Order)
         ["slipstack"]   = { seed = {"spoilage",     50}, soil = {"landfill",                  1} },
         ["sunnycomb"]   = { seed = {"spoilage",     50}, soil = {"landfill",                  1} }
     }
-    output = {
+
+    local output = {
         type     = "recipe",
         name     = PREFIX.."greenhouse-for-"..Variant,
         categories = {"crafting"},
@@ -57,6 +91,19 @@ local function createGreenhouseRecipe(Variant, Order)
             { type = "item", name = PREFIX.."greenhouse-for-"..Variant, amount = 1 }
         }
     }
+
+    -- Krastorio 2: Makes the greenhouse recipes more similar to that of the original.
+    if mods["Krastorio2"] then
+        output.energy_required = 10
+        output.ingredients = {
+            { type = "item", name = "kr-iron-beam",        amount =                    10 },
+            { type = "item", name = "kr-automation-core",  amount =                    10 },
+            { type = "item", name = "kr-glass",            amount =                    20 },
+            { type = "item", name = Crop[Variant].seed[1], amount = Crop[Variant].seed[2] },
+            { type = "item", name = Crop[Variant].soil[1], amount = Crop[Variant].soil[2] }
+        }
+    end
+
     return output
 end
 ---------------------------------------------------------------------------------------------------
@@ -74,7 +121,9 @@ local function createCropGrowthRecipe(Variant, Order)
                              scale = 0.300, shift = {-8, 0}, draw_background = true }},
         ["sunnycomb"]   = {{ icon = "__space-age__/graphics/icons/spoilage.png"     }},
     }
+
     local Subgroup      = SPACE_AGE and "agriculture-processes" or "raw-resource"
+
     local Results = {
         ["tree"]        = {{ type = "item",  name = "wood",     amount =  5 }},
         ["yumako-tree"] = {{ type = "item",  name = "yumako",   amount =  5 }},
@@ -83,6 +132,7 @@ local function createCropGrowthRecipe(Variant, Order)
                            { type = "item",  name = "stone",    amount =  2 }},
         ["sunnycomb"]   = {{ type = "item",  name = "spoilage", amount =  5 }},
     }
+
     local output = {
         type     = "recipe",
         name     = PREFIX.."greenhouse-"..Variant.."-growth",

@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.3.3
+Date: 2026-08-11
+  Changes:
+      Created some degree of integration with Krastorio 2 by making the greenhouse recipes more
+      similar to that of the original when the mod is present. Of course, they also use glass as
+      an ingredient.
+  Bugfixes:
+    - Fixed a load error when both AAI Industry and Krastorio 2 are installed. Added proper checks
+      for presence of glass items to avoid crash. Also improved the way that a glass item and its
+      amount is selected in the presence of several mods.
+---------------------------------------------------------------------------------------------------
 Version: 1.3.2
 Date: 2026-08-01
   Changes:

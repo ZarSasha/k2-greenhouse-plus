@@ -1,0 +1,15 @@
+{
+    "diagnostics.globals": [
+        "mods",
+        "settings",
+        "log",
+        "data",
+        "kg",
+        "circuit_connector_definitions",
+        "universal_connector_template",
+        "pipecoverspictures",
+        "assembling_machine_circuit_wire_max_distance",
+        "util",
+        "defines"
+    ]
+}
