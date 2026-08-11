@@ -16,6 +16,7 @@ end
 -- amounts required will reflect the cost of producing that glass.
 local function createGreenhouseRecipe(Variant, Order)
 
+    -- Checks for presence of item, returns error in log if missing.
     local function item_exists(ModName, Item)
         if data.raw.item[Item] ~= nil then
             return true
@@ -25,21 +26,38 @@ local function createGreenhouseRecipe(Variant, Order)
         end
     end
 
+    -- Chooses only one glass item name and amount to be used, from among various mods. Ordered so
+    -- that smaller mods and mods that modify other mods go first. Special care must be taken with
+    -- AAI Industry and Krastorio 2, since the former chooses the glass name of the latter, if both
+    -- are present.
+
     local Glass = {"iron-plate",  32}
 
-    -- Chooses only one glass item name and amount to be used, from among various mods. Ordered so
-    -- that smaller mods and mods that modify other mods go first.
+    -- Glass:
     if     mods["Glass"] and item_exists("Glass", "glass-plate") then
         Glass = {"glass-plate", 32} -- 100% glass : stone
+    -- QuirkyCat Glass:
     elseif mods["quirkycat_glass"] and item_exists("quirkycat_glass", "glass") then
         Glass = {"glass",       48} -- 150% glass : stone
+    -- Crushing Industry:
     elseif mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
     and item_exists("crushing-industry", "glass") then
         Glass = {"glass",       25} --  80% glass : stone
+    -- Factorio+:
     elseif mods["factorioplus"] and item_exists("factorioplus", "glass-plate") then
         Glass = {"glass-plate", 32} -- 100% glass : stone
-    elseif mods["aai-industry"] and item_exists("aai-industry", "glass") then
-        Glass = {"glass",       16} --  50% glass : stone
+    -- AAI Industry:
+    elseif mods["aai-industry"] and not mods["Krastorio2"]
+    and item_exists("aai-industry", "glass") then
+        Glass = {"glass",       16} -- 50% glass : stone
+    -- AAI Industry & Krastorio 2:
+    elseif mods["aai-industry"] and mods["Krastorio2"]
+    and item_exists("Krastorio2", "kr-glass") then
+        Glass = {"kr-glass",    16} -- 50% glass : stone, like above
+    -- Krastorio 2:
+    elseif mods["Krastorio2"] and not mods["aai-industry"]
+    and item_exists("Krastorio2", "kr-glass") then
+        Glass = {"kr-glass",    40} -- 125% glass: stone
     end
 
     local TreeSeed = SPACE_AGE and "tree-seed" or "wood" -- assumes 1 wood to 1 seed
