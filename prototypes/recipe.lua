@@ -4,6 +4,18 @@
 --  ┛┗┗┛┗┛┻┣┛┗┛
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
+-- HELPER FUNCTIONS
+---------------------------------------------------------------------------------------------------
+-- Checks for presence of item, returns error in log if missing.
+local function item_exists(ModName, Item)
+    if data.raw.item[Item] ~= nil then
+        return true
+    else
+        log("item with ID \""..Item.."\" from the mod \""..ModName.."\" does not exist!")
+        return false
+    end
+end
+---------------------------------------------------------------------------------------------------
 -- GREENHOUSE: RECIPE CATEGORIES
 ---------------------------------------------------------------------------------------------------
 local function createRecipeCategory(Variant)
@@ -15,28 +27,17 @@ end
 -- Recipes for greenhouse variants. Mods may replace iron plates with some variant of glass. The
 -- amounts required will reflect the cost of producing that glass.
 local function createGreenhouseRecipe(Variant, Order)
-
-    -- Checks for presence of item, returns error in log if missing.
-    local function item_exists(ModName, Item)
-        if data.raw.item[Item] ~= nil then
-            return true
-        else
-            log("item with ID \""..Item.."\" from the mod \""..ModName.."\" does not exist!")
-            return false
-        end
-    end
-
     -- Chooses only one glass item name and amount to be used, from among various mods. Ordered so
     -- that smaller mods and mods that modify other mods go first. Special care must be taken with
     -- AAI Industry and Krastorio 2, since the former chooses the glass name of the latter, if both
     -- are present.
 
+    -- Default:
     local Glass = {"iron-plate",  32}
-
     -- Glass:
     if     mods["Glass"] and item_exists("Glass", "glass-plate") then
         Glass = {"glass-plate", 32} -- 100% glass : stone
-    -- QuirkyCat Glass:
+    -- QuirkyCat Glass, Sand and Clay (and minerals) :
     elseif mods["quirkycat_glass"] and item_exists("quirkycat_glass", "glass") then
         Glass = {"glass",       48} -- 150% glass : stone
     -- Crushing Industry:
