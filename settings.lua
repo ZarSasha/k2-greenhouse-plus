@@ -21,6 +21,13 @@ local startup_settings = {
         default_value = true,
         order = "a1"
     },
+    {-- Enable the addition of sand and glass solely for use with the greenhouse.
+        type = "bool-setting",
+        name = "k2gp-provide-sand-and-glass-recipes",
+        setting_type = "startup",
+        default_value = true,
+        order = "a2"
+    },
     {-- Space Age: Allow Yumako and Jellynut trees to be grown in their own greenhouses.
         type = "string-setting",
         name = "k2gp-enable-main-gleba-greenhouses",
@@ -32,7 +39,7 @@ local startup_settings = {
             "disabled"
         },
         hidden = not space_age,
-        order = "a2"
+        order = "a3"
     },
     {-- Space Age: Allow Slipstack and Sunnycomb to be grown in their own greenhouses.
         type = "bool-setting",
@@ -40,7 +47,7 @@ local startup_settings = {
         setting_type = "startup",
         default_value = true,
         hidden = not space_age,
-        order = "a3"
+        order = "a4"
     },
     {-- Enable the pyrolysis recipes. Option useful in relation to mod compatibility.
         type = "string-setting",
@@ -75,14 +82,7 @@ local startup_settings = {
         minimum_value = 0,    -- cannot be accelerated in any way.
         maximum_value = 20,
         order = "c"
-    },
-    {-- Enable the addition of sand and glass solely for use with the greenhouse.
-        type = "bool-setting",
-        name = "k2gp-provide-sand-and-glass-recipes",
-        setting_type = "startup",
-        default_value = true,
-        order = "d"
-    },
+    }
     {-- Greenhouse wood production rate (items/s.)
         type = "double-setting",
         name = "k2gp-greenhouse-tree-output-pr-sec",

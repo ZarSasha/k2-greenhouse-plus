@@ -43,8 +43,9 @@ local function createGreenhouseTech()
     if SETTING.GLASS then
         table.insert(output.effects, unlock(PREFIX.."sand"))
         table.insert(output.effects, unlock(PREFIX.."glass"))
-    elseif mods["aai-industry"]      -- AAI Industry
-    or     mods["factorioplus"] then -- Factorio+
+    end
+    if mods["aai-industry"]      -- AAI Industry
+    or mods["factorioplus"] then -- Factorio+
         table.insert(output.prerequisites, "glass-processing")
     end
     return output
