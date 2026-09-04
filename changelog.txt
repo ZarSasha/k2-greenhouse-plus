@@ -2,8 +2,9 @@
 Version: 1.4.0
 Date: 2026-09-04
   Minor Features:
-    - Created an option for making the mod provide its own recipes for sand and glass. They are not
-      used anywhere else. The graphics are borrowed from "Glass" by GotLag.
+    - Created an option for making the mod provide its own glass for the greenhouse recipes. The
+      sand, and the glass made from it, are not used anywhere else. The graphics are borrowed from
+      "Glass" by GotLag.
   Local:
     - TODO: Updated Chinese translation through careful use of DeepL.
 ---------------------------------------------------------------------------------------------------
