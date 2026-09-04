@@ -233,7 +233,7 @@ local sandRecipe = {
 ---------------------------------------------------------------------------------------------------
 local glassRecipe =  {
    type = "recipe",
-   name = PREFIX .. "glass-plate",
+   name = PREFIX .. "glass",
    categories = {"smelting"},
    auto_recycle = false,
    energy_required = 3.2,
@@ -241,7 +241,7 @@ local glassRecipe =  {
        { type = "item", name = PREFIX .. "sand",        amount = 1 }
    },
    results = {
-       { type = "item", name = PREFIX .. "glass-plate", amount = 1 }
+       { type = "item", name = PREFIX .. "glass", amount = 1 }
    },
    allow_productivity = true
  }
