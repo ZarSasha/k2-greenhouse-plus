@@ -5,6 +5,8 @@ Date: 2026-09-04
     - Created an option for making the mod provide its own glass for the greenhouse recipes. The
       sand, and the glass made from it, are not used anywhere else. The graphics are borrowed from
       "Glass" by GotLag.
+  Balancing:
+    - TODO: Look at surface restrictions!
   Local:
     - TODO: Updated Chinese translation through careful use of DeepL.
 ---------------------------------------------------------------------------------------------------
