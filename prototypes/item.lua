@@ -3,7 +3,7 @@
 --  ┃ ┃ ┣ ┃┃┃
 --  ┻ ┻ ┗┛┛ ┗
 ---------------------------------------------------------------------------------------------------
-item_sounds = require("__base__.prototypes.item_sounds")
+local item_sounds = require("__base__.prototypes.item_sounds")
 ---------------------------------------------------------------------------------------------------
 -- GREENHOUSE ENTITIES (BASE & SPACE AGE DLC)
 ---------------------------------------------------------------------------------------------------
@@ -25,11 +25,40 @@ local function createGreenhouseItem(Variant, Order)
     }
     return output
 end
+
+---------------------------------------------------------------------------------------------------
+-- SAND ITEM
+---------------------------------------------------------------------------------------------------
+local sandItem = {
+    type = "item",
+    name = PREFIX .. "sand",
+    icon = ASSETS_ICON .. "sand-icon.png",
+    icon_size = 64,
+    subgroup = "raw-material",
+    order = "a[smelting]-d[glass-1]",
+    inventory_move_sound = item_sounds.sulfur_inventory_move,
+    pick_sound = item_sounds.landfill_inventory_pickup,
+    drop_sound = item_sounds.sulfur_inventory_move,
+    stack_size = 100,
+    weight = 1 * kg
+}
+
 ---------------------------------------------------------------------------------------------------
 -- GLASS ITEM
 ---------------------------------------------------------------------------------------------------
-local greenhouseGlassItem = {}
-
+local glassItem = {
+    type = "item",
+    name = PREFIX .. "glass",
+    icon = ASSETS_ICON .. "glass-icon.png",
+    icon_size = 64,
+    subgroup = "raw-material",
+    order = "a[smelting]-d[glass-2]",
+    inventory_move_sound = item_sounds.grenade_inventory_move,
+    pick_sound = item_sounds.grenade_inventory_pickup,
+    drop_sound = item_sounds.grenade_inventory_move,
+    stack_size = 100,
+    weight = 1 * kg
+}
 
 ---------------------------------------------------------------------------------------------------
 -- FINAL DATA WRITE
@@ -52,6 +81,9 @@ if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
     })
 end
 if SETTING.GLASS then
-    data:extend({greenhouseGlassItem})
+    data:extend({
+        sandItem,
+        glassItem
+    })
 end
 ---------------------------------------------------------------------------------------------------

@@ -33,9 +33,11 @@ local function createGreenhouseRecipe(Variant, Order)
     -- are present.
 
     -- Default:
-    local Glass = {"iron-plate",  32}
+    local Glass = { "iron-plate", 32 }
+    if SETTING.GLASS then
+        Glass = {PREFIX .. "glass", 32}
     -- Glass:
-    if     mods["Glass"] and item_exists("Glass", "glass-plate") then
+    elseif     mods["Glass"] and item_exists("Glass", "glass-plate") then
         Glass = {"glass-plate", 32} -- 100% glass : stone
     -- QuirkyCat Glass, Sand and Clay (and minerals) :
     elseif mods["quirkycat_glass"] and item_exists("quirkycat_glass", "glass") then
@@ -208,11 +210,41 @@ local AdvancedWoodPyrolysisRecipe = {
     },
     allow_productivity = true
 }
+
+---------------------------------------------------------------------------------------------------
+-- ASSEMBLER: SAND RECIPE
+---------------------------------------------------------------------------------------------------
+local sandRecipe = {
+    type = "recipe",
+    name = PREFIX .. "sand",
+    auto_recycle = false,
+    energy_required = 3.2,
+    ingredients = {
+        { type = "item", name = "stone",          amount = 1 }
+    },
+    results = {
+        { type = "item", name = PREFIX .. "sand", amount = 1 }
+    },
+    allow_productivity = true
+}
+
 ---------------------------------------------------------------------------------------------------
 -- FURNACE: GLASS RECIPE
 ---------------------------------------------------------------------------------------------------
-local greenhouseGlassRecipe = {}
-
+local glassRecipe =  {
+   type = "recipe",
+   name = PREFIX .. "glass-plate",
+   categories = {"smelting"},
+   auto_recycle = false,
+   energy_required = 3.2,
+   ingredients = {
+       { type = "item", name = PREFIX .. "sand",        amount = 1 }
+   },
+   results = {
+       { type = "item", name = PREFIX .. "glass-plate", amount = 1 }
+   },
+   allow_productivity = true
+ }
 
 ---------------------------------------------------------------------------------------------------
 -- FINAL DATA WRITE --
@@ -259,7 +291,10 @@ if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
     })
 end
 if SETTING.GLASS then
-    data:extend({greenhouseGlassRecipe})
+    data:extend({
+        sandRecipe,
+        glassRecipe
+    })
 end
 ---------------------------------------------------------------------------------------------------
 -- SPACE AGE: TREE PROCESSING
