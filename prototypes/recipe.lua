@@ -22,7 +22,7 @@ local function createRecipeCategory(Variant)
     return {type = "recipe-category", name = PREFIX.."greenhouse-"..Variant.."-recipes" }
 end
 ---------------------------------------------------------------------------------------------------
--- GREENHOUSE ENTITIES
+-- ASSEMBLING MACHINE: GREENHOUSE ENTITIES
 ---------------------------------------------------------------------------------------------------
 -- Recipes for greenhouse variants. Mods may replace iron plates with some variant of glass. The
 -- amounts required will reflect the cost of producing that glass.
@@ -212,13 +212,13 @@ local AdvancedWoodPyrolysisRecipe = {
 }
 
 ---------------------------------------------------------------------------------------------------
--- ASSEMBLER: SAND RECIPE
+-- ASSEMBLING MACHINE: SAND RECIPE
 ---------------------------------------------------------------------------------------------------
 local sandRecipe = {
     type = "recipe",
     name = PREFIX .. "sand",
     auto_recycle = false,
-    energy_required = 3.2,
+    energy_required = 0.8,
     ingredients = {
         { type = "item", name = "stone",          amount = 1 }
     },
@@ -263,6 +263,12 @@ elseif SETTING.PYROLYSIS == "advanced-recipe" then
         AdvancedWoodPyrolysisRecipe
     })
 end
+if SETTING.GLASS then
+    data:extend({
+        sandRecipe,
+        glassRecipe
+    })
+end
 if SETTING.TREE_GREENHOUSE then
     data:extend({
         createRecipeCategory  ("tree"            ),
@@ -288,12 +294,6 @@ if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
         createRecipeCategory("sunnycomb"),
         createGreenhouseRecipe("sunnycomb", "e"),
         createCropGrowthRecipe("sunnycomb", "e"),
-    })
-end
-if SETTING.GLASS then
-    data:extend({
-        sandRecipe,
-        glassRecipe
     })
 end
 ---------------------------------------------------------------------------------------------------

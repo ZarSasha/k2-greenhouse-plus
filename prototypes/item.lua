@@ -63,6 +63,12 @@ local glassItem = {
 ---------------------------------------------------------------------------------------------------
 -- FINAL DATA WRITE
 ---------------------------------------------------------------------------------------------------
+if SETTING.GLASS then
+    data:extend({
+        sandItem,
+        glassItem
+    })
+end
 if SETTING.TREE_GREENHOUSE then
     data:extend({
         createGreenhouseItem("tree",        "a")
@@ -78,12 +84,6 @@ if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
     data:extend({
         createGreenhouseItem("slipstack", "d"),
         createGreenhouseItem("sunnycomb", "e")
-    })
-end
-if SETTING.GLASS then
-    data:extend({
-        sandItem,
-        glassItem
     })
 end
 ---------------------------------------------------------------------------------------------------

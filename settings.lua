@@ -76,7 +76,7 @@ local startup_settings = {
         maximum_value = 20,
         order = "c"
     },
-    {-- Enable the addition of a glass item and recipe solely for use with the greenhouse.
+    {-- Enable the addition of sand and glass solely for use with the greenhouse.
         type = "bool-setting",
         name = "k2gp-provide-sand-and-glass-recipes",
         setting_type = "startup",

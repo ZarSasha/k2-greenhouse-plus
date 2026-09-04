@@ -37,11 +37,14 @@ local function createGreenhouseTech()
             }
         }
     }
-    if SPACE_AGE then            -- Space Age: Unlocks tree seed recipe much earlier
+    if SPACE_AGE then -- Space Age: Unlocks tree seed recipe much earlier
         table.insert(output.effects, 1, unlock("tree-seed"))
     end
-    if mods["aai-industry"]      -- AAI Industry
-    or mods["factorioplus"] then -- Factorio+
+    if SETTING.GLASS then
+        table.insert(output.effects, unlock(PREFIX.."sand"))
+        table.insert(output.effects, unlock(PREFIX.."glass"))
+    elseif mods["aai-industry"]      -- AAI Industry
+    or     mods["factorioplus"] then -- Factorio+
         table.insert(output.prerequisites, "glass-processing")
     end
     return output
