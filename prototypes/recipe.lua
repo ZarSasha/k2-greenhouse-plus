@@ -209,6 +209,12 @@ local AdvancedWoodPyrolysisRecipe = {
     allow_productivity = true
 }
 ---------------------------------------------------------------------------------------------------
+-- FURNACE: GLASS RECIPE
+---------------------------------------------------------------------------------------------------
+local greenhouseGlassRecipe = {}
+
+
+---------------------------------------------------------------------------------------------------
 -- FINAL DATA WRITE --
 ---------------------------------------------------------------------------------------------------
 if SETTING.PYROLYSIS == "both-recipes" then
@@ -244,13 +250,16 @@ if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_1 ~= "disabled" then
 end
 if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
     data:extend({
-        createRecipeCategory  ("slipstack"       ),
-        createGreenhouseRecipe("slipstack",   "d"),
-        createCropGrowthRecipe("slipstack",   "d"),
-        createRecipeCategory  ("sunnycomb"       ),
-        createGreenhouseRecipe("sunnycomb",   "e"),
-        createCropGrowthRecipe("sunnycomb",   "e"),
+        createRecipeCategory("slipstack"),
+        createGreenhouseRecipe("slipstack", "d"),
+        createCropGrowthRecipe("slipstack", "d"),
+        createRecipeCategory("sunnycomb"),
+        createGreenhouseRecipe("sunnycomb", "e"),
+        createCropGrowthRecipe("sunnycomb", "e"),
     })
+end
+if SETTING.GLASS then
+    data:extend({greenhouseGlassRecipe})
 end
 ---------------------------------------------------------------------------------------------------
 -- SPACE AGE: TREE PROCESSING

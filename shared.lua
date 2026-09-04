@@ -27,6 +27,7 @@ SETTING = {
     PYROLYSIS           = conf "k2gp-enable-pyrolysis-recipes",
     EARLY_LIQUEFACTION  = conf "k2gp-unlock-coal-liquefaction-early",
     MODULE_SLOTS        = conf "k2gp-greenhouse-module-slot-amount",
+    GLASS               = conf "k2gp-enable-glass-item-and-recipe",
     OUTPUT_RATE = {
         ["tree"       ] = conf "k2gp-greenhouse-tree-output-pr-sec",
         ["yumako-tree"] = conf "k2gp-greenhouse-yumako-tree-output-pr-sec",
