@@ -82,7 +82,7 @@ local startup_settings = {
         minimum_value = 0,    -- cannot be accelerated in any way.
         maximum_value = 20,
         order = "c"
-    }
+    },
     {-- Greenhouse wood production rate (items/s.)
         type = "double-setting",
         name = "k2gp-greenhouse-tree-output-pr-sec",
