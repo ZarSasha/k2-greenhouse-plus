@@ -61,6 +61,7 @@ local function createGreenhouseRecipe(Variant, Order)
         ingredients = {
             { type = "item", name = Crop[Variant].seed[1], amount = Crop[Variant].seed[2] },
             { type = "item", name = Crop[Variant].soil[1], amount = Crop[Variant].soil[2] }
+            -- More to be added below
         },
         results = {
             { type = "item", name = PREFIX.."greenhouse-for-"..Variant, amount = 1 }
@@ -71,7 +72,7 @@ local function createGreenhouseRecipe(Variant, Order)
         table.insert(output.ingredients, { type = "item", name = Name ,amount = Amount })
     end
 
-    -- Adds various ingredients and change energy need depending on mods installed.
+    -- Adds various ingredients and changes energy need depending on mods installed.
     if mods["Krastorio2"] then
         output.energy_required = 10
         add_ingr("kr-iron-beam",       10)
