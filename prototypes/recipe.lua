@@ -57,10 +57,8 @@ local function createGreenhouseRecipe(Variant, Order)
         subgroup = SPACE_AGE and "agriculture" or "production-machine",
         order    = (SPACE_AGE and "a" or "g").."[greenhouse]-"..Order.."["..Variant.."]",
         enabled  = false,
-        energy_required = 5,
+        energy_required = nil, -- defined below
         ingredients = {
-            { type = "item", name = "steel-plate",         amount =                     8 },
-            { type = "item", name = "electronic-circuit",  amount =                     6 },
             { type = "item", name = Crop[Variant].seed[1], amount = Crop[Variant].seed[2] },
             { type = "item", name = Crop[Variant].soil[1], amount = Crop[Variant].soil[2] }
         },
@@ -73,8 +71,20 @@ local function createGreenhouseRecipe(Variant, Order)
         table.insert(output.ingredients, { type = "item", name = Name ,amount = Amount })
     end
 
-    -- Uses glass from other mods, in a particular order:
-    if SETTING.GLASS then
+    -- Adds various ingredients and change energy need depending on mods installed.
+    if mods["Krastorio2"] then
+        output.energy_required = 10
+        add_ingr("kr-iron-beam",       10)
+        add_ingr("kr-automation-core", 10)
+
+    else
+        output.energy_required = 5
+        add_ingr("steel-plate",         8)
+        add_ingr("electronic-circuit",  6)
+    end
+
+    -- Adds glass, perhaps from other mods, in a particular order:
+    if SETTING.GLASS and not mods["Krastorio2"]  then
         add_ingr(PREFIX.."glass", 32) -- 100% glass : stone
     -- Glass:
     elseif mods["Glass"] and item_exists("Glass", "glass-plate") then
@@ -93,19 +103,21 @@ local function createGreenhouseRecipe(Variant, Order)
     elseif mods["aai-industry"] and not mods["Krastorio2"]
     and item_exists("aai-industry", "glass") then
         add_ingr("glass",         16) -- 50% glass : stone
-    -- Krastorio 2: Makes the greenhouse recipes more similar to that of the original.
+    -- Krastorio 2:
     elseif mods["Krastorio2"] and item_exists("Krastorio2", "kr-glass") then
-        output.energy_required = 10
-        output.ingredients = {
-            { type = "item", name = "kr-iron-beam",        amount =                    10 },
-            { type = "item", name = "kr-automation-core",  amount =                    10 },
-            { type = "item", name = "kr-glass",            amount =                    20 },
-            { type = "item", name = Crop[Variant].seed[1], amount = Crop[Variant].seed[2] },
-            { type = "item", name = Crop[Variant].soil[1], amount = Crop[Variant].soil[2] }
-        }
+        if SETTING.GLASS then
+            add_ingr(PREFIX.."glass", 20) -- same amount as below
+        else
+            add_ingr("kr-glass",      20) -- 125% glass : stone, kr-greenhouse uses 20 plates
+        end
+    -- No glass provided by any recognized source:
     else
         add_ingr("iron-plate",  32)
     end
+
+
+
+    --add_ingr(PREFIX.."glass", 20)
 
     return output
 end

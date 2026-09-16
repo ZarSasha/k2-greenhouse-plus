@@ -15,7 +15,8 @@ ASSETS_ICON   = ASSETS.."icon/"
 ASSETS_SOUND  = ASSETS.."sound/"
 ASSETS_TECH   = ASSETS.."technology/"
 
-SPACE_AGE     = false; if mods["space-age"] then SPACE_AGE = true end
+SPACE_AGE     = mods["space-age"] and true or false
+
 ---------------------------------------------------------------------------------------------------
 -- STARTUP SETTINGS
 ---------------------------------------------------------------------------------------------------
