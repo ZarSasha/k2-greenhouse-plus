@@ -116,10 +116,6 @@ local function createGreenhouseRecipe(Variant, Order)
         add_ingr("iron-plate",  32)
     end
 
-
-
-    --add_ingr(PREFIX.."glass", 20)
-
     return output
 end
 ---------------------------------------------------------------------------------------------------
@@ -203,7 +199,7 @@ local AdvancedWoodPyrolysisRecipe = {
         { icon = "__base__/graphics/icons/wood.png",
           scale = 0.275, shift = {-3, -3}, draw_background = true }
     },
-    categories = {"chemistry"},
+    categories = {"chemistry, organic"},
     subgroup = "fluid-recipes",
     order    = "a[fluid]-b[oil]-b[petroleum-gas]",
     enabled = false,

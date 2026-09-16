@@ -4,6 +4,8 @@ Date: 2026-09-16
   Minor Features:
     - Created an option (that is enabled by default) for making the mod provide its own glass for
       the greenhouse recipes. The sand, and the glass made from it, are not used anywhere else.
+  Balancing:
+    - The advanced pyrolysis recipe is now also available for the biochamber.
   Graphics:
     - Added graphics for the optional sand and glass items. Borrowed from "Glass" by GotLag.
   Locale:
