@@ -32,30 +32,6 @@ local function createGreenhouseRecipe(Variant, Order)
     -- AAI Industry and Krastorio 2, since the former chooses the glass name of the latter, if both
     -- are present.
 
-    -- Default:
-    local Glass = { "iron-plate", 32 }
-    if SETTING.GLASS then
-        Glass = {PREFIX .. "glass", 32}
-    -- Glass:
-    elseif     mods["Glass"] and item_exists("Glass", "glass-plate") then
-        Glass = {"glass-plate", 32} -- 100% glass : stone
-    -- QuirkyCat Glass, Sand and Clay (and minerals) :
-    elseif mods["quirkycat_glass"] and item_exists("quirkycat_glass", "glass") then
-        Glass = {"glass",       48} -- 150% glass : stone
-    -- Crushing Industry:
-    elseif mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
-    and item_exists("crushing-industry", "glass") then
-        Glass = {"glass",       25} --  80% glass : stone
-    -- Factorio+:
-    elseif mods["factorioplus"] and item_exists("factorioplus", "glass-plate") then
-        Glass = {"glass-plate", 32} -- 100% glass : stone
-    -- AAI Industry (but not Krastorio 2):
-    elseif mods["aai-industry"] and not mods["Krastorio2"]
-    and item_exists("aai-industry", "glass") then
-        Glass = {"glass",       16} -- 50% glass : stone
-    end
-    -- See Krastorio 2 further down.
-
     local TreeSeed = SPACE_AGE and "tree-seed" or "wood" -- assumes 1 wood to 1 seed
 
     local Set  = SETTING.GLEBA_GREENHOUSES_1
@@ -85,7 +61,6 @@ local function createGreenhouseRecipe(Variant, Order)
         ingredients = {
             { type = "item", name = "steel-plate",         amount =                     8 },
             { type = "item", name = "electronic-circuit",  amount =                     6 },
-            { type = "item", name = Glass[1],              amount =              Glass[2] },
             { type = "item", name = Crop[Variant].seed[1], amount = Crop[Variant].seed[2] },
             { type = "item", name = Crop[Variant].soil[1], amount = Crop[Variant].soil[2] }
         },
@@ -94,8 +69,32 @@ local function createGreenhouseRecipe(Variant, Order)
         }
     }
 
+    local function add_ingr(Name, Amount)
+        table.insert(output.ingredients, { type = "item", name = Name ,amount = Amount })
+    end
+
+    -- Uses glass from other mods, in a particular order:
+    if SETTING.GLASS then
+        add_ingr(PREFIX.."glass", 32) -- 100% glass : stone
+    -- Glass:
+    elseif mods["Glass"] and item_exists("Glass", "glass-plate") then
+        add_ingr("glass-plate",   32) -- 100% glass : stone
+    -- QuirkyCat Glass, Sand and Clay (and minerals) :
+    elseif mods["quirkycat_glass"] and item_exists("quirkycat_glass", "glass") then
+        add_ingr("glass",         48) -- 150% glass : stone
+    -- Crushing Industry:
+    elseif mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
+    and item_exists("crushing-industry", "glass") then
+        add_ingr("glass",         26) --  80% glass : stone
+    -- Factorio+:
+    elseif mods["factorioplus"] and item_exists("factorioplus", "glass-plate") then
+        add_ingr("glass-plate",   32) -- 100% glass : stone
+    -- AAI Industry (but not Krastorio 2):
+    elseif mods["aai-industry"] and not mods["Krastorio2"]
+    and item_exists("aai-industry", "glass") then
+        add_ingr("glass",         16) -- 50% glass : stone
     -- Krastorio 2: Makes the greenhouse recipes more similar to that of the original.
-    if mods["Krastorio2"] then
+    elseif mods["Krastorio2"] and item_exists("Krastorio2", "kr-glass") then
         output.energy_required = 10
         output.ingredients = {
             { type = "item", name = "kr-iron-beam",        amount =                    10 },
@@ -104,6 +103,8 @@ local function createGreenhouseRecipe(Variant, Order)
             { type = "item", name = Crop[Variant].seed[1], amount = Crop[Variant].seed[2] },
             { type = "item", name = Crop[Variant].soil[1], amount = Crop[Variant].soil[2] }
         }
+    else
+        add_ingr("iron-plate",  32)
     end
 
     return output
