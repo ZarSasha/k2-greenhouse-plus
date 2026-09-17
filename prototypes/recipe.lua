@@ -174,7 +174,7 @@ local BasicWoodPyrolysisRecipe = {
     subgroup = "raw-material",
     order    = "a[burning]-a[charcoal]",
     enabled = true, -- Unlocked right from the start.
-    energy_required = 6.4, -- 3.2 at double speed
+    energy_required = 6.4, -- 4.8 at double speed
     ingredients = {
         { type = "item", name = "wood", amount = 8 }
     },
@@ -205,7 +205,7 @@ local AdvancedWoodPyrolysisRecipe = {
     },
     results = {
         { type = "fluid", name = "crude-oil",     amount = 20,  fluidbox_index = 2 },
-        { type = "fluid", name = "petroleum-gas", amount = 15,  fluidbox_index = 1 },
+        { type = "fluid", name = "petroleum-gas", amount = 10,  fluidbox_index = 1 },
         { type = "item",  name = "coal",          amount =  4 }
     },
     crafting_machine_tint = {
@@ -318,7 +318,7 @@ end
 -- END NOTES
 ---------------------------------------------------------------------------------------------------
 
--- ENERGY MEASUREMENTS --
+-- ENERGY MEASUREMENTS (BEFORE V1.4.0) --
 
 -- Basic pyrolysis:
 -- ~3.7% net energy loss.
@@ -335,4 +335,12 @@ end
 -- The advanced setup produces 25.5% more plastic and 22.4% more sulfur than the basic one,
 -- if coal is burned in the Boiler to produce steam for coal liquefaction.
 
----------------------------------------------------------------------------------------------------
+
+
+-- ENERGY MEASUREMENTS (FROM 1.4.0 ONWARDS)
+
+-- The advanced setup produces 38.9% more plastic and 38.8% more sulfur than the basic one,
+-- if coal is burned in the Boiler to produce steam for coal liquefaction.
+
+-- The advantage still remaims at ~8% with legendary tier 3 productivity module, and still
+-- at much lower cost.
