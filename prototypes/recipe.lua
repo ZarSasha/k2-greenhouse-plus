@@ -204,8 +204,8 @@ local AdvancedWoodPyrolysisRecipe = {
         { type = "item",  name = "wood",          amount = 15 }
     },
     results = {
-        { type = "fluid", name = "crude-oil",     amount = 30,  fluidbox_index = 2 },
-        { type = "fluid", name = "petroleum-gas", amount = 10,  fluidbox_index = 1 },
+        { type = "fluid", name = "crude-oil",     amount = 20,  fluidbox_index = 2 },
+        { type = "fluid", name = "petroleum-gas", amount = 15,  fluidbox_index = 1 },
         { type = "item",  name = "coal",          amount =  3 }
     },
     crafting_machine_tint = {
@@ -335,12 +335,4 @@ end
 -- The advanced setup produces 25.5% more plastic and 22.4% more sulfur than the basic one,
 -- if coal is burned in the Boiler to produce steam for coal liquefaction.
 
-
-
--- ENERGY MEASUREMENTS (FROM 1.4.0 ONWARDS)
-
--- The advanced setup produces 38.9% more plastic and 38.8% more sulfur than the basic one,
--- if coal is burned in the Boiler to produce steam for coal liquefaction.
-
--- The advantage still remaims at ~8% with legendary tier 3 productivity module, and still
--- at much lower cost.
+---------------------------------------------------------------------------------------------------
