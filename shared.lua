@@ -15,7 +15,9 @@ ASSETS_ICON   = ASSETS.."icon/"
 ASSETS_SOUND  = ASSETS.."sound/"
 ASSETS_TECH   = ASSETS.."technology/"
 
-SPACE_AGE     = false; if mods["space-age"] then SPACE_AGE = true end
+SPACE_AGE     = mods["space-age"]  and true or false
+KRASTORIO2    = mods["Krastorio2"] and true or false
+
 ---------------------------------------------------------------------------------------------------
 -- STARTUP SETTINGS
 ---------------------------------------------------------------------------------------------------
@@ -24,6 +26,7 @@ SETTING = {
     TREE_GREENHOUSE     = conf "k2gp-enable-tree-greenhouse",
     GLEBA_GREENHOUSES_1 = conf "k2gp-enable-main-gleba-greenhouses",
     GLEBA_GREENHOUSES_2 = conf "k2gp-enable-other-gleba-greenhouses",
+    GLASS               = conf "k2gp-provide-glass-for-greenhouses",
     PYROLYSIS           = conf "k2gp-enable-pyrolysis-recipes",
     EARLY_LIQUEFACTION  = conf "k2gp-unlock-coal-liquefaction-early",
     MODULE_SLOTS        = conf "k2gp-greenhouse-module-slot-amount",

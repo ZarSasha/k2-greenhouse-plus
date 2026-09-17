@@ -22,7 +22,7 @@ local function createRecipeCategory(Variant)
     return {type = "recipe-category", name = PREFIX.."greenhouse-"..Variant.."-recipes" }
 end
 ---------------------------------------------------------------------------------------------------
--- GREENHOUSE ENTITIES
+-- ASSEMBLING MACHINE: GREENHOUSE ENTITIES
 ---------------------------------------------------------------------------------------------------
 -- Recipes for greenhouse variants. Mods may replace iron plates with some variant of glass. The
 -- amounts required will reflect the cost of producing that glass.
@@ -31,28 +31,6 @@ local function createGreenhouseRecipe(Variant, Order)
     -- that smaller mods and mods that modify other mods go first. Special care must be taken with
     -- AAI Industry and Krastorio 2, since the former chooses the glass name of the latter, if both
     -- are present.
-
-    -- Default:
-    local Glass = {"iron-plate",  32}
-    -- Glass:
-    if     mods["Glass"] and item_exists("Glass", "glass-plate") then
-        Glass = {"glass-plate", 32} -- 100% glass : stone
-    -- QuirkyCat Glass, Sand and Clay (and minerals) :
-    elseif mods["quirkycat_glass"] and item_exists("quirkycat_glass", "glass") then
-        Glass = {"glass",       48} -- 150% glass : stone
-    -- Crushing Industry:
-    elseif mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
-    and item_exists("crushing-industry", "glass") then
-        Glass = {"glass",       25} --  80% glass : stone
-    -- Factorio+:
-    elseif mods["factorioplus"] and item_exists("factorioplus", "glass-plate") then
-        Glass = {"glass-plate", 32} -- 100% glass : stone
-    -- AAI Industry (but not Krastorio 2):
-    elseif mods["aai-industry"] and not mods["Krastorio2"]
-    and item_exists("aai-industry", "glass") then
-        Glass = {"glass",       16} -- 50% glass : stone
-    end
-    -- See Krastorio 2 further down.
 
     local TreeSeed = SPACE_AGE and "tree-seed" or "wood" -- assumes 1 wood to 1 seed
 
@@ -79,29 +57,58 @@ local function createGreenhouseRecipe(Variant, Order)
         subgroup = SPACE_AGE and "agriculture" or "production-machine",
         order    = (SPACE_AGE and "a" or "g").."[greenhouse]-"..Order.."["..Variant.."]",
         enabled  = false,
-        energy_required = 5,
+        energy_required = nil, -- defined below
         ingredients = {
-            { type = "item", name = "steel-plate",         amount =                     8 },
-            { type = "item", name = "electronic-circuit",  amount =                     6 },
-            { type = "item", name = Glass[1],              amount =              Glass[2] },
             { type = "item", name = Crop[Variant].seed[1], amount = Crop[Variant].seed[2] },
             { type = "item", name = Crop[Variant].soil[1], amount = Crop[Variant].soil[2] }
+            -- More to be added below
         },
         results = {
             { type = "item", name = PREFIX.."greenhouse-for-"..Variant, amount = 1 }
         }
     }
 
-    -- Krastorio 2: Makes the greenhouse recipes more similar to that of the original.
-    if mods["Krastorio2"] then
+    local function add_ingr(Name, Amount)
+        table.insert(output.ingredients, { type = "item", name = Name ,amount = Amount })
+    end
+
+    -- Adds various ingredients and changes energy need depending on mods installed.
+    if KRASTORIO2 then
         output.energy_required = 10
-        output.ingredients = {
-            { type = "item", name = "kr-iron-beam",        amount =                    10 },
-            { type = "item", name = "kr-automation-core",  amount =                    10 },
-            { type = "item", name = "kr-glass",            amount =                    20 },
-            { type = "item", name = Crop[Variant].seed[1], amount = Crop[Variant].seed[2] },
-            { type = "item", name = Crop[Variant].soil[1], amount = Crop[Variant].soil[2] }
-        }
+        add_ingr("kr-iron-beam",       10)
+        add_ingr("kr-automation-core", 10)
+
+    else
+        output.energy_required = 5
+        add_ingr("steel-plate",         8)
+        add_ingr("electronic-circuit",  6)
+    end
+
+    -- Adds glass, perhaps from other mods, in a particular order:
+    if SETTING.GLASS then
+        add_ingr(PREFIX.."glass", 24) -- 100% glass : stone
+    -- Glass:
+    elseif mods["Glass"] and item_exists("Glass", "glass-plate") then
+        add_ingr("glass-plate",   24) -- 100% glass : stone
+    -- QuirkyCat Glass, Sand and Clay (and minerals) :
+    elseif mods["quirkycat_glass"] and item_exists("quirkycat_glass", "glass") then
+        add_ingr("glass",         32) -- 150% glass : stone
+    -- Crushing Industry:
+    elseif mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
+    and item_exists("crushing-industry", "glass") then
+        add_ingr("glass",         20) --  80% glass : stone
+    -- Factorio+:
+    elseif mods["factorioplus"] and item_exists("factorioplus", "glass-plate") then
+        add_ingr("glass-plate",   24) -- 100% glass : stone
+    -- AAI Industry (but not Krastorio 2):
+    elseif mods["aai-industry"] and not KRASTORIO2 and item_exists("aai-industry", "glass") then
+        add_ingr("glass",         12) -- 50% glass : stone
+    -- Krastorio 2:
+    elseif KRASTORIO2 and item_exists("Krastorio2", "kr-glass") then
+        add_ingr("kr-glass",      20) -- 125% glass : stone, but kr-greenhouse uses 20 plates
+    -- No glass provided by any recognized source:
+    else
+        add_ingr("iron-plate",  24)
     end
 
     return output
@@ -208,6 +215,42 @@ local AdvancedWoodPyrolysisRecipe = {
     },
     allow_productivity = true
 }
+
+---------------------------------------------------------------------------------------------------
+-- ASSEMBLING MACHINE: SAND RECIPE
+---------------------------------------------------------------------------------------------------
+local sandRecipe = {
+    type = "recipe",
+    name = PREFIX .. "sand",
+    auto_recycle = false,
+    energy_required = 0.8,
+    ingredients = {
+        { type = "item", name = "stone",          amount = 1 }
+    },
+    results = {
+        { type = "item", name = PREFIX .. "sand", amount = 1 }
+    },
+    allow_productivity = true
+}
+
+---------------------------------------------------------------------------------------------------
+-- FURNACE: GLASS RECIPE
+---------------------------------------------------------------------------------------------------
+local glassRecipe =  {
+   type = "recipe",
+   name = PREFIX .. "glass",
+   categories = {"smelting"},
+   auto_recycle = false,
+   energy_required = 3.2,
+   ingredients = {
+       { type = "item", name = PREFIX .. "sand",        amount = 1 }
+   },
+   results = {
+       { type = "item", name = PREFIX .. "glass", amount = 1 }
+   },
+   allow_productivity = true
+ }
+
 ---------------------------------------------------------------------------------------------------
 -- FINAL DATA WRITE --
 ---------------------------------------------------------------------------------------------------
@@ -223,6 +266,12 @@ elseif SETTING.PYROLYSIS == "basic-recipe" then
 elseif SETTING.PYROLYSIS == "advanced-recipe" then
     data:extend({
         AdvancedWoodPyrolysisRecipe
+    })
+end
+if SETTING.GLASS then
+    data:extend({
+        sandRecipe,
+        glassRecipe
     })
 end
 if SETTING.TREE_GREENHOUSE then
@@ -244,12 +293,12 @@ if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_1 ~= "disabled" then
 end
 if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
     data:extend({
-        createRecipeCategory  ("slipstack"       ),
-        createGreenhouseRecipe("slipstack",   "d"),
-        createCropGrowthRecipe("slipstack",   "d"),
-        createRecipeCategory  ("sunnycomb"       ),
-        createGreenhouseRecipe("sunnycomb",   "e"),
-        createCropGrowthRecipe("sunnycomb",   "e"),
+        createRecipeCategory("slipstack"),
+        createGreenhouseRecipe("slipstack", "d"),
+        createCropGrowthRecipe("slipstack", "d"),
+        createRecipeCategory("sunnycomb"),
+        createGreenhouseRecipe("sunnycomb", "e"),
+        createCropGrowthRecipe("sunnycomb", "e"),
     })
 end
 ---------------------------------------------------------------------------------------------------
@@ -268,7 +317,7 @@ end
 -- END NOTES
 ---------------------------------------------------------------------------------------------------
 
--- ENERGY MEASUREMENTS --
+-- ENERGY MEASUREMENTS (BEFORE V1.4.0) --
 
 -- Basic pyrolysis:
 -- ~3.7% net energy loss.

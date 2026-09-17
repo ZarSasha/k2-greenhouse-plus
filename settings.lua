@@ -42,6 +42,13 @@ local startup_settings = {
         hidden = not space_age,
         order = "a3"
     },
+    {-- Lets the mod provide its own source of glass for the greenhouses.
+        type = "bool-setting",
+        name = "k2gp-provide-glass-for-greenhouses",
+        setting_type = "startup",
+        default_value = true,
+        order = "a4"
+    },
     {-- Enable the pyrolysis recipes. Option useful in relation to mod compatibility.
         type = "string-setting",
         name = "k2gp-enable-pyrolysis-recipes",
@@ -83,7 +90,7 @@ local startup_settings = {
         default_value = 0.25,  -- The equivalent of 37.5 planted trees (10 min growth time).
         minimum_value = 0.01,  -- Energy output may be twice that of solar + accu in practice,
         maximum_value = 10,    -- but burning the wood for energy also pollutes a lot. And I
-        order = "d1"           -- don't really want the output to be any lower than this.
+        order = "e1"           -- don't really want the output to be any lower than this.
     },
     {-- Space Age: Greenhouse yumako production rate (items/s.)
         type = "double-setting",
@@ -93,7 +100,7 @@ local startup_settings = {
         minimum_value = 0.01,  -- more pr. area than an agricultural tower setup does.
         maximum_value = 10,
         hidden = not space_age,
-        order = "d2"
+        order = "e2"
     },
     {-- Space Age: Greenhouse jellynut production rate (items/s.)
         type = "double-setting",
@@ -103,7 +110,7 @@ local startup_settings = {
         minimum_value = 0.01,
         maximum_value = 10,
         hidden = not space_age,
-        order = "d3"
+        order = "e3"
     },
     {-- Space Age: Greenhouse slipstack production rate (items/s.)
         type = "double-setting",
@@ -113,7 +120,7 @@ local startup_settings = {
         minimum_value = 0.01,
         maximum_value = 10,
         hidden = not space_age,
-        order = "d4"
+        order = "e4"
     },
     {-- Space Age: Greenhouse sunnycomb production rate (items/s.)
         type = "double-setting",
@@ -123,7 +130,7 @@ local startup_settings = {
         minimum_value = 0.01,
         maximum_value = 10,
         hidden = not space_age,
-        order = "d5"
+        order = "e5"
     }
 }
 ---------------------------------------------------------------------------------------------------
