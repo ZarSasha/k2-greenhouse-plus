@@ -85,35 +85,31 @@ local function createGreenhouseRecipe(Variant, Order)
     end
 
     -- Adds glass, perhaps from other mods, in a particular order:
-    if SETTING.GLASS and not KRASTORIO2 then
-        add_ingr(PREFIX.."glass", 32) -- 100% glass : stone
+    if SETTING.GLASS then
+        add_ingr(PREFIX.."glass", 24) -- 100% glass : stone
     -- Glass:
     elseif mods["Glass"] and item_exists("Glass", "glass-plate") then
-        add_ingr("glass-plate",   32) -- 100% glass : stone
+        add_ingr("glass-plate",   24) -- 100% glass : stone
     -- QuirkyCat Glass, Sand and Clay (and minerals) :
     elseif mods["quirkycat_glass"] and item_exists("quirkycat_glass", "glass") then
-        add_ingr("glass",         48) -- 150% glass : stone
+        add_ingr("glass",         32) -- 150% glass : stone
     -- Crushing Industry:
     elseif mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
     and item_exists("crushing-industry", "glass") then
-        add_ingr("glass",         26) --  80% glass : stone
+        add_ingr("glass",         20) --  80% glass : stone
     -- Factorio+:
     elseif mods["factorioplus"] and item_exists("factorioplus", "glass-plate") then
-        add_ingr("glass-plate",   32) -- 100% glass : stone
+        add_ingr("glass-plate",   24) -- 100% glass : stone
     -- AAI Industry (but not Krastorio 2):
     elseif mods["aai-industry"] and not KRASTORIO2
     and item_exists("aai-industry", "glass") then
-        add_ingr("glass",         16) -- 50% glass : stone
+        add_ingr("glass",         12) -- 50% glass : stone
     -- Krastorio 2:
     elseif KRASTORIO2 and item_exists("Krastorio2", "kr-glass") then
-        if SETTING.GLASS then
-            add_ingr(PREFIX.."glass", 20) -- same amount as below
-        else
-            add_ingr("kr-glass",      20) -- 125% glass : stone, kr-greenhouse uses 20 plates
-        end
+        add_ingr("kr-glass",      20) -- 125% glass : stone, but kr-greenhouse uses 20 plates
     -- No glass provided by any recognized source:
     else
-        add_ingr("iron-plate",  32)
+        add_ingr("iron-plate",  24)
     end
 
     return output
