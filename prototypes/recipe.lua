@@ -101,8 +101,7 @@ local function createGreenhouseRecipe(Variant, Order)
     elseif mods["factorioplus"] and item_exists("factorioplus", "glass-plate") then
         add_ingr("glass-plate",   24) -- 100% glass : stone
     -- AAI Industry (but not Krastorio 2):
-    elseif mods["aai-industry"] and not KRASTORIO2
-    and item_exists("aai-industry", "glass") then
+    elseif mods["aai-industry"] and not KRASTORIO2 and item_exists("aai-industry", "glass") then
         add_ingr("glass",         12) -- 50% glass : stone
     -- Krastorio 2:
     elseif KRASTORIO2 and item_exists("Krastorio2", "kr-glass") then
