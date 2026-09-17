@@ -174,12 +174,12 @@ local BasicWoodPyrolysisRecipe = {
     subgroup = "raw-material",
     order    = "a[burning]-a[charcoal]",
     enabled = true, -- Unlocked right from the start.
-    energy_required = 4.8, -- 2.4 at double speed
+    energy_required = 6.4, -- 3.2 at double speed
     ingredients = {
-        { type = "item", name = "wood", amount = 6 }
+        { type = "item", name = "wood", amount = 8 }
     },
     results = {
-        { type = "item", name = "coal", amount = 3 }
+        { type = "item", name = "coal", amount = 4 }
     },
     allow_productivity = true
 }
@@ -201,12 +201,12 @@ local AdvancedWoodPyrolysisRecipe = {
     enabled = false,
     energy_required = 4,
     ingredients = {
-        { type = "item",  name = "wood",          amount = 12 }
+        { type = "item",  name = "wood",          amount = 15 }
     },
     results = {
-        { type = "fluid", name = "crude-oil",     amount = 15,  fluidbox_index = 2 },
+        { type = "fluid", name = "crude-oil",     amount = 20,  fluidbox_index = 2 },
         { type = "fluid", name = "petroleum-gas", amount = 15,  fluidbox_index = 1 },
-        { type = "item",  name = "coal",          amount =  3 }
+        { type = "item",  name = "coal",          amount =  4 }
     },
     crafting_machine_tint = {
         primary    = {r = 0.250, g = 0.200, b = 0.250, a = 1.000}, -- Liquid.     1st output color?
