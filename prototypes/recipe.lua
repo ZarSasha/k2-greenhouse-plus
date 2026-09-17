@@ -200,12 +200,11 @@ local AdvancedWoodPyrolysisRecipe = {
     order    = "a[fluid]-b[oil]-b[petroleum-gas]",
     enabled = false,
     energy_required = 4,
-    emissions_multiplier = 0.5,
     ingredients = {
-        { type = "item",  name = "wood",          amount = 15 }
+        { type = "item",  name = "wood",          amount = 12 }
     },
     results = {
-        { type = "fluid", name = "crude-oil",     amount = 20,  fluidbox_index = 2 },
+        { type = "fluid", name = "crude-oil",     amount = 15,  fluidbox_index = 2 },
         { type = "fluid", name = "petroleum-gas", amount = 15,  fluidbox_index = 1 },
         { type = "item",  name = "coal",          amount =  3 }
     },
@@ -216,9 +215,6 @@ local AdvancedWoodPyrolysisRecipe = {
         quaternary = {r = 1.000, g = 0.614, b = 0.280, a = 1.000}  -- Inner smoke. 2nd input color?
     },
     allow_productivity = true
-
-    -- Note on pollution: The basic/advanced setups might emit 0.20/0.83 pollution/s when
-    -- processing 30 wood/s. Emmisions multiplier used above to reduce that difference.
 }
 
 ---------------------------------------------------------------------------------------------------
