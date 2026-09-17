@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.0
-Date: 2026-09-16
+Date: 2026-09-17
   Minor Features:
     - Created an option (that is enabled by default) for making the mod provide its own glass for
       the greenhouse recipes. The sand, and the glass made from it, are not used anywhere else.
