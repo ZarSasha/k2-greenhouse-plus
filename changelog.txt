@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.4.1
+Date: 2026-09-20
+  Balancing:
+    - Further reduced the cost of researching Coal Liquefaction when the option for unlocking it
+      early is enabled.
+---------------------------------------------------------------------------------------------------
 Version: 1.4.0
 Date: 2026-09-17
   Minor Features:

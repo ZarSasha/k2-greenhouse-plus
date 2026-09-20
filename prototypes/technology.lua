@@ -78,12 +78,12 @@ if SETTING.PYROLYSIS == "both-recipes" or SETTING.PYROLYSIS == "advanced-recipe"
 end
 
 if SETTING.EARLY_LIQUEFACTION then
-    -- Moves Coal Liquefaction tech to right after Advanced Oil Processing, lowering its cost as well.
-    -- Non-essential branch tech with no dependents, so it seems fine.
+    -- Moves Coal Liquefaction tech to right after Advanced Oil Processing, grealy lowering its
+    -- research cost as well. Non-essential branch tech with no dependents, so it seems fine.
     local coal_tech = data.raw.technology["coal-liquefaction"]
     coal_tech.prerequisites = {"advanced-oil-processing"}
     coal_tech.unit = {
-        count = 150, time = 30,
+        count = 50, time = 30,
         ingredients = {
             {"automation-science-pack", 1},
             {"logistic-science-pack",   1},
