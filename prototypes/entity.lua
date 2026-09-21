@@ -84,10 +84,10 @@ local function createGreenhouse(Variant)
         crafting_speed = 1,
         crafting_categories = {PREFIX.."greenhouse-"..Variant.."-recipes"},
         module_slots = SETTING.MODULE_SLOTS,
-        allowed_module_categories = {},
-        allowed_effects = {"speed"},
+        allowed_module_categories = {"speed", "efficiency"},
+        allowed_effects = {"speed", "consumption"},
         effect_receiver = {
-            speed_limits = {high = 0},
+            consumption_limits = {low = 0}
         },
         fixed_recipe = PREFIX.."greenhouse-"..Variant.."-growth",
         fluid_boxes_off_when_no_fluid_recipe = false,
