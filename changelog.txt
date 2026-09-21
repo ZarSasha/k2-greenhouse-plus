@@ -2,14 +2,14 @@
 Version: 1.4.2
 Date: 2026-09-21
   Balancing:
-    - Important: Limited total speed increase from modules to 0%, since I don't think the growth of
-      trees should be able to be forced. (Just increase output in settings instead.)
+    - Put limits on various effects from modules and beacons on greenhouses:
+      - Important: Limited total speed increase to 0%, since I don't think the growth of trees
+        should be able to be forced.
+      - At least put a lower bound on the pollution reduction from greenhouses for wood, since
+        efficiency modules can ruin it (game engine limitation in regards to negative values).
   Internal:
     - Removed a comment about beacons only working when the greenhouses has at least one module
       slot. Apparently the issue was fixed.
-  Notes:
-    - Efficiency modules should not be used in the greenhouse for wood, since they lessen pollution
-      reduction instead of increasing it. This is a game engine limitation.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.1
 Date: 2026-09-20
