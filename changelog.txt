@@ -2,19 +2,18 @@
 Version: 1.4.2
 Date: 2026-09-21
   Balancing:
-    - No longer allows any modules except quality modules, nor any effects except speed (capped at
-      0%) and quality for greenhouses. This is meant to prevent the growth of trees from being
-      accelerated, as well as pollution reduction or spore pollution from being lowered by
-      efficiency. NB: This may remove various penalties conferred by certain quality mods, but at
-      least the player benefits. (The "Quality Reworked" mod may increase spore pollution by 500%
-      pr. output, pr. tier 3 module!)
-  Internal:
-    - Removed a comment about beacons only working when the greenhouses has at least one module
-      slot. If the issue actually existed, it has now been fixed.
-  Note:
-    - Pollution does not only scale with pollution effects, but is also increased with speed and
-      decreased with lowered consumption! This makes it impossible to put proper bounds on the
-      effect and requires several compromises in regards to modules.
+    - Greenhouses: Modules are still allowed (if enabled), but consumption can no longer be reduced
+      below 0%. This is to prevent the ability to reduce spore pollution from the greenhouses for
+      Yumako and Jellynut trees below the default value. As a side effect, pollution absorption
+      from the greenhouse for wood won't be accidentally lowered by efficiency modules either
+      (something that is caused by a game engine limitation in regards to negative numbers).
+  Notes:
+    - Pollution does not only scale with the pollution effect, but also with consumption! This
+      makes it impossible to put proper bounds on it. Don't use speed modules without efficiency
+      modules, if you don't want to increase spore pollution!
+    - Since productivity is pointless and base output can simply be increased in settings, the main
+      value of the optional module slots is that they can accept quality modules. If a mod such as
+      "Reworked Quality" is installed, efficiency modules may be useful as well.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.1
 Date: 2026-09-20
