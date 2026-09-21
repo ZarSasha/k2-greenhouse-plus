@@ -2,15 +2,19 @@
 Version: 1.4.2
 Date: 2026-09-21
   Balancing:
-    - Put limits on various effects from modules and beacons on greenhouses:
-      - Made the pollution reduction from greenhouses for wood completely fixed, regardless of
-        of all effects. This resolves an issue with pollution reduction actually getting worse from
-        higher efficiency (a game engine limitation) and better from higher speed.
-      - Prevented any reduction in consumption so that pollution cannot be indirectly decreased
-        (25kW is low anyway).
+    - No longer allows any modules except quality modules, nor any effects except speed (capped at
+      0%) and quality for greenhouses. This is meant to prevent the growth of trees from being
+      accelerated, as well as pollution reduction or spore pollution from being lowered by
+      efficiency. NB: This may remove various penalties conferred by certain quality mods, but at
+      least the player benefits. (The "Quality Reworked" mod may increase spore pollution by 500%
+      pr. output, pr. tier 3 module!)
   Internal:
     - Removed a comment about beacons only working when the greenhouses has at least one module
-      slot. Apparently the issue was fixed.
+      slot. If the issue actually existed, it has now been fixed.
+  Note:
+    - Pollution does not only scale with pollution effects, but is also increased with speed and
+      decreased with lowered consumption! This makes it impossible to put proper bounds on the
+      effect and requires several compromises in regards to modules.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.1
 Date: 2026-09-20

@@ -50,9 +50,6 @@ local function createGreenhouse(Variant)
         ["yumako-tree"] = {spores = 19.5 * SETTING.OUTPUT_RATE["yumako-tree"]},
         ["jellystem"]   = {spores = 19.5 * SETTING.OUTPUT_RATE["jellystem"]  }
     }
-    local EmissionLimits = {
-        ["tree"]        = {low = 0, high = 0},
-    }
     local Conditions = {
         ["tree"]        = {cond("solar-power",  50, 100), cond("pressure", 1000, 2000)}, -- Nauvis, Gleba
         ["yumako-tree"] = {cond("solar-power",  50,  50), cond("pressure", 2000, 2000)}, -- Gleba
@@ -87,12 +84,10 @@ local function createGreenhouse(Variant)
         crafting_speed = 1,
         crafting_categories = {PREFIX.."greenhouse-"..Variant.."-recipes"},
         module_slots = SETTING.MODULE_SLOTS,
-        allowed_module_categories = {"speed", "efficiency"},
-        allowed_effects = {"speed", "consumption", "pollution"},
+        allowed_module_categories = {},
+        allowed_effects = {"speed"},
         effect_receiver = {
             speed_limits = {high = 0},
-            consumption_limits = {low = 0},
-            pollution_limits = EmissionLimits[Variant] or nil
         },
         fixed_recipe = PREFIX.."greenhouse-"..Variant.."-growth",
         fluid_boxes_off_when_no_fluid_recipe = false,
