@@ -3,17 +3,9 @@ Version: 1.4.2
 Date: 2026-09-21
   Balancing:
     - Greenhouses: Modules are still allowed (if enabled), but consumption can no longer be reduced
-      below 0%. This is to prevent the ability to reduce spore pollution from the greenhouses for
+      below 0%. This is to prevent any reduction of the spore pollution from the greenhouses for
       Yumako and Jellynut trees below the default value. As a side effect, pollution absorption
-      from the greenhouse for wood won't be accidentally lowered by efficiency modules either
-      (something that is caused by a game engine limitation in regards to negative numbers).
-  Notes:
-    - Pollution does not only scale with the pollution effect, but also with consumption! This
-      makes it impossible to put proper bounds on it. Don't use speed modules without efficiency
-      modules, if you don't want to increase spore pollution!
-    - Since productivity is pointless and base output can simply be increased in settings, the main
-      value of the optional module slots is that they can accept quality modules. If a mod such as
-      "Reworked Quality" is installed, efficiency modules may be useful as well.
+      from the greenhouse for wood won't be accidentally lowered beyond the default value either.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.1
 Date: 2026-09-20
