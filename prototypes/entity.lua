@@ -83,9 +83,13 @@ local function createGreenhouse(Variant)
         energy_usage = "25kW",
         crafting_speed = 1,
         crafting_categories = {PREFIX.."greenhouse-"..Variant.."-recipes"},
-        module_slots = SETTING.MODULE_SLOTS,                 -- Beacons only work when there
-        allowed_module_categories = {"speed", "efficiency"}, -- is at least one module slot.
-        allowed_effects = {"consumption", "speed"},
+        module_slots = SETTING.MODULE_SLOTS,
+        allowed_module_categories = {"speed", "efficiency"},
+        allowed_effects = {"consumption", "speed", "pollution"},
+        effect_receiver = {
+            pollution_limits = {high = 1},
+            speed_limits     = {high = 1}
+        },
         fixed_recipe = PREFIX.."greenhouse-"..Variant.."-growth",
         fluid_boxes_off_when_no_fluid_recipe = false,
         fluid_boxes = {{
