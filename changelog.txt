@@ -5,7 +5,8 @@ Date: 2026-09-21
     - Greenhouses: Modules are still allowed (if enabled), but consumption can no longer be reduced
       below 0%. This is to prevent any reduction of the spore pollution from the greenhouses for
       Yumako and Jellynut trees below the default value. As a side effect, pollution absorption
-      from the greenhouse for wood won't be accidentally lowered beyond the default value either.
+      from the greenhouse for wood won't be accidentally lowered beyond the default value either
+      (issue caused by game engine limitation in regards to negative numbers).
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.1
 Date: 2026-09-20
