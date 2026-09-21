@@ -91,7 +91,7 @@ local function createGreenhouse(Variant)
         allowed_effects = {"speed", "consumption", "pollution"},
         effect_receiver = {
             speed_limits = {high = 0},
-            --consumption_limits = {low = 0},
+            consumption_limits = {low = 0},
             pollution_limits = EmissionLimits[Variant] or nil
         },
         fixed_recipe = PREFIX.."greenhouse-"..Variant.."-growth",

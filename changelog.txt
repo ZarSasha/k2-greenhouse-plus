@@ -5,7 +5,7 @@ Date: 2026-09-21
     - Put limits on various effects from modules and beacons on greenhouses:
       - Made the pollution reduction from greenhouses for wood completely fixed, regardless of
         of all effects. This resolves an issue with pollution reduction actually getting worse from
-        higher efficiency and better from higher speed (these are game engine limitations).
+        higher efficiency (a game engine limitation) and better from higher speed.
       - Prevented any reduction in consumption so that pollution cannot be indirectly decreased
         (25kW is low anyway).
   Internal:
