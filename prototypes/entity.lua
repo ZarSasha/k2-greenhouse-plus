@@ -51,7 +51,7 @@ local function createGreenhouse(Variant)
         ["jellystem"]   = {spores = 19.5 * SETTING.OUTPUT_RATE["jellystem"]  }
     }
     local EmissionLimits = {
-        ["tree"]        = {low = 0}
+        ["tree"]        = {low = 0, high = 0},
     }
     local Conditions = {
         ["tree"]        = {cond("solar-power",  50, 100), cond("pressure", 1000, 2000)}, -- Nauvis, Gleba
@@ -91,6 +91,7 @@ local function createGreenhouse(Variant)
         allowed_effects = {"speed", "consumption", "pollution"},
         effect_receiver = {
             speed_limits = {high = 0},
+            --consumption_limits = {low = 0},
             pollution_limits = EmissionLimits[Variant] or nil
         },
         fixed_recipe = PREFIX.."greenhouse-"..Variant.."-growth",
