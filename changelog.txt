@@ -6,8 +6,8 @@ Date: 2026-09-22
   Balancing:
     - Greenhouse for wood: Doubled absorption of pollution to 2.25 units/min. Also made it passive
       so it can't be affected by modules, which fixes an issue with lower consumption actually
-      reducing it (game engine limitation). NB: The absorption won't show in the tooltip any
-      longer but can be exposed by a mod such as "Rate Calculator"!
+      reducing it (game engine limitation). Unfortunately, the absorption won't show in any of the
+      menus or tooltips any longer!
     - Main Gleba greenhuses: Reduced spore production slightly.
   Info:
     - Updated values in descriptions of startup settings.
