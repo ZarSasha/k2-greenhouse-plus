@@ -4,20 +4,14 @@ Date: 2026-09-22
   Changes:
     - Compatibility: Quality and Space Age can now be used independently of each other.
   Balancing:
-    - Greenhouse for wood:
-      - Doubled absorption of pollution to 2.25 units/sec. and also tied it to the base output,
-        allowing for 27% re-absorption of pollution from a boiler. (The value was halved until now
-        to represent the trees being in a half-grown state on average, but the game makes no such
-        adjustment for planted trees, so never mind!)
-      - Made the absorption of pollution passive so it can't be affected by modules (fixes issue
-        with lower consumption reducing the absorption; issue caused by game engine limitation).
+    - Greenhouse for wood: Doubled absorption of pollution to 2.25 units/min. Also made it passive
+      so it can't be affected by modules. (Lower consumption would reduce the absorption, an issue
+      caused by a game engine limitation in regards to negative numbers).
     - Main Gleba greenhuses: Reduced spore production slightly.
   Info:
     - Updated values in descriptions of startup settings.
   Locales:
     - Updated values in Chinese translation.
-  Internal:
-
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.2
 Date: 2026-09-21

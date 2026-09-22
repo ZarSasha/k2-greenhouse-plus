@@ -46,7 +46,7 @@ local function createGreenhouse(Variant)
     }
     -- AUXILIARY TABLES --
     local PassiveEmissions = {
-        ["tree"]        = {pollution = -0.15 * SETTING.OUTPUT_RATE["tree"]}
+        ["tree"]        = {pollution = (-2.25 / 60)}
     }
     local ActiveEmissions = {
         ["yumako-tree"] = {spores = 18.5 * SETTING.OUTPUT_RATE["yumako-tree"]},
