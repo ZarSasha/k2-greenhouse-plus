@@ -2,11 +2,12 @@
 Version: 1.4.3
 Date: 2026-09-22
   Changes:
-    - Compatibility: Quality and Space Age can now be used independently of each other.
+    - Quality and Space Age can now be used independently of each other with this mod.
   Balancing:
     - Greenhouse for wood: Doubled absorption of pollution to 2.25 units/min. Also made it passive
-      so it can't be affected by modules. (Lower consumption would reduce the absorption, an issue
-      caused by a game engine limitation in regards to negative numbers).
+      so it can't be affected by modules, which fixes an issue with lower consumption actually
+      reducing it (game engine limitation). NB: The absorption won't show in the tooltip any
+      longer but can be exposed by a mod such as "Rate Calculator"!
     - Main Gleba greenhuses: Reduced spore production slightly.
   Info:
     - Updated values in descriptions of startup settings.
