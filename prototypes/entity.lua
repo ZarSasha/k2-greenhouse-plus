@@ -45,10 +45,12 @@ local function createGreenhouse(Variant)
         width = 512, height = 512, scale = 0.5
     }
     -- AUXILIARY TABLES --
-    local Emissions = {
-        ["tree"]        = {pollution = -1.125}, -- Same as 37.5/2 trees.
-        ["yumako-tree"] = {spores = 19.5 * SETTING.OUTPUT_RATE["yumako-tree"]},
-        ["jellystem"]   = {spores = 19.5 * SETTING.OUTPUT_RATE["jellystem"]  }
+    local PassiveEmissions = {
+        ["tree"]        = {pollution = (-2.25 / 60) * SETTING.OUTPUT_RATE["tree"]}, -- Same as 37.5 trees.
+    }
+    local ActiveEmissions = {
+        ["yumako-tree"] = {spores = 18.5 * SETTING.OUTPUT_RATE["yumako-tree"]},
+        ["jellystem"]   = {spores = 18.5 * SETTING.OUTPUT_RATE["jellystem"]  }
     }
     local Conditions = {
         ["tree"]        = {cond("solar-power",  50, 100), cond("pressure", 1000, 2000)}, -- Nauvis, Gleba
@@ -77,10 +79,11 @@ local function createGreenhouse(Variant)
         energy_source = {
             type = "electric",
             usage_priority = "secondary-input",
-            emissions_per_minute = Emissions[Variant],
+            emissions_per_minute = ActiveEmissions[Variant] or nil,
             drain = "0kW"
         },
         energy_usage = "25kW",
+        emissions_per_second = PassiveEmissions[Variant] or nil,
         crafting_speed = 1,
         crafting_categories = {PREFIX.."greenhouse-"..Variant.."-recipes"},
         module_slots = SETTING.MODULE_SLOTS,
@@ -112,11 +115,16 @@ local function createGreenhouse(Variant)
         open_sound = sounds.metal_large_open,
         close_sound = sounds.metal_large_close
     }
-    if SPACE_AGE then
-        output.surface_conditions = Conditions[Variant]
+
+    if QUALITY then
         table.insert(output.allowed_module_categories, "quality")
         table.insert(output.allowed_effects, "quality")
     end
+
+    if SPACE_AGE then
+        output.surface_conditions = Conditions[Variant]
+    end
+
     return output
 end
 ---------------------------------------------------------------------------------------------------
