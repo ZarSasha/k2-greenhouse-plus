@@ -46,9 +46,9 @@ local function createGreenhouse(Variant)
     }
     -- AUXILIARY TABLES --
     local ActiveEmissions = {
-        ["tree"]        = {pollution = -9 * SETTING.OUTPUT["tree"]},
-        ["yumako-tree"] = {spores = 18.5 * SETTING.OUTPUT_RATE["yumako-tree"]},
-        ["jellystem"]   = {spores = 18.5 * SETTING.OUTPUT_RATE["jellystem"]  }
+        ["tree"]        = {pollution = -9 * SETTING.OUTPUT_RATE["tree"       ]},
+        ["yumako-tree"] = {spores  = 18.5 * SETTING.OUTPUT_RATE["yumako-tree"]},
+        ["jellystem"]   = {spores  = 18.5 * SETTING.OUTPUT_RATE["jellystem"  ]}
     }
     local Conditions = {
         ["tree"]        = {cond("solar-power",  50, 100), cond("pressure", 1000, 2000)}, -- Nauvis, Gleba
