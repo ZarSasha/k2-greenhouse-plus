@@ -75,11 +75,6 @@ if SETTING.PYROLYSIS == "both-recipes" or SETTING.PYROLYSIS == "advanced-recipe"
             {"logistic-science-pack",   1}
         }
     }
-    -- Unlocks distillation recipe with biochamber:
-    if SPACE_AGE then
-        local bio_tech = data.raw.technology["biochamber"]
-        table.insert(bio_tech.effects, unlock(PREFIX.."organic-wood-distillation"))
-    end
 end
 
 if SETTING.EARLY_LIQUEFACTION then
