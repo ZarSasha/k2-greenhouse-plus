@@ -234,7 +234,7 @@ local OrganicWoodDistillationRecipe = {
     enabled = false,
     energy_required = 6, -- biochamber has doubled crafting speed
     ingredients = {
-        { type = "item",  name = "wood",          amount = 30 }
+        { type = "item",  name = "wood",          amount = 20 }
     },
     results = {
         { type = "fluid", name = "crude-oil",     amount = 20,  fluidbox_index = 2 },
