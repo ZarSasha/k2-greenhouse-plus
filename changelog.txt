@@ -1,4 +1,29 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.4.4
+Date: 2026-09-23
+  Balancing:
+    - Advanced pyrolysis recipe: Very slightly increased the amount of petroleum gas produced and
+      also allowed it to work in the biochamber from the Space Age DLC! This is meant to give the
+      "advanced" oil chain an advantage over the "basic" one in the late-game, where extreme
+      productivity bonuses tend to favor overall longer production chains in regards to yield.
+      (There is no perfect way to balance this, the productivity mechanic is the problem).
+    - Greenhouse for wood:
+      - Once again made pollution absorption active (so it can also be read from the tooltip),
+        just like how it is with the biochamber in the Space Age DLC. The problem of the game
+        engine limitation is mitigated by the solution from v1.4.2.
+      - Made pollution absorption scale with the base output rate.
+  Info:
+    - Pyrolysis recipes: Changed names to "Wood carbonization" and "Wood distillation" and added
+      short descriptions. This was done to give less of an impression that the "advanced" recipe is
+      always better than the "basic" one for the most important oil production (productivity
+      bonuses from machines and legendary modules can flip things on their head down the line, at
+      least if you only care about maximizing yields from an input; but that also changes again
+      with the biochamber in Space Age, since the "advanced" recipe works in it now).
+    - Updated description of setting related to the greenhouse for wood.
+    - Fixed changelog entry for v1.0.0.
+  Locales:
+    - Updated Chinese translation with DeepL.
+---------------------------------------------------------------------------------------------------
 Version: 1.4.3
 Date: 2026-09-22
   Changes:
@@ -210,11 +235,12 @@ Date: 2025-02-15
       appropriate seeds + soil.
     - Greatly increased overall cost of greenhouses, mostly because it is a renewable source of
       energy. Still a lot cheaper than solar panels.
-    - Greenhouse for wood by default outputs as much wood as 37.5 planted trees (about 32 could be
-      manually planted within the same 7x7 area) and outputs 0.25 wood/s. In practice, this seems
-      to net a power output pr. area at least twice that of solar + accu. But:
-    - Greenhouse for wood absorbs only 1.125 pollution/min, which is about 13.5% of what is emitted
-      when burning its wood output in a Boiler, so it's not a clean energy source!
+    - Greenhouse for wood by default outputs as much wood as 37.5 planted trees and outputs 0.25
+      wood/s. In practice, this seems to net a power output pr. area at least twice that of solar +
+      accu. But:
+    - Greenhouse for wood absorbs only 1.125 pollution/min (as much as 37.5/2 trees), which is
+      about 13.5% of what is emitted when burning its wood output in a Boiler, so it's not a clean
+      energy source!
     - Balanced yumako and jellynut recipes so output with the legendary tier greenhouse is still a
       bit less pr. area than with the agricultural tower.
     - Requires certain surface conditions for each greenhouse. The one for wood can be built on

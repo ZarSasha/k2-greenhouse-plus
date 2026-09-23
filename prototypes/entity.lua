@@ -45,12 +45,10 @@ local function createGreenhouse(Variant)
         width = 512, height = 512, scale = 0.5
     }
     -- AUXILIARY TABLES --
-    local PassiveEmissions = {
-        ["tree"]        = {pollution = -(2.25/60)}
-    }
     local ActiveEmissions = {
-        ["yumako-tree"] = {spores = 18.5 * SETTING.OUTPUT_RATE["yumako-tree"]},
-        ["jellystem"]   = {spores = 18.5 * SETTING.OUTPUT_RATE["jellystem"]  }
+        ["tree"]        = {pollution = -9 * SETTING.OUTPUT_RATE["tree"       ]},
+        ["yumako-tree"] = {spores  = 18.5 * SETTING.OUTPUT_RATE["yumako-tree"]},
+        ["jellystem"]   = {spores  = 18.5 * SETTING.OUTPUT_RATE["jellystem"  ]}
     }
     local Conditions = {
         ["tree"]        = {cond("solar-power",  50, 100), cond("pressure", 1000, 2000)}, -- Nauvis, Gleba
@@ -79,11 +77,10 @@ local function createGreenhouse(Variant)
         energy_source = {
             type = "electric",
             usage_priority = "secondary-input",
-            emissions_per_minute = ActiveEmissions[Variant] or nil,
+            emissions_per_minute = ActiveEmissions[Variant],
             drain = "0kW"
         },
         energy_usage = "25kW",
-        emissions_per_second = PassiveEmissions[Variant] or nil,
         crafting_speed = 1,
         crafting_categories = {PREFIX.."greenhouse-"..Variant.."-recipes"},
         module_slots = SETTING.MODULE_SLOTS,
