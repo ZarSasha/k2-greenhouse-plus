@@ -7,18 +7,18 @@ Date: 2026-09-23
       "advanced" oil chain an advantage over the "basic" one in the late-game, where extreme
       productivity bonuses tend to favor overall longer production chains in regards to yield.
       (There is no perfect way to balance this, the productivity mechanic is the problem).
-    - Greenhouse for wood: Once again made pollution absorption active (so the information can be
-      gleaned from the tooltips) and now also scales it with the base output rate. The player will
-      just have to be mindful of the game engine limitation that makes efficiency reduce the
-      absorption of pollution, which is a problem that already affects the biochamber. Maybe they
-      will fix it someday?
+    - Greenhouse for wood:
+      - Once again made pollution absorption active (so it can also be read from the tooltip),
+        just like how it is with the biochamber in the Space Age DLC. The problem of the game
+        engine limitation is mitigated by the solution from v1.4.2.
+      - Made pollution absorption scale with the base output rate.
   Info:
     - Pyrolysis recipes: Changed names to "Wood carbonization" and "Wood distillation", and added
       short descriptions, as well as a Factoriopedia entry. This was done to give less of an
       impression that the "advanced" recipe is always better than the "basic" one for the most
       important oil production (extreme productivity bonuses can flip things on their head down the
       line, at least if you only care about maximizing yields from an input; but that also changes
-      again with the biochamber).
+      again with the biochamber in Space Age).
     - Updated description of setting related to the greenhouse for wood.
     - Fixed changelog entry for v1.0.0.
   Locales:
