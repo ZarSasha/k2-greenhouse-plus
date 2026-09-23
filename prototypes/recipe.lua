@@ -194,7 +194,7 @@ local AdvancedWoodPyrolysisRecipe = {
         { icon = "__base__/graphics/icons/wood.png",
           scale = 0.275, shift = {-3, -3}, draw_background = true }
     },
-    categories = {"chemistry", SPACE_AGE and "organic"},
+    categories = {"chemistry"},
     subgroup = "fluid-recipes",
     order    = "a[fluid]-b[oil]-b[petroleum-gas]",
     enabled = false,
@@ -213,8 +213,41 @@ local AdvancedWoodPyrolysisRecipe = {
         tertiary   = {r = 0.875, g = 0.716, b = 0.586, a = 1.000}, -- Outer smoke. 1st input color?
         quaternary = {r = 1.000, g = 0.614, b = 0.280, a = 1.000}  -- Inner smoke. 2nd input color?
     },
-    allow_productivity = true--,
-    --maximum_productivity = 1.0 -- max.: 1.50
+    allow_productivity = true
+}
+
+---------------------------------------------------------------------------------------------------
+-- BIOCHAMBER: ORGANIC WOOD DISTILLATION RECIPE
+---------------------------------------------------------------------------------------------------
+local OrganicWoodDistillationRecipe = {
+    type = "recipe",
+    name = PREFIX.."organic-wood-distillation",
+    icons = {
+        { icon = "__base__/graphics/icons/fluid/crude-oil.png",
+          scale = 0.500, shift = { 4,  4}, draw_background = true },
+        { icon = "__base__/graphics/icons/wood.png",
+          scale = 0.275, shift = {-3, -3}, draw_background = true }
+    },
+    categories = {"organic"},
+    subgroup = "fluid-recipes",
+    order    = "a[fluid]-b[oil]-b[petroleum-gas]",
+    enabled = false,
+    energy_required = 6, -- biochamber has doubled crafting speed
+    ingredients = {
+        { type = "item",  name = "wood",          amount = 20 }
+    },
+    results = {
+        { type = "fluid", name = "crude-oil",     amount = 20,  fluidbox_index = 2 },
+        { type = "fluid", name = "petroleum-gas", amount = 16,  fluidbox_index = 1 },
+        { type = "item",  name = "coal",          amount =  3 }
+    },
+    crafting_machine_tint = {
+        primary    = {r = 0.250, g = 0.200, b = 0.250, a = 1.000}, -- Liquid.     1st output color?
+        secondary  = {r = 0.100, g = 0.080, b = 0.100, a = 1.000}, -- Foam.       2nd output color?
+        tertiary   = {r = 0.875, g = 0.716, b = 0.586, a = 1.000}, -- Outer smoke. 1st input color?
+        quaternary = {r = 1.000, g = 0.614, b = 0.280, a = 1.000}  -- Inner smoke. 2nd input color?
+    },
+    allow_productivity = true
 }
 
 ---------------------------------------------------------------------------------------------------
@@ -300,6 +333,11 @@ if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
         createRecipeCategory("sunnycomb"),
         createGreenhouseRecipe("sunnycomb", "e"),
         createCropGrowthRecipe("sunnycomb", "e"),
+    })
+end
+if SPACE_AGE and SETTING.PYROLYSIS == "advanced-recipe" then
+    data:extend({
+        OrganicWoodDistillationRecipe
     })
 end
 ---------------------------------------------------------------------------------------------------
