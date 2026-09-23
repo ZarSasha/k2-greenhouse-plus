@@ -173,15 +173,15 @@ local BasicWoodPyrolysisRecipe = {
     subgroup = "raw-material",
     order    = "a[burning]-a[charcoal]",
     enabled = true, -- Unlocked right from the start.
-    energy_required = 4.8, -- 2.4 at double speed (electric furnace)
+    energy_required = 6.4, -- 3.2 at double speed (electric furnace)
     ingredients = {
-        { type = "item", name = "wood", amount = 6 }
+        { type = "item", name = "wood", amount = 8 }
     },
     results = {
-        { type = "item", name = "coal", amount = 3 }
+        { type = "item", name = "coal", amount = 4 }
     },
     allow_productivity = true--,
-    --maximum_productivity = 0.5 -- max in vanilla: 0.5 (lv5 prod 3: 2x25% )
+    --maximum_productivity = 0.25 -- max in vanilla: 0.5 (lv5 prod 3: 2x25% )
 }
 ---------------------------------------------------------------------------------------------------
 -- CHEMICAL PLANT: ADVANCED WOOD PYROLYSIS RECIPE
@@ -199,14 +199,14 @@ local AdvancedWoodPyrolysisRecipe = {
     subgroup = "fluid-recipes",
     order    = "a[fluid]-b[oil]-b[petroleum-gas]",
     enabled = false,
-    energy_required = 4.0, -- 2.0 at double speed (biochamber)
+    energy_required = 6.0, -- 3.0 at double speed (biochamber)
     ingredients = {
         { type = "item",  name = "wood",          amount = 15 }
     },
     results = {
         { type = "fluid", name = "crude-oil",     amount = 20, fluidbox_index = 2 },
         { type = "fluid", name = "petroleum-gas", amount = 10, fluidbox_index = 1 },
-        { type = "item",  name = "coal",          amount = 4}
+        { type = "item",  name = "coal",          amount = 2}
     },
     crafting_machine_tint = {
         primary    = {r = 0.250, g = 0.200, b = 0.250, a = 1.000}, -- Liquid.     1st output color?
@@ -215,8 +215,13 @@ local AdvancedWoodPyrolysisRecipe = {
         quaternary = {r = 1.000, g = 0.614, b = 0.280, a = 1.000}  -- Inner smoke. 2nd input color?
     },
     allow_productivity = true--,
-    --maximum_productivity = 1.5 -- max in vanilla: 1.5 (biochamber: 50%, lv5 prod 3: 4x25% )
+    --maximum_productivity = 1.0 -- max in vanilla: 1.5 (biochamber: 50%, lv5 prod 3: 4x25% )
 }
+
+---------------------------------------------------------------------------------------------------
+-- SPACE AGE: BIOCHAMBER: ORGANIC WOOD DISTILLATION RECIPE
+---------------------------------------------------------------------------------------------------
+
 
 ---------------------------------------------------------------------------------------------------
 -- ASSEMBLING MACHINE: SAND RECIPE
