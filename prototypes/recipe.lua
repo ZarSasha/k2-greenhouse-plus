@@ -194,7 +194,7 @@ local AdvancedWoodPyrolysisRecipe = {
         { icon = "__base__/graphics/icons/wood.png",
           scale = 0.275, shift = {-3, -3}, draw_background = true }
     },
-    categories = {"chemistry"},
+    categories = {"chemistry", SPACE_AGE and "organic"},
     subgroup = "fluid-recipes",
     order    = "a[fluid]-b[oil]-b[petroleum-gas]",
     enabled = false,
@@ -204,7 +204,7 @@ local AdvancedWoodPyrolysisRecipe = {
     },
     results = {
         { type = "fluid", name = "crude-oil",     amount = 20,  fluidbox_index = 2 },
-        { type = "fluid", name = "petroleum-gas", amount = 15,  fluidbox_index = 1 },
+        { type = "fluid", name = "petroleum-gas", amount = 16,  fluidbox_index = 1 },
         { type = "item",  name = "coal",          amount =  3 }
     },
     crafting_machine_tint = {
@@ -213,7 +213,8 @@ local AdvancedWoodPyrolysisRecipe = {
         tertiary   = {r = 0.875, g = 0.716, b = 0.586, a = 1.000}, -- Outer smoke. 1st input color?
         quaternary = {r = 1.000, g = 0.614, b = 0.280, a = 1.000}  -- Inner smoke. 2nd input color?
     },
-    allow_productivity = true
+    allow_productivity = true--,
+    --maximum_productivity = 1.0 -- max.: 1.50
 }
 
 ---------------------------------------------------------------------------------------------------
@@ -333,5 +334,12 @@ end
 
 -- The advanced setup produces 25.5% more plastic and 22.4% more sulfur than the basic one,
 -- if coal is burned in the Boiler to produce steam for coal liquefaction.
+
+-- ENERGY MEASUREMENTS (V1.4.4) --
+
+-- If an electric boiler from a mod provides the steam for coal liquefaction, then the advanced
+-- setup produces about 24.5% more petroleum gas, 24.8% more plastic and 25.1% more sulfur than
+-- the basic one. Saving on coal favors the basic setup, except when productivity gets very high,
+-- then it's the opposite.
 
 ---------------------------------------------------------------------------------------------------
