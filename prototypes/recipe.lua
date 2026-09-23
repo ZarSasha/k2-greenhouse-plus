@@ -188,13 +188,6 @@ local BasicWoodPyrolysisRecipe = {
 local AdvancedWoodPyrolysisRecipe = {
     type = "recipe",
     name = PREFIX.."advanced-wood-pyrolysis",
-    factoriopedia_description = (QUALITY and not SPACE_AGE and {
-        "factoriopedia-description.k2gp-advanced-wood-pyrolysis-quality"
-    }) or (QUALITY and SPACE_AGE and {
-        "factoriopedia-description.k2gp-advanced-wood-pyrolysis-space-age"
-    }) or {
-        "factoriopedia-description.k2gp-advanced-wood-pyrolysis-base-game"
-    },
     icons = {
         { icon = "__base__/graphics/icons/fluid/crude-oil.png",
           scale = 0.500, shift = { 4,  4}, draw_background = true },
