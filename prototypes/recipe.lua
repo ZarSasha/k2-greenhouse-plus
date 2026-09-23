@@ -173,7 +173,7 @@ local BasicWoodPyrolysisRecipe = {
     subgroup = "raw-material",
     order    = "a[burning]-a[charcoal]",
     enabled = true, -- Unlocked right from the start.
-    energy_required = 4.8, -- 2.4 at double speed
+    energy_required = 4.8, -- 2.4 at double speed (electric furnace)
     ingredients = {
         { type = "item", name = "wood", amount = 6 }
     },
@@ -198,7 +198,7 @@ local AdvancedWoodPyrolysisRecipe = {
     subgroup = "fluid-recipes",
     order    = "a[fluid]-b[oil]-b[petroleum-gas]",
     enabled = false,
-    energy_required = 4,
+    energy_required = 4, -- 2 at double speed (biochamber)
     ingredients = {
         { type = "item",  name = "wood",          amount = 15 }
     },
