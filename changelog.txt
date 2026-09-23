@@ -5,6 +5,12 @@ Date: 2026-09-23
     - Advanced wood pyrolysis: Allowed recipe in biochamber! This is to give it an advantage over
       the basic version in the late-game, where extreme productivity bonuses favor the longer
       production chains. Also very slightly increased the amount of petroleum gas produced.
+  Info:
+    - Greenhouse for wood: Added note to tooltip about it absorbing pollution, since there is no
+      no longer any number to indicate this.
+    - Fixed changelog entry for v1.0.0.
+  Locales:
+    - Updated Chinese translation with Deepl.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.3
 Date: 2026-09-22
@@ -217,11 +223,12 @@ Date: 2025-02-15
       appropriate seeds + soil.
     - Greatly increased overall cost of greenhouses, mostly because it is a renewable source of
       energy. Still a lot cheaper than solar panels.
-    - Greenhouse for wood by default outputs as much wood as 37.5 planted trees (about 32 could be
-      manually planted within the same 7x7 area) and outputs 0.25 wood/s. In practice, this seems
-      to net a power output pr. area at least twice that of solar + accu. But:
-    - Greenhouse for wood absorbs only 1.125 pollution/min, which is about 13.5% of what is emitted
-      when burning its wood output in a Boiler, so it's not a clean energy source!
+    - Greenhouse for wood by default outputs as much wood as 37.5 planted trees and outputs 0.25
+      wood/s. In practice, this seems to net a power output pr. area at least twice that of solar +
+      accu. But:
+    - Greenhouse for wood absorbs only 1.125 pollution/min (as much as 37.5/2 trees), which is
+      about 13.5% of what is emitted when burning its wood output in a Boiler, so it's not a clean
+      energy source!
     - Balanced yumako and jellynut recipes so output with the legendary tier greenhouse is still a
       bit less pr. area than with the agricultural tower.
     - Requires certain surface conditions for each greenhouse. The one for wood can be built on
