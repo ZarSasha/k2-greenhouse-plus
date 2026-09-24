@@ -12,6 +12,9 @@ Date: 2026-09-24
       gradually falling towards ~103.0%.
   Info:
     - Added a migration script informing the player of the change above.
+  Note:
+    - The mod still needs proper balancing for biochambers without productivity modules, because
+      the distillation recipe receives a rather massive buff (like a 150% ratio or something).
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.5
 Date: 2026-09-23
