@@ -220,9 +220,9 @@ local AdvancedWoodPyrolysisRecipe = {
 ---------------------------------------------------------------------------------------------------
 -- BIOCHAMBER: ADVANCED BIO WOOD PYROLYSIS RECIPE
 ---------------------------------------------------------------------------------------------------
-local AdvancedBioWoodPyrolysisRecipe = {
+local AdvancedEnhancedWoodPyrolysisRecipe = {
     type = "recipe",
-    name = PREFIX.."advanced-bio-wood-pyrolysis",
+    name = PREFIX.."advanced-wood-pyrolysis-enhanced",
     icons = {
         { icon = "__base__/graphics/icons/fluid/crude-oil.png",
           scale = 0.500, shift = { 4,  4}, draw_background = true },
@@ -337,7 +337,7 @@ end
 if SPACE_AGE and (SETTING.PYROLYSIS == "both-recipes"
 or SETTING.PYROLYSIS == "advanced-recipe") then
     data:extend({
-        AdvancedBioWoodPyrolysisRecipe
+        AdvancedEnhancedWoodPyrolysisRecipe
     })
 end
 ---------------------------------------------------------------------------------------------------

@@ -13,11 +13,9 @@ Date: 2026-09-24
     - Reordered recipes.
   Info:
     - Fixed minor errors in changelog entry for v1.4.6.
-    - Updated description of recipes and a related setting.
+    - Updated description of recipes and some related settings.
   Locales:
     - Updated Chinese translation with DeepL.
-    - TODO: Abandoned Chinese translation, because I can't maintain it, and I want to overhaul a
-      lot of the text. Sorry!
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.6
 Date: 2026-09-24

@@ -77,7 +77,7 @@ if SETTING.PYROLYSIS == "both-recipes" or SETTING.PYROLYSIS == "advanced-recipe"
     }
     if SPACE_AGE then
         local bio_tech = data.raw.technology["biochamber"]
-        table.insert(bio_tech.effects, unlock(PREFIX.."advanced-bio-wood-pyrolysis"))
+        table.insert(bio_tech.effects, unlock(PREFIX.."advanced-wood-pyrolysis-enhanced"))
     end
 end
 
