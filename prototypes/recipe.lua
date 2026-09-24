@@ -195,7 +195,7 @@ local AdvancedWoodPyrolysisRecipe = {
         { icon = "__base__/graphics/icons/wood.png",
           scale = 0.275, shift = {-3, -3}, draw_background = true }
     },
-    categories = {"chemistry", SPACE_AGE and "organic"},
+    categories = {"chemistry"},
     subgroup = "fluid-recipes",
     order    = "a[fluid]-b[oil]-b[petroleum-gas]",
     enabled = false,
@@ -213,6 +213,38 @@ local AdvancedWoodPyrolysisRecipe = {
         secondary  = {r = 0.100, g = 0.080, b = 0.100, a = 1.000}, -- Foam.       2nd output color?
         tertiary   = {r = 0.875, g = 0.716, b = 0.586, a = 1.000}, -- Outer smoke. 1st input color?
         quaternary = {r = 1.000, g = 0.614, b = 0.280, a = 1.000}  -- Inner smoke. 2nd input color?
+    },
+    allow_productivity = true
+}
+
+---------------------------------------------------------------------------------------------------
+-- BIOCHAMBER: WOOD HYDROLYSIS
+---------------------------------------------------------------------------------------------------
+local BioWoodDistillationRecipe = {
+    type = "recipe",
+    name = PREFIX.."bio-wood-distillation",
+    icons = {
+        { icon = "__base__/graphics/icons/fluid/crude-oil.png",
+          scale = 0.500, shift = { 4,  4}, draw_background = true },
+        { icon = "__base__/graphics/icons/wood.png",
+          scale = 0.275, shift = {-3, -3}, draw_background = true }
+    },
+    categories = {"organic"},
+    subgroup = "fluid-recipes",
+    order    = "a[organic-products]-a[bio-wood-distillation]",
+    enabled = false,
+    energy_required = 4.0, -- 3.0 at double speed (biochamber)
+    ingredients = {
+        { type = "item",  name = "wood",          amount = 20 }
+    },
+    results = {
+        { type = "fluid", name = "crude-oil",     amount = 20, fluidbox_index = 2 },
+        { type = "fluid", name = "petroleum-gas", amount = 10, fluidbox_index = 1 },
+        { type = "item",  name = "coal",          amount = 4 }
+    },
+    crafting_machine_tint = {
+        primary    = {r = 0.250, g = 0.200, b = 0.250, a = 1.000}, -- Liquid.     1st output color?
+        secondary  = {r = 0.100, g = 0.080, b = 0.100, a = 1.000}  -- Foam.       2nd output color?
     },
     allow_productivity = true
 }
@@ -302,7 +334,12 @@ if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
         createCropGrowthRecipe("sunnycomb", "e"),
     })
 end
-
+if SPACE_AGE and SETTING.PYROLYSIS == "both-recipes"
+or SETTING.PYROLYSIS == "advanced-recipe" then
+    data:extend({
+        BioWoodDistillationRecipe
+    })
+end
 ---------------------------------------------------------------------------------------------------
 -- SPACE AGE: TREE PROCESSING
 ---------------------------------------------------------------------------------------------------
@@ -342,5 +379,9 @@ end
 -- setup produces about 24.5% more petroleum gas, 24.8% more plastic and 25.1% more sulfur than
 -- the basic one. Saving on coal favors the basic setup, except when productivity gets very high,
 -- then it's the opposite.
+
+-- ENERGY MEASUREMENTS (V1.4.6) --
+
+-- Changed
 
 ---------------------------------------------------------------------------------------------------

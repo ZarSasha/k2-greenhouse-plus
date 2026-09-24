@@ -75,6 +75,10 @@ if SETTING.PYROLYSIS == "both-recipes" or SETTING.PYROLYSIS == "advanced-recipe"
             {"logistic-science-pack",   1}
         }
     }
+    if SPACE_AGE then
+        local bio_tech = data.raw.technology["biochamber"]
+        table.insert(bio_tech, unlock(PREFIX.."bio-wood-distillation"))
+    end
 end
 
 if SETTING.EARLY_LIQUEFACTION then
