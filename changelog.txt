@@ -3,9 +3,18 @@ Version: 1.4.6
 Date: 2026-09-24
   Balancing:
     - Pyrolysis: Carefully rebalanced the distillation recipe so that it always maintains at least
-      a small advantage over the carbonization recipe. It is still allowed in the biochamber, but
-      the maximum productivity bonus has been limited to 125%. Also, 6 chemical plants instead of 4
-      are now required to provide 20 crude oil and 4 coal pr. second to feed 1+2 refineries.
+      a small advantage over the carbonization recipe in regards to yields on petroleum gas, even
+      as it tends to diminish with increasing productivity bonuses from better modules and from
+      biochambers. The recipe is still allowed in the biochamber, but max. productivity has been
+      limited to 100% (<150%), just enough to keep the curve described below.
+      Assuming the use of an electric boiler for steam, the ratio for solid fuel was slightly
+      increased to ~104.5%, rising towards 132.5%, but for petroleum gas, it should be ~123.5%,
+      gradually falling towards ~103.0%.
+      To also keep the building ratios neat after the rebalance, 6 chemical plants instead of 4 are
+      now required to provide 20 crude oil and 4 coal pr. second to feed 1+2 refineries performing
+      advanced oil processing and coal liquefaction.
+  Info:
+    - Added a migration script informing the player of the change above.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.5
 Date: 2026-09-23

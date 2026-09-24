@@ -215,7 +215,7 @@ local AdvancedWoodPyrolysisRecipe = {
         quaternary = {r = 1.000, g = 0.614, b = 0.280, a = 1.000}  -- Inner smoke. 2nd input color?
     },
     allow_productivity = true,
-    maximum_productivity = 1.25 -- max in vanilla: 1.5 (biochamber: 50%, lv5 prod 3: 4x25% )
+    maximum_productivity = 1.0 -- max in vanilla: 1.5 (biochamber: 50%, lv5 prod 3: 4x25% )
 }
 
 ---------------------------------------------------------------------------------------------------
