@@ -233,13 +233,13 @@ local BioWoodDistillationRecipe = {
     subgroup = "fluid-recipes",
     order    = "a[fluid]-b[oil]-b[petroleum-gas]",
     enabled = false,
-    energy_required = 6, -- 3 at double speed (biochamber)
+    energy_required = 16, -- 8 at double speed (biochamber)
     ingredients = {
-        { type = "item",  name = "wood",          amount = 12 }
+        { type = "item",  name = "wood",          amount = 35 }
     },
     results = {
-        { type = "fluid", name = "crude-oil",     amount = 30, fluidbox_index = 2 },
-        { type = "fluid", name = "petroleum-gas", amount = 10, fluidbox_index = 1 },
+        { type = "fluid", name = "crude-oil",     amount = 60, fluidbox_index = 2 },
+        { type = "fluid", name = "petroleum-gas", amount = 20, fluidbox_index = 1 },
         { type = "item",  name = "coal",          amount =  2 }
     },
     crafting_machine_tint = {
