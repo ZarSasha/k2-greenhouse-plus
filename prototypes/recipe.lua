@@ -197,7 +197,7 @@ local AdvancedWoodPyrolysisRecipe = {
     },
     categories = {"chemistry"},
     subgroup = "fluid-recipes",
-    order    = "a[oil-processing]-aa[advanced-pyrolysis-1]",
+    order    = "a[oil-processing]-a[advanced-pyrolysis-1]",
     enabled = false,
     energy_required = 4.0, -- 2.0 at double speed (biochamber)
     ingredients = {
@@ -231,7 +231,7 @@ local BioWoodDistillationRecipe = {
     },
     categories = {"organic"},
     subgroup = "fluid-recipes",
-    order    = "a[oil-processing]-aa[advanced-pyrolysis-2]",
+    order    = "a[oil-processing]-a[advanced-pyrolysis-2]",
     enabled = false,
     energy_required = 4.0, -- 2.0 at double speed (biochamber)
     ingredients = {
