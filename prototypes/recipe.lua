@@ -238,7 +238,7 @@ local BioWoodDistillationRecipe = {
         { type = "item",  name = "wood",          amount = 15 }
     },
     results = {
-        { type = "fluid", name = "crude-oil",     amount = 40, fluidbox_index = 2 },
+        { type = "fluid", name = "crude-oil",     amount = 30, fluidbox_index = 2 },
         { type = "fluid", name = "petroleum-gas", amount = 10, fluidbox_index = 1 },
         { type = "item",  name = "coal",          amount = 2 }
     },
