@@ -2,7 +2,17 @@
 Version: 1.5.0
 Date: 2026-09-24
   Changes:
-    - Created a new distillation recipe for the biochamber.
+    - Created a distillation recipe exclusive to the biochamber. For the sake of balancing, it
+      produces a bit less petroleum gas and coal, but the 50% productivity bonus more than makes
+      up for it. Assuming maximum use of biochambers, as well as the use of an electric boiler for
+      steam, the yield ratio between biological distillation and carbonization should be like this:
+      Solid fuel: ~128.0%, rising towards ~138.0% with max. productivity. Petroleum gas: ~119.5%,
+      falling towards 106.5%. So changes from productivity are now a fair bit more contained.
+  Info:
+    - Fixed minor errors in changelog entry for v1.4.6.
+    - TODO: Naming!
+  Locale
+    - TODO: Update.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.6
 Date: 2026-09-24
@@ -12,9 +22,9 @@ Date: 2026-09-24
       as it tends to diminish with increasing productivity bonuses (due to differences in chain
       lengths). The distillation recipe is still usable in the biochamber, to keep it ahead.
       Assuming the use of an electric boiler for steam, the ratio for solid fuel was slightly
-      increased to ~104.5%, rising towards ~116.0% (with biochambers: ~157.0% rising towards
+      increased to ~104.5%, rising towards ~116.0% (with biochambers: ~157.0%, rising towards
       ~165.5%), but for petroleum gas, it should be ~123.5%, falling towards ~103.0% (with
-      biochambers: ~150.0% falling towards 131.5%).
+      biochambers: ~150.0%, falling towards 131.5%).
   Info:
     - Created a migration script informing the player of the change above.
   Notes:

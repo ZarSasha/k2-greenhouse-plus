@@ -218,7 +218,7 @@ local AdvancedWoodPyrolysisRecipe = {
 }
 
 ---------------------------------------------------------------------------------------------------
--- BIOCHAMBER: WOOD HYDROLYSIS
+-- BIOCHAMBER: BIOLOGICAL WOOD DISTILLATION
 ---------------------------------------------------------------------------------------------------
 local BioWoodDistillationRecipe = {
     type = "recipe",

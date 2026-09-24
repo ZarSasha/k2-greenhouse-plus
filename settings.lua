@@ -57,7 +57,7 @@ local startup_settings = {
         allowed_values = {
             "both-recipes",
             "basic-recipe",
-            "advanced-recipe",
+            "advanced-recipe", -- includes a recipe variant exclusive to the biochamber
             "disabled"
         },
         order = "b1"
