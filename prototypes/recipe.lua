@@ -334,8 +334,8 @@ if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
         createCropGrowthRecipe("sunnycomb", "e"),
     })
 end
-if SPACE_AGE and SETTING.PYROLYSIS == "both-recipes"
-or SETTING.PYROLYSIS == "advanced-recipe" then
+if SPACE_AGE and (SETTING.PYROLYSIS == "both-recipes"
+or SETTING.PYROLYSIS == "advanced-recipe") then
     data:extend({
         BioWoodDistillationRecipe
     })
