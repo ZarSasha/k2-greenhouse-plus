@@ -180,9 +180,9 @@ local BasicWoodPyrolysisRecipe = {
     results = {
         { type = "item", name = "coal", amount = 4 }
     },
-    allow_productivity = true--,
-    --maximum_productivity = 0.25 -- max in vanilla: 0.5 (lv5 prod 3: 2x25% )
+    allow_productivity = true
 }
+
 ---------------------------------------------------------------------------------------------------
 -- CHEMICAL PLANT: ADVANCED WOOD PYROLYSIS RECIPE
 ---------------------------------------------------------------------------------------------------
@@ -214,8 +214,8 @@ local AdvancedWoodPyrolysisRecipe = {
         tertiary   = {r = 0.875, g = 0.716, b = 0.586, a = 1.000}, -- Outer smoke. 1st input color?
         quaternary = {r = 1.000, g = 0.614, b = 0.280, a = 1.000}  -- Inner smoke. 2nd input color?
     },
-    allow_productivity = true--,
-    --maximum_productivity = 1.0 -- max in vanilla: 1.5 (biochamber: 50%, lv5 prod 3: 4x25% )
+    allow_productivity = true,
+    maximum_productivity = 1.25 -- max in vanilla: 1.5 (biochamber: 50%, lv5 prod 3: 4x25% )
 }
 
 ---------------------------------------------------------------------------------------------------

@@ -1,8 +1,11 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.6
-Date: 2026-09-23
+Date: 2026-09-24
   Balancing:
-    - Pyrolysis: testing with much more coal (6/7 of carbonization recipe)
+    - Pyrolysis: Carefully rebalanced the distillation recipe so that it always maintains at least
+      a small advantage over the carbonization recipe. It is still allowed in the biochamber, but
+      the maximum productivity bonus has been limited to 125%. Also, 6 chemical plants instead of 4
+      are now required to provide 20 crude oil and 4 coal pr. second to feed 1+2 refineries.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.5
 Date: 2026-09-23
