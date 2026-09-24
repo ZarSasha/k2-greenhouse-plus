@@ -199,7 +199,7 @@ local AdvancedWoodPyrolysisRecipe = {
     subgroup = "fluid-recipes",
     order    = "a[fluid]-b[oil]-b[petroleum-gas]",
     enabled = false,
-    energy_required = 6.0, -- 3.0 at double speed (biochamber)
+    energy_required = 4.0, -- 2.0 at double speed (biochamber)
     ingredients = {
         { type = "item",  name = "wood",          amount = 15 }
     },
