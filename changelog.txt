@@ -4,17 +4,22 @@ Date: 2026-09-24
   Balancing:
     - Pyrolysis: Carefully rebalanced the distillation recipe so that it always maintains at least
       a small advantage over the carbonization recipe in regards to yields on petroleum gas, even
-      as it tends to diminish with increasing productivity bonuses from better modules and from
-      biochambers (due to differences in chain lengths). The recipe may still be used in the
-      biochamber, but max. productivity has been limited to 100%, just enough to keep the curve.
+      as it tends to diminish with increasing productivity bonuses (due to differences in chain
+      lengths). The distillation recipe is still usable in the biochamber, to keep it ahead.
       Assuming the use of an electric boiler for steam, the ratio for solid fuel was slightly
-      increased to ~104.5%, rising towards 132.5%, but for petroleum gas, it should be ~123.5%,
-      gradually falling towards ~103.0%.
+      increased to ~104.5%, rising towards ~116.0% (with biochambers: ~157.0% rising towards
+      ~165.5%), but for petroleum gas, it should be ~123.5%, falling towards ~103.0% (with
+      biochambers: ~150.0% falling towards 131.5%).
   Info:
-    - Added a migration script informing the player of the change above.
-  Note:
-    - The mod still needs proper balancing for biochambers without productivity modules, because
-      the distillation recipe receives a rather massive buff (like a 150% ratio or something).
+    - Created a migration script informing the player of the change above.
+  Notes:
+    - Balancing for productivity and biochambers require a lot of compromise. I had to give up on
+      energy parity between the pyrolysis recipes, and the disparity compounds with productivity.
+      But at least the distillation recipe, which is more complicated, remains at an advantage, and
+      that seems more important. (Of course, the investment cost already tends to be a lot lower,
+      but that's a metric that probably doesn't matter to those who seek to grow the factory.)
+    - I may create recipes that are unique to the biochambers and replaces distillation in the
+      the future, for better balance and higher realism.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.5
 Date: 2026-09-23
