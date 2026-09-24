@@ -231,7 +231,7 @@ local BioWoodDistillationRecipe = {
     },
     categories = {"organic"},
     subgroup = "fluid-recipes",
-    order    = "a[organic-products]-a[bio-wood-distillation]",
+    order    = "a[fluid]-b[oil]-b[petroleum-gas]",
     enabled = false,
     energy_required = 4.0, -- 3.0 at double speed (biochamber)
     ingredients = {
