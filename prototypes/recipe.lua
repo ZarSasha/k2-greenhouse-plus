@@ -233,14 +233,14 @@ local BioWoodDistillationRecipe = {
     subgroup = "fluid-recipes",
     order    = "a[fluid]-b[oil]-b[petroleum-gas]",
     enabled = false,
-    energy_required = 12.0, -- 6.0 at double speed (biochamber)
+    energy_required = 4.0, -- 2.0 at double speed (biochamber)
     ingredients = {
-        { type = "item",  name = "wood",          amount = 45 }
+        { type = "item",  name = "wood",          amount = 15 }
     },
     results = {
-        { type = "fluid", name = "crude-oil",     amount = 80, fluidbox_index = 2 },
-        { type = "fluid", name = "petroleum-gas", amount = 15, fluidbox_index = 1 },
-        { type = "item",  name = "coal",          amount =  6 }
+        { type = "fluid", name = "crude-oil",     amount = 20, fluidbox_index = 2 },
+        { type = "fluid", name = "petroleum-gas", amount =  5, fluidbox_index = 1 },
+        { type = "item",  name = "coal",          amount =  3 }
     },
     crafting_machine_tint = {
         primary    = {r = 0.250, g = 0.200, b = 0.250, a = 1.000}, -- Liquid.     1st output color?
