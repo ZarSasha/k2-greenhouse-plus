@@ -219,7 +219,7 @@ local AdvancedWoodPyrolysisRecipe = {
 }
 
 ---------------------------------------------------------------------------------------------------
--- SPACE AGE: BIOCHAMBER: ORGANIC WOOD DISTILLATION RECIPE
+-- SPACE AGE: BIOCHAMBER: WOOD HYDROLYSIS & FERMENTATION
 ---------------------------------------------------------------------------------------------------
 
 
