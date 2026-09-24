@@ -169,7 +169,7 @@ local BasicWoodPyrolysisRecipe = {
         { icon = "__base__/graphics/icons/wood.png",
           scale = 0.275, shift = {-3, -3}, draw_background = true }
     },
-    categories = {"smelting"},
+    categories = {"smelting", SPACE_AGE and "organic"},
     subgroup = "raw-material",
     order    = "a[burning]-a[charcoal]",
     enabled = true, -- Unlocked right from the start.
@@ -180,7 +180,8 @@ local BasicWoodPyrolysisRecipe = {
     results = {
         { type = "item", name = "coal", amount = 4 }
     },
-    allow_productivity = true
+    allow_productivity = true,
+    maximum_productivity = 0.5
 }
 
 ---------------------------------------------------------------------------------------------------
@@ -215,7 +216,7 @@ local AdvancedWoodPyrolysisRecipe = {
         quaternary = {r = 1.000, g = 0.614, b = 0.280, a = 1.000}  -- Inner smoke. 2nd input color?
     },
     allow_productivity = true,
-    maximum_productivity = 1.0 -- max in vanilla: 1.5 (biochamber: 50%, lv5 prod 3: 4x25% )
+    maximum_productivity = 1.5
 }
 
 ---------------------------------------------------------------------------------------------------
