@@ -197,7 +197,7 @@ local WoodDistillationRecipe = {
     },
     categories = {"chemistry"},
     subgroup = "fluid-recipes",
-    order    = "a[oil-processing]-a[advanced-pyrolysis-1]",
+    order    = "a[distillation-of-wood]",
     enabled = false,
     energy_required = 4.0, -- 2.0 at double speed (biochamber)
     ingredients = {
@@ -230,8 +230,8 @@ local EnhancedWoodDistillationRecipe = {
           scale = 0.275, shift = {-3, -3}, draw_background = true }
     },
     categories = {"organic"},
-    subgroup = "fluid-recipes",
-    order    = "a[oil-processing]-a[advanced-pyrolysis-2]",
+    subgroup = "agriculture-products",
+    order    = "a[distillation-of-wood]",
     enabled = false,
     energy_required = 4.0, -- 2.0 at double speed (biochamber)
     ingredients = {

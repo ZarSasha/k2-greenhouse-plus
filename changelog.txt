@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.5.1
+Date: 2026-09-25
+  Changes:
+    - Reordered recipes: Moved distillation for the biochamber to another subgroup.
+  Info:
+    - Fixed several errors in changelog, particularly in the latest entry.
+---------------------------------------------------------------------------------------------------
 Version: 1.5.0
 Date: 2026-09-25
   Balancing:
@@ -6,16 +13,15 @@ Date: 2026-09-25
       balancing that keeps the difference in yield between the carbonization/distillation process
       chains within a reasonable range even as bonuses to productivity increase. The new recipe
       produces a bit less coal and petroleum gas to counter the 50% productivity bonus. Assuming
-      maximum use of biochambers, as well as the use of an electric boiler for steam, the petroleum
-      gas yield ratio should be like this: Solid fuel starts at ~128.0% and rises towards ~138.0%,
-      while petroleum gas starts at ~119.5% and falls towards 106.5%. Good enough!
+      maximum use of biochambers, as well as the use of an electric boiler for steam, yield ratios
+      should be like this: Solid fuel starts at ~128.0% and rises towards ~138.0%, while petroleum
+      gas starts at ~119.5% and falls towards 106.5%. Good enough!
   Changes:
     - Reordered recipes.
     - Created new names for some recipes and settings. Created migrations for it.
   Info:
     - Fixed minor errors in changelog entry for v1.4.6.
     - Updated description of recipes and some related settings.
-    - Added a Factoriopedia entry for the biochamber wood distillation recipe.
   Locales:
     - Updated Chinese translation with DeepL.
   Internal:
@@ -47,7 +53,7 @@ Date: 2026-09-24
       But at least the distillation recipe, which is more complicated, remains at an advantage, and
       that seems more important. (Of course, the investment cost already tends to be a lot lower,
       but that's a metric that probably doesn't matter to those who seek to grow the factory.)
-    - I may create recipes that are unique to the biochambers and replaces distillation in the
+    - I may create a recipe that is unique to the biochamber and replaces distillation in the
       the future, for better balance and higher realism.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.5
@@ -65,7 +71,7 @@ Date: 2026-09-23
       "advanced" oil chain an advantage over the "basic" one in the late-game, where extreme
       productivity bonuses tend to favor overall longer production chains in regards to yield.
       (There is no perfect way to balance this, the productivity mechanic is the problem).
-    - Greenhouse for wood:
+    - Greenhouse for trees:
       - Once again made pollution absorption active (so it can also be read from the tooltip),
         just like how it is with the biochamber in the Space Age DLC. The problem of the game
         engine limitation is mitigated by the solution from v1.4.2.
@@ -77,7 +83,7 @@ Date: 2026-09-23
       bonuses from machines and legendary modules can flip things on their head down the line, at
       least if you only care about maximizing yields from an input; but that also changes again
       with the biochamber in Space Age, since the "advanced" recipe works in it now).
-    - Updated description of setting related to the greenhouse for wood.
+    - Updated description of setting related to the greenhouse for trees.
     - Fixed changelog entry for v1.0.0.
   Locales:
     - Updated Chinese translation with DeepL.
@@ -87,7 +93,7 @@ Date: 2026-09-22
   Changes:
     - Quality and Space Age can now be used independently of each other with this mod.
   Balancing:
-    - Greenhouse for wood: Doubled absorption of pollution to 2.25 units/min. Also made it passive
+    - Greenhouse for trees: Doubled absorption of pollution to 2.25 units/min. Also made it passive
       so it can't be affected by modules, which fixes an issue with lower consumption actually
       reducing it (game engine limitation). Unfortunately, the absorption won't show in any of the
       menus or tooltips any longer!
@@ -103,7 +109,7 @@ Date: 2026-09-21
     - Greenhouses: Modules are still allowed (if enabled), but consumption can no longer be reduced
       below 0%. This is to prevent any reduction of the spore pollution from the greenhouses for
       Yumako and Jellynut trees below the default value. As a side effect, pollution absorption
-      from the greenhouse for wood won't be accidentally lowered beyond the default value either
+      from the greenhouse for trees won't be accidentally lowered beyond the default value either
       (issue caused by game engine limitation in regards to negative numbers).
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.1
@@ -280,9 +286,9 @@ Date: 2025-02-15
     - Compat for "AAI Industry", "Factorio+" and "Glass": Changes greenhouse recipe ingredients,
       replacing iron plates with some variant of glass.
   Balancing:
-    - Greenhouse for wood may normally be unlocked after Steel Processing and Landfill tech; the
+    - Greenhouse for trees may normally be unlocked after Steel Processing and Landfill tech; the
       other variants with the appropriate soil technology, depending on startup setting.
-    - Tree seeding will be unlocked early, along with the greenhouse for wood. The relevant tech
+    - Tree seeding will be unlocked early, along with the greenhouse for trees. The relevant tech
       had its cost lowered to compensate (not removed, since it has dependents).
     - The basic pyrolysis recipe is available from the start, while the advanced one may be unlocked
       with Oil Processing (requires only Fluid Handing, has a fairly small research cost).
@@ -293,15 +299,15 @@ Date: 2025-02-15
       appropriate seeds + soil.
     - Greatly increased overall cost of greenhouses, mostly because it is a renewable source of
       energy. Still a lot cheaper than solar panels.
-    - Greenhouse for wood by default outputs as much wood as 37.5 planted trees and outputs 0.25
+    - Greenhouse for trees by default outputs as much wood as 37.5 planted trees and outputs 0.25
       wood/s. In practice, this seems to net a power output pr. area at least twice that of solar +
       accu. But:
-    - Greenhouse for wood absorbs only 1.125 pollution/min (as much as 37.5/2 trees), which is
+    - Greenhouse for trees absorbs only 1.125 pollution/min (as much as 37.5/2 trees), which is
       about 13.5% of what is emitted when burning its wood output in a Boiler, so it's not a clean
       energy source!
     - Balanced yumako and jellynut recipes so output with the legendary tier greenhouse is still a
       bit less pr. area than with the agricultural tower.
-    - Requires certain surface conditions for each greenhouse. The one for wood can be built on
+    - Requires certain surface conditions for each greenhouse. The one for trees can be built on
       Nauvis and Gleba (since wood can be acquired in both places), the rest only on Gleba.
     - Greenhouse module slot amount set to 0 by default, since planted trees and agricultural
       towers cannot receive such effects.
