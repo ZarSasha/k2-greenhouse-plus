@@ -223,7 +223,6 @@ local WoodDistillationRecipe = {
 local EnhancedWoodDistillationRecipe = {
     type = "recipe",
     name = PREFIX.."wood-distillation-enhanced",
-    factoriopedia_description = {"factoriopedia-description.k2gp-wood-distillation-enhanced"},
     icons = {
         { icon = "__base__/graphics/icons/fluid/crude-oil.png",
           scale = 0.500, shift = { 4,  4}, draw_background = true },
