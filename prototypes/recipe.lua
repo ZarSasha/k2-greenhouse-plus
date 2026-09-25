@@ -223,6 +223,7 @@ local WoodDistillationRecipe = {
 local EnhancedWoodDistillationRecipe = {
     type = "recipe",
     name = PREFIX.."wood-distillation-enhanced",
+    factoriopedia_description = {"factoriopedia-description.k2gp-wood-distillation-enhanced"},
     icons = {
         { icon = "__base__/graphics/icons/fluid/crude-oil.png",
           scale = 0.500, shift = { 4,  4}, draw_background = true },
@@ -276,7 +277,7 @@ local glassRecipe =  {
    auto_recycle = false,
    energy_required = 3.2,
    ingredients = {
-       { type = "item", name = PREFIX .. "sand",        amount = 1 }
+       { type = "item", name = PREFIX .. "sand",  amount = 1 }
    },
    results = {
        { type = "item", name = PREFIX .. "glass", amount = 1 }
@@ -290,7 +291,8 @@ local glassRecipe =  {
 if SETTING.PYROLYSIS == "both-recipes" then
     data:extend({
         WoodCarbonizationRecipe,
-        WoodDistillationRecipe
+        WoodDistillationRecipe,
+        SPACE_AGE and EnhancedWoodDistillationRecipe or nil
     })
 elseif SETTING.PYROLYSIS == "carbonization" then
     data:extend({
@@ -298,7 +300,8 @@ elseif SETTING.PYROLYSIS == "carbonization" then
     })
 elseif SETTING.PYROLYSIS == "distillation" then
     data:extend({
-        WoodDistillationRecipe
+        WoodDistillationRecipe,
+        SPACE_AGE and EnhancedWoodDistillationRecipe or nil
     })
 end
 if SETTING.GLASS then
@@ -332,12 +335,6 @@ if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
         createRecipeCategory("sunnycomb"),
         createGreenhouseRecipe("sunnycomb", "e"),
         createCropGrowthRecipe("sunnycomb", "e"),
-    })
-end
-if SPACE_AGE and (SETTING.PYROLYSIS == "both-recipes"
-or SETTING.PYROLYSIS == "distillation") then
-    data:extend({
-        EnhancedWoodDistillationRecipe
     })
 end
 ---------------------------------------------------------------------------------------------------
