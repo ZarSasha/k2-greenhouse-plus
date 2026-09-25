@@ -1,0 +1,10 @@
+{
+  "recipe": [
+    ["k2gp-basic-wood-pyrolysis",    "k2gp-wood-carbonization"],
+    ["k2gp-advanced-wood-pyrolysis", "k2gp-wood-distillation" ]
+  ],
+  "string-mod-setting": [
+    ["basic-recipe",    "carbonization"],
+    ["advanced-recipe", "distillation" ]
+  ]
+}

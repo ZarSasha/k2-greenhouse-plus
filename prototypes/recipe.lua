@@ -158,11 +158,11 @@ local function createCropGrowthRecipe(Variant, Order)
     return output
 end
 ---------------------------------------------------------------------------------------------------
--- FURNACE: BASIC WOOD PYROLYSIS RECIPE
+-- FURNACE: WOOD CARBONIZATION RECIPE
 ---------------------------------------------------------------------------------------------------
-local BasicWoodPyrolysisRecipe = {
+local WoodCarbonizationRecipe = {
     type = "recipe",
-    name = PREFIX.."basic-wood-pyrolysis",
+    name = PREFIX.."wood-carbonization",
     icons = {
         { icon = "__base__/graphics/icons/coal.png",
           scale = 0.500, shift = { 4,  4}, draw_background = true },
@@ -184,20 +184,20 @@ local BasicWoodPyrolysisRecipe = {
 }
 
 ---------------------------------------------------------------------------------------------------
--- CHEMICAL PLANT: ADVANCED WOOD PYROLYSIS RECIPE
+-- CHEMICAL PLANT: WOOD DISTILLATION RECIPE
 ---------------------------------------------------------------------------------------------------
-local AdvancedWoodPyrolysisRecipe = {
+local WoodDistillationRecipe = {
     type = "recipe",
-    name = PREFIX.."advanced-wood-pyrolysis",
+    name = PREFIX.."wood-distillation",
     icons = {
         { icon = "__base__/graphics/icons/fluid/crude-oil.png",
           scale = 0.500, shift = { 4,  4}, draw_background = true },
         { icon = "__base__/graphics/icons/wood.png",
           scale = 0.275, shift = {-3, -3}, draw_background = true }
     },
-    categories = {"chemistry", SPACE_AGE and "organic" or nil},
+    categories = {"chemistry"},
     subgroup = "fluid-recipes",
-    order    = "a[fluid]-b[oil]-b[petroleum-gas]",
+    order    = "a[oil-processing]-a[advanced-pyrolysis-1]",
     enabled = false,
     energy_required = 4.0, -- 2.0 at double speed (biochamber)
     ingredients = {
@@ -213,6 +213,38 @@ local AdvancedWoodPyrolysisRecipe = {
         secondary  = {r = 0.100, g = 0.080, b = 0.100, a = 1.000}, -- Foam.       2nd output color?
         tertiary   = {r = 0.875, g = 0.716, b = 0.586, a = 1.000}, -- Outer smoke. 1st input color?
         quaternary = {r = 1.000, g = 0.614, b = 0.280, a = 1.000}  -- Inner smoke. 2nd input color?
+    },
+    allow_productivity = true
+}
+
+---------------------------------------------------------------------------------------------------
+-- BIOCHAMBER: ENHANCED WOOD DISTILLATION RECIPE
+---------------------------------------------------------------------------------------------------
+local EnhancedWoodDistillationRecipe = {
+    type = "recipe",
+    name = PREFIX.."wood-distillation-enhanced",
+    icons = {
+        { icon = "__base__/graphics/icons/fluid/crude-oil.png",
+          scale = 0.500, shift = { 4,  4}, draw_background = true },
+        { icon = "__base__/graphics/icons/wood.png",
+          scale = 0.275, shift = {-3, -3}, draw_background = true }
+    },
+    categories = {"organic"},
+    subgroup = "fluid-recipes",
+    order    = "a[oil-processing]-a[advanced-pyrolysis-2]",
+    enabled = false,
+    energy_required = 4.0, -- 2.0 at double speed (biochamber)
+    ingredients = {
+        { type = "item",  name = "wood",          amount = 15 }
+    },
+    results = {
+        { type = "fluid", name = "crude-oil",     amount = 20, fluidbox_index = 2 },
+        { type = "fluid", name = "petroleum-gas", amount =  5, fluidbox_index = 1 },
+        { type = "item",  name = "coal",          amount =  3 }
+    },
+    crafting_machine_tint = {
+        primary    = {r = 0.250, g = 0.200, b = 0.250, a = 1.000}, -- Liquid.     1st output color?
+        secondary  = {r = 0.100, g = 0.080, b = 0.100, a = 1.000}  -- Foam.       2nd output color?
     },
     allow_productivity = true
 }
@@ -244,7 +276,7 @@ local glassRecipe =  {
    auto_recycle = false,
    energy_required = 3.2,
    ingredients = {
-       { type = "item", name = PREFIX .. "sand",        amount = 1 }
+       { type = "item", name = PREFIX .. "sand",  amount = 1 }
    },
    results = {
        { type = "item", name = PREFIX .. "glass", amount = 1 }
@@ -257,17 +289,27 @@ local glassRecipe =  {
 ---------------------------------------------------------------------------------------------------
 if SETTING.PYROLYSIS == "both-recipes" then
     data:extend({
-        BasicWoodPyrolysisRecipe,
-        AdvancedWoodPyrolysisRecipe
+        WoodCarbonizationRecipe,
+        WoodDistillationRecipe,
     })
-elseif SETTING.PYROLYSIS == "basic-recipe" then
+    if SPACE_AGE then
+        data:extend({
+            EnhancedWoodDistillationRecipe
+        })
+    end
+elseif SETTING.PYROLYSIS == "carbonization" then
     data:extend({
-        BasicWoodPyrolysisRecipe
+        WoodCarbonizationRecipe
     })
-elseif SETTING.PYROLYSIS == "advanced-recipe" then
+elseif SETTING.PYROLYSIS == "distillation" then
     data:extend({
-        AdvancedWoodPyrolysisRecipe
+        WoodDistillationRecipe,
     })
+    if SPACE_AGE then
+        data:extend({
+            EnhancedWoodDistillationRecipe
+        })
+    end
 end
 if SETTING.GLASS then
     data:extend({
@@ -302,7 +344,6 @@ if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
         createCropGrowthRecipe("sunnycomb", "e"),
     })
 end
-
 ---------------------------------------------------------------------------------------------------
 -- SPACE AGE: TREE PROCESSING
 ---------------------------------------------------------------------------------------------------
@@ -319,28 +360,55 @@ end
 -- END NOTES
 ---------------------------------------------------------------------------------------------------
 
--- ENERGY MEASUREMENTS (BEFORE V1.4.0) --
+-- ENERGY MEASUREMENTS (v1.5.0) --
 
--- Basic pyrolysis:
--- ~3.7% net energy loss.
+-- Measurement: Does not account for idle consumption, which is very minor.
 
--- Basic pyrolysis + coal liquefaction + solid fuel making:
--- ~56.5% net energy gain.
+-- Machines: An electric boiler is used for the production of steam.
 
--- Advanced pyrolysis + (advanced oil processing & coal liquefaction) + solid fuel making:
--- ~56% net energy gain
+-- Recipes: Carbonization turns 2 wood into 1 coal. Distillation turns 15 wood into 20 crude oil,
+-- 10 petgas amd 4 coal. Enhanced distillation turns 15 wood into 20 crude oil, 5 petgas and 3
+-- coal (technically inferior, but gets to benefit from 50% prod. bonus).
 
--- Coal liquefaction + solid fuel making:
--- ~72.5% net energy gain
+-- Total energy gained, accounting for normal machine consumption:
+--   Coal production:
+--     Carbonization:         ~3.7% energy loss
+--   Solid fuel production:
+--     Carbonization chain:  ~56.8% energy gain
+--     Distillation chain:   ~69.5% energy gain
+--     - With biochamber:   ~105.8% energy gain (roughly accounting for nutrients)
 
--- The advanced setup produces 25.5% more plastic and 22.4% more sulfur than the basic one,
--- if coal is burned in the Boiler to produce steam for coal liquefaction.
+-- Conclusion: At the first stage of merely converting all products into solid fuel that can be
+-- consumed for energy, distillation normally has just a small advantage, but the new biochamber
+-- recipe still increases it quite a lot. I will just accept this, because it is a less important
+-- balance issue.
 
--- ENERGY MEASUREMENTS (V1.4.4) --
+-- Distillation/carbonization output yield ratios with chemical plants:
+--                  --Normal--      --Lv5-Tier3 prod.--
+--   Solid fuel:     ~104.2%         ~116.1%
+--   Petroleum:      ~123.8%         ~103.1%
+--   Plastic:        ~124.0%         ~103.1%
 
--- If an electric boiler from a mod provides the steam for coal liquefaction, then the advanced
--- setup produces about 24.5% more petroleum gas, 24.8% more plastic and 25.1% more sulfur than
--- the basic one. Saving on coal favors the basic setup, except when productivity gets very high,
--- then it's the opposite.
+-- Conclusion: With higher levels of productivity, the advantage that distillation holds in regards
+-- to solid fuel slowly compounds. But the much greater advantage in relation to petgas and plastic
+-- is fairly quickly lost, due to less cracking. An outright reversal has only been prevented with
+-- the recent balance change in v1.4.6.
+
+-- In Space Age, the tendencies above are exacerbated by the 50% productivity bonus from the
+-- biochamber, because it can be applied to cracking, and this even flips things on their head.
+-- To prevent it, a distillation recipe was created for the biochamber, carefully balanced to not
+-- increase the solid fuel advantage too much, but still keep the advantage in regards to petgas
+-- and plastic within a reasonable range.
+
+-- Distillation/carbonization output ratios with biochambers:
+--                  --Normal--      --Lv5-Tier3 prod.--
+--   Solid fuel:     ~127.9%         ~137.9%
+--   Petroleum:      ~119.5%	     ~106.5%
+--   Plastic:        ~119.6%	     ~105.6%
+
+-- Conclusion: The solid fuel advantage continues to compound slowly, but the distillation chain
+-- gets a boost that won't be lost even as the productivity bonuses reach their maximum level.
+
+-- NB: Infrastructure, space and energy cost for distillation is generally lower as well.
 
 ---------------------------------------------------------------------------------------------------

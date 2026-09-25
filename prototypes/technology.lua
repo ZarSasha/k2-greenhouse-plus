@@ -63,10 +63,10 @@ end
 ---------------------------------------------------------------------------------------------------
 -- Unlocks advanced wood pyrolysis with Oil Processing, removing the need to find oil or research
 -- Oil Gathering. Adds research cost instead.
-if SETTING.PYROLYSIS == "both-recipes" or SETTING.PYROLYSIS == "advanced-recipe" then
+if SETTING.PYROLYSIS == "both-recipes" or SETTING.PYROLYSIS == "distillation" then
     local oil_tech = data.raw.technology["oil-processing"]
     oil_tech.prerequisites = {"fluid-handling"}
-    table.insert(oil_tech.effects, unlock(PREFIX.."advanced-wood-pyrolysis"))
+    table.insert(oil_tech.effects, unlock(PREFIX.."wood-distillation"))
     oil_tech.research_trigger = nil
     oil_tech.unit = {
         count = 25, time = 15,
@@ -75,6 +75,10 @@ if SETTING.PYROLYSIS == "both-recipes" or SETTING.PYROLYSIS == "advanced-recipe"
             {"logistic-science-pack",   1}
         }
     }
+    if SPACE_AGE then
+        local bio_tech = data.raw.technology["biochamber"]
+        table.insert(bio_tech.effects, unlock(PREFIX.."wood-distillation-enhanced"))
+    end
 end
 
 if SETTING.EARLY_LIQUEFACTION then
