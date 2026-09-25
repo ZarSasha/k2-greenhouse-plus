@@ -9,9 +9,6 @@ Date: 2026-09-25
       maximum use of biochambers, as well as the use of an electric boiler for steam, the petroleum
       gas yield ratio should be like this: Solid fuel starts at ~128.0% and rises towards ~138.0%,
       while petroleum gas start at ~119.5% and falls towards 106.5%. Good enough!
-  Bugfixes:
-    - Fixes a load error when Space Age was not installed. Caused by writing a "false" to a
-      property list in a recipe prototype instead of nothing at all.
   Changes:
     - Reordered recipes.
     - Created new names for some recipes and settings. Created migrations for it.
@@ -23,6 +20,11 @@ Date: 2026-09-25
     - Updated Chinese translation with DeepL.
   Notes:
     - The Chinese translation relies a lot on DeepL now, and I cannot guarantee the quality of it.
+---------------------------------------------------------------------------------------------------
+Version: 1.4.7
+Date: 2026-09-24
+  Bugfixes:
+    - Fixed a load error when Space Age is not installed.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.6
 Date: 2026-09-24
