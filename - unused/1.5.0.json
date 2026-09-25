@@ -1,6 +1,10 @@
 {
   "recipe": [
-    ["k2gp-basic-wood-pyrolysis",             "k2gp-wood-carbonisation"         ],
-    ["k2gp-advanced-wood-pyrolysis",          "k2gp-wood-distillation"          ]
+    ["k2gp-basic-wood-pyrolysis",                     "k2gp-wood-carbonisation"                     ],
+    ["k2gp-advanced-wood-pyrolysis",                  "k2gp-wood-distillation"                      ]
+  ],
+  "mod-setting": [
+    ["k2gp-enable-pyrolysis-recipes-basic-recipe",    "k2gp-enable-pyrolysis-recipes-carbonisation" ],
+    ["k2gp-enable-pyrolysis-recipes-advanced-recipe", "k2gp-enable-pyrolysis-recipes-distillation"  ]
   ]
 }
