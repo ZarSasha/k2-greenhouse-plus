@@ -291,8 +291,12 @@ if SETTING.PYROLYSIS == "both-recipes" then
     data:extend({
         WoodCarbonizationRecipe,
         WoodDistillationRecipe,
-        SPACE_AGE and EnhancedWoodDistillationRecipe or nil
     })
+    if SPACE_AGE then
+        data:extend({
+            EnhancedWoodDistillationRecipe
+        })
+    end
 elseif SETTING.PYROLYSIS == "carbonization" then
     data:extend({
         WoodCarbonizationRecipe
@@ -300,8 +304,12 @@ elseif SETTING.PYROLYSIS == "carbonization" then
 elseif SETTING.PYROLYSIS == "distillation" then
     data:extend({
         WoodDistillationRecipe,
-        SPACE_AGE and EnhancedWoodDistillationRecipe or nil
     })
+    if SPACE_AGE then
+        data:extend({
+            EnhancedWoodDistillationRecipe
+        })
+    end
 end
 if SETTING.GLASS then
     data:extend({
