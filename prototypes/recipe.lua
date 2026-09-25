@@ -360,7 +360,7 @@ end
 -- END NOTES
 ---------------------------------------------------------------------------------------------------
 
--- ENERGY MEASUREMENTS (V1.5.0) --
+-- ENERGY MEASUREMENTS (v1.5.0) --
 
 -- Measurement: Does not account for idle consumption, which is very minor.
 
@@ -376,7 +376,7 @@ end
 --   Solid fuel production:
 --     Carbonization chain:  ~56.8% energy gain
 --     Distillation chain:   ~69.5% energy gain
---     - With biochamber:   ~109.1% energy gain
+--     - With biochamber:   ~105.8% energy gain (roughly accounting for nutrients)
 
 -- Conclusion: At the first stage of merely converting all products into solid fuel that can be
 -- consumed for energy, distillation normally has just a small advantage, but the new biochamber
