@@ -1,0 +1,6 @@
+{
+  "recipe": [
+    ["k2gp-basic-wood-pyrolysis",             "k2gp-wood-carbonisation"         ],
+    ["k2gp-advanced-wood-pyrolysis",          "k2gp-wood-distillation"          ]
+  ]
+}

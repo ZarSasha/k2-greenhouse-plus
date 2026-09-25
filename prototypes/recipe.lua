@@ -238,9 +238,9 @@ local AdvancedEnhancedWoodPyrolysisRecipe = {
         { type = "item",  name = "wood",          amount = 15 }
     },
     results = {
-        { type = "fluid", name = "crude-oil",     amount = 20, fluidbox_index = 2 },
+        { type = "fluid", name = "crude-oil",     amount = 30, fluidbox_index = 2 },
         { type = "fluid", name = "petroleum-gas", amount =  5, fluidbox_index = 1 },
-        { type = "item",  name = "coal",          amount =  3 }
+        { type = "item",  name = "coal",          amount =  1 }
     },
     crafting_machine_tint = {
         primary    = {r = 0.250, g = 0.200, b = 0.250, a = 1.000}, -- Liquid.     1st output color?
