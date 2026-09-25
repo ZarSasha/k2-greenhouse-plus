@@ -8,7 +8,7 @@ Date: 2026-09-25
       produces a bit less coal and petroleum gas to counter the 50% productivity bonus. Assuming
       maximum use of biochambers, as well as the use of an electric boiler for steam, the petroleum
       gas yield ratio should be like this: Solid fuel starts at ~128.0% and rises towards ~138.0%,
-      while petroleum gas start at ~119.5% and falls towards 106.5%. Good enough!
+      while petroleum gas starts at ~119.5% and falls towards 106.5%. Good enough!
   Changes:
     - Reordered recipes.
     - Created new names for some recipes and settings. Created migrations for it.
