@@ -56,8 +56,8 @@ local startup_settings = {
         default_value = "both-recipes",
         allowed_values = {
             "both-recipes",
-            "basic-recipe",
-            "advanced-recipe", -- includes a recipe variant exclusive to the biochamber
+            "carbonization",
+            "distillation", -- includes a recipe variant exclusive to the biochamber
             "disabled"
         },
         order = "b1"

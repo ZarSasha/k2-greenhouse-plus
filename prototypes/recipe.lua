@@ -158,11 +158,11 @@ local function createCropGrowthRecipe(Variant, Order)
     return output
 end
 ---------------------------------------------------------------------------------------------------
--- FURNACE: BASIC WOOD PYROLYSIS RECIPE
+-- FURNACE: WOOD CARBONIZATION RECIPE
 ---------------------------------------------------------------------------------------------------
-local BasicWoodPyrolysisRecipe = {
+local WoodCarbonizationRecipe = {
     type = "recipe",
-    name = PREFIX.."basic-wood-pyrolysis",
+    name = PREFIX.."wood-carbonization",
     icons = {
         { icon = "__base__/graphics/icons/coal.png",
           scale = 0.500, shift = { 4,  4}, draw_background = true },
@@ -184,11 +184,11 @@ local BasicWoodPyrolysisRecipe = {
 }
 
 ---------------------------------------------------------------------------------------------------
--- CHEMICAL PLANT: ADVANCED WOOD PYROLYSIS RECIPE
+-- CHEMICAL PLANT: WOOD DISTILLATION RECIPE
 ---------------------------------------------------------------------------------------------------
-local AdvancedWoodPyrolysisRecipe = {
+local WoodDistillationRecipe = {
     type = "recipe",
-    name = PREFIX.."advanced-wood-pyrolysis",
+    name = PREFIX.."wood-distillation",
     icons = {
         { icon = "__base__/graphics/icons/fluid/crude-oil.png",
           scale = 0.500, shift = { 4,  4}, draw_background = true },
@@ -218,11 +218,11 @@ local AdvancedWoodPyrolysisRecipe = {
 }
 
 ---------------------------------------------------------------------------------------------------
--- BIOCHAMBER: ADVANCED BIO WOOD PYROLYSIS RECIPE
+-- BIOCHAMBER: ENHANCED WOOD DISTILLATION RECIPE
 ---------------------------------------------------------------------------------------------------
-local AdvancedEnhancedWoodPyrolysisRecipe = {
+local EnhancedWoodDistillationRecipe = {
     type = "recipe",
-    name = PREFIX.."advanced-wood-pyrolysis-enhanced",
+    name = PREFIX.."wood-distillation-enhanced",
     icons = {
         { icon = "__base__/graphics/icons/fluid/crude-oil.png",
           scale = 0.500, shift = { 4,  4}, draw_background = true },
@@ -289,16 +289,16 @@ local glassRecipe =  {
 ---------------------------------------------------------------------------------------------------
 if SETTING.PYROLYSIS == "both-recipes" then
     data:extend({
-        BasicWoodPyrolysisRecipe,
-        AdvancedWoodPyrolysisRecipe
+        WoodCarbonizationRecipe,
+        WoodDistillationRecipe
     })
-elseif SETTING.PYROLYSIS == "basic-recipe" then
+elseif SETTING.PYROLYSIS == "carbonization" then
     data:extend({
-        BasicWoodPyrolysisRecipe
+        WoodCarbonizationRecipe
     })
-elseif SETTING.PYROLYSIS == "advanced-recipe" then
+elseif SETTING.PYROLYSIS == "distillation" then
     data:extend({
-        AdvancedWoodPyrolysisRecipe
+        WoodDistillationRecipe
     })
 end
 if SETTING.GLASS then
@@ -335,9 +335,9 @@ if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
     })
 end
 if SPACE_AGE and (SETTING.PYROLYSIS == "both-recipes"
-or SETTING.PYROLYSIS == "advanced-recipe") then
+or SETTING.PYROLYSIS == "distillation") then
     data:extend({
-        AdvancedEnhancedWoodPyrolysisRecipe
+        EnhancedWoodDistillationRecipe
     })
 end
 ---------------------------------------------------------------------------------------------------
