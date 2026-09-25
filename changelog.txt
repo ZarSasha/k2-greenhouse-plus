@@ -18,6 +18,8 @@ Date: 2026-09-25
     - Added a Factoriopedia entry for the biochamber wood distillation recipe.
   Locales:
     - Updated Chinese translation with DeepL.
+  Internal:
+    - Updated and expanded end note in recipe.lua about balancing.
   Notes:
     - The Chinese translation relies a lot on DeepL now, and I cannot guarantee the quality of it.
 ---------------------------------------------------------------------------------------------------

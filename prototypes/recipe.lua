@@ -360,32 +360,55 @@ end
 -- END NOTES
 ---------------------------------------------------------------------------------------------------
 
--- ENERGY MEASUREMENTS (BEFORE V1.4.0) --
+-- ENERGY MEASUREMENTS (V1.5.0) --
 
--- Basic pyrolysis:
--- ~3.7% net energy loss.
+-- Measurement: Does not account for idle consumption, which is very minor.
 
--- Basic pyrolysis + coal liquefaction + solid fuel making:
--- ~56.5% net energy gain.
+-- Machines: An electric boiler is used for the production of steam.
 
--- Advanced pyrolysis + (advanced oil processing & coal liquefaction) + solid fuel making:
--- ~56% net energy gain
+-- Recipes: Carbonization turns 2 wood into 1 coal. Distillation turns 15 wood into 20 crude oil,
+-- 10 petgas amd 4 coal. Enhanced distillation turns 15 wood into 20 crude oil, 5 petgas and 3
+-- coal (technically inferior, but gets to benefit from 50% prod. bonus).
 
--- Coal liquefaction + solid fuel making:
--- ~72.5% net energy gain
+-- Total energy gained, accounting for normal machine consumption:
+--   Coal production:
+--     Carbonization:         ~3.7% energy loss
+--   Solid fuel production:
+--     Carbonization chain:  ~56.8% energy gain
+--     Distillation chain:   ~69.5% energy gain
+--     - With biochamber:   ~109.1% energy gain
 
--- The advanced setup produces 25.5% more plastic and 22.4% more sulfur than the basic one,
--- if coal is burned in the Boiler to produce steam for coal liquefaction.
+-- Conclusion: At the first stage of merely converting all products into solid fuel that can be
+-- consumed for energy, distillation normally has just a small advantage, but the new biochamber
+-- recipe still increases it quite a lot. I will just accept this, because it is a less important
+-- balance issue.
 
--- ENERGY MEASUREMENTS (V1.4.4) --
+-- Distillation/carbonization output yield ratios with chemical plants:
+--                  --Normal--      --Lv5-Tier3 prod.--
+--   Solid fuel:     ~104.2%         ~116.1%
+--   Petroleum:      ~123.8%         ~103.1%
+--   Plastic:        ~124.0%         ~103.1%
 
--- If an electric boiler from a mod provides the steam for coal liquefaction, then the advanced
--- setup produces about 24.5% more petroleum gas, 24.8% more plastic and 25.1% more sulfur than
--- the basic one. Saving on coal favors the basic setup, except when productivity gets very high,
--- then it's the opposite.
+-- Conclusion: With higher levels of productivity, the advantage that distillation holds in regards
+-- to solid fuel slowly compounds. But the much greater advantage in relation to petgas and plastic
+-- is fairly quickly lost, due to less cracking. An outright reversal has only been prevented with
+-- the recent balance change in v1.4.6.
 
--- ENERGY MEASUREMENTS (V1.4.6) --
+-- In Space Age, the tendencies above are exacerbated by the 50% productivity bonus from the
+-- biochamber, because it can be applied to cracking, and this even flips things on their head.
+-- To prevent it, a distillation recipe was created for the biochamber, carefully balanced to not
+-- increase the solid fuel advantage too much, but still keep the advantage in regards to petgas
+-- and plastic within a reasonable range.
 
--- Changed
+-- Distillation/carbonization output ratios with biochambers:
+--                  --Normal--      --Lv5-Tier3 prod.--
+--   Solid fuel:     ~127.9%         ~137.9%
+--   Petroleum:      ~119.5%	     ~106.5%
+--   Plastic:        ~119.6%	     ~105.6%
+
+-- Conclusion: The solid fuel advantage continues to compound slowly, but the distillation chain
+-- gets a boost that won't be lost even as the productivity bonuses reach their maximum level.
+
+-- NB: Infrastructure, space and energy cost for distillation is generally lower as well.
 
 ---------------------------------------------------------------------------------------------------
