@@ -1,13 +1,14 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.0
-Date: 2026-10-01
+Date: 2026-10-02
   Balancing:
     - Greenhouse recipes: Simplified and made cheaper. Greenhouses no longer require landfill or
       special soils, but instead just stone or nutrients. A related setting was also simplified,
       and the main Gleba Greenhouses unlock earlier so they can work as an immediate alternative
       to agricultural towers.
-  Compatibility:
-    - Slipstack agriculture: Adds seed from mod to recipe for the slipstack greenhouse.
+  Info:
+    - Created a migration script informing the player of the change at the top.
+    - Removed obsolete descriptions.
 ---------------------------------------------------------------------------------------------------
 Version: 1.5.2
 Date: 2026-10-01

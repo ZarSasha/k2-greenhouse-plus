@@ -21,31 +21,29 @@ end
 local function createRecipeCategory(Variant)
     return {type = "recipe-category", name = PREFIX.."greenhouse-"..Variant.."-recipes" }
 end
+
 ---------------------------------------------------------------------------------------------------
 -- ASSEMBLING MACHINE: GREENHOUSE ENTITIES
 ---------------------------------------------------------------------------------------------------
 -- Creates recipes for greenhouse variants.
 local function createGreenhouseRecipe(Variant, Order)
-
     local Seed = {
         ["tree"]        = {"wood",          10},
         ["yumako-tree"] = {"yumako-seed",    5},
         ["jellystem"]   = {"jellynut-seed",  5},
-        ["slipstack"]   = {"spoilage",      50},
-        ["sunnycomb"]   = {"spoilage",      50}
+        ["slipstack"]   = {"spoilage",      25},
+        ["sunnycomb"]   = {"spoilage",      25}
     }
-
-    if SPACE_AGE          then Seed["tree"]      = {"tree-seed",      10} end
-    if mods["slipstacks"] then Seed["slipstack"] = {"slipstack-seed",  5} end
-
+    if SPACE_AGE then Seed["tree"] = {"tree-seed", 10} end
     local Bed = {
         ["tree"]        = {"stone",     15},
-        ["yumako-tree"] = {"nutrients", 30},
-        ["jellystem"]   = {"nutrients", 30},
+        ["yumako-tree"] = {"nutrients", 25},
+        ["jellystem"]   = {"nutrients", 25},
         ["slipstack"]   = {"stone",     15},
         ["sunnycomb"]   = {"stone",     15}
     }
 
+    -- Main prototype table:
     local output = {
         type     = "recipe",
         name     = PREFIX.."greenhouse-for-"..Variant,
@@ -64,6 +62,7 @@ local function createGreenhouseRecipe(Variant, Order)
         }
     }
 
+    -- Helper function to add ingredients to recipe:
     local function add_ingr(Name, Amount)
         table.insert(output.ingredients, { type = "item", name = Name ,amount = Amount })
     end
@@ -73,7 +72,6 @@ local function createGreenhouseRecipe(Variant, Order)
         output.energy_required = 10
         add_ingr("kr-iron-beam",       10)
         add_ingr("kr-automation-core", 10)
-
     else
         output.energy_required = 5
         add_ingr("steel-plate",         8)
@@ -84,7 +82,7 @@ local function createGreenhouseRecipe(Variant, Order)
     -- that smaller mods and mods that modify other mods go first. Special care must be taken with
     -- AAI Industry and Krastorio 2, since the former chooses the glass name of the latter, if both
     -- are present.
-        if SETTING.GLASS then
+    if SETTING.GLASS then
         add_ingr(PREFIX.."glass", 24) -- 100% glass : stone
     -- Glass:
     elseif mods["Glass"] and item_exists("Glass", "glass-plate") then
@@ -107,7 +105,7 @@ local function createGreenhouseRecipe(Variant, Order)
         add_ingr("kr-glass",      20) -- 125% glass : stone, but kr-greenhouse uses 20 plates
     -- No glass provided by any recognized source:
     else
-        add_ingr("iron-plate",  24)
+        add_ingr("iron-plate",    24)
     end
 
     return output
