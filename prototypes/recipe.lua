@@ -44,8 +44,8 @@ local function createGreenhouseRecipe(Variant, Order)
 
     local Crop = {
         ["tree"]        = { seed = {TreeSeed,       10}, soil = {"landfill",                  1} },
-        ["yumako-tree"] = { seed = {"yumako-seed",   5}, soil = {Soil[Set].."-yumako-soil",   8} },
-        ["jellystem"]   = { seed = {"jellynut-seed", 5}, soil = {Soil[Set].."-jellynut-soil", 8} },
+        ["yumako-tree"] = { seed = {"yumako-seed",   5}, soil = {Soil[Set].."-yumako-soil",   5} },
+        ["jellystem"]   = { seed = {"jellynut-seed", 5}, soil = {Soil[Set].."-jellynut-soil", 5} },
         ["slipstack"]   = { seed = {"spoilage",     50}, soil = {"landfill",                  1} },
         ["sunnycomb"]   = { seed = {"spoilage",     50}, soil = {"landfill",                  1} }
     }
