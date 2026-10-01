@@ -132,7 +132,7 @@ if SETTING.TREE_GREENHOUSE then
         createGreenhouse("tree")
     })
 end
-if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_1 ~= "disabled" then
+if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_1 then
     data:extend({
         createGreenhouse("yumako-tree"),
         createGreenhouse("jellystem")

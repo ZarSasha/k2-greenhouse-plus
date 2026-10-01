@@ -24,30 +24,26 @@ end
 ---------------------------------------------------------------------------------------------------
 -- ASSEMBLING MACHINE: GREENHOUSE ENTITIES
 ---------------------------------------------------------------------------------------------------
--- Recipes for greenhouse variants. Mods may replace iron plates with some variant of glass. The
--- amounts required will reflect the cost of producing that glass.
+-- Creates recipes for greenhouse variants.
 local function createGreenhouseRecipe(Variant, Order)
-    -- Chooses only one glass item name and amount to be used, from among various mods. Ordered so
-    -- that smaller mods and mods that modify other mods go first. Special care must be taken with
-    -- AAI Industry and Krastorio 2, since the former chooses the glass name of the latter, if both
-    -- are present.
 
-    local TreeSeed = SPACE_AGE and "tree-seed" or "wood" -- assumes 1 wood to 1 seed
-
-    local Set  = SETTING.GLEBA_GREENHOUSES_1
-
-    local Soil = {
-        ["disabled"]             = "overgrowth", -- value doesn't matter, greenhouse is disabled
-        ["with-overgrowth-soil"] = "overgrowth",
-        ["with-artificial-soil"] = "artificial"
+    local Seed = {
+        ["tree"]        = {"wood",          10},
+        ["yumako-tree"] = {"yumako-seed",    5},
+        ["jellystem"]   = {"jellynut-seed",  5},
+        ["slipstack"]   = {"spoilage",      50},
+        ["sunnycomb"]   = {"spoilage",      50}
     }
 
-    local Crop = {
-        ["tree"]        = { seed = {TreeSeed,       10}, soil = {"landfill",                  1} },
-        ["yumako-tree"] = { seed = {"yumako-seed",   5}, soil = {Soil[Set].."-yumako-soil",   5} },
-        ["jellystem"]   = { seed = {"jellynut-seed", 5}, soil = {Soil[Set].."-jellynut-soil", 5} },
-        ["slipstack"]   = { seed = {"spoilage",     50}, soil = {"landfill",                  1} },
-        ["sunnycomb"]   = { seed = {"spoilage",     50}, soil = {"landfill",                  1} }
+    if SPACE_AGE          then Seed["tree"]      = {"tree-seed",      10} end
+    if mods["slipstacks"] then Seed["slipstack"] = {"slipstack-seed",  5} end
+
+    local Bed = {
+        ["tree"]        = {"stone",     15},
+        ["yumako-tree"] = {"nutrients", 30},
+        ["jellystem"]   = {"nutrients", 30},
+        ["slipstack"]   = {"stone",     15},
+        ["sunnycomb"]   = {"stone",     15}
     }
 
     local output = {
@@ -59,8 +55,8 @@ local function createGreenhouseRecipe(Variant, Order)
         enabled  = false,
         energy_required = nil, -- defined below
         ingredients = {
-            { type = "item", name = Crop[Variant].seed[1], amount = Crop[Variant].seed[2] },
-            { type = "item", name = Crop[Variant].soil[1], amount = Crop[Variant].soil[2] }
+            { type = "item", name = Seed[Variant][1], amount = Seed[Variant][2] },
+            { type = "item", name = Bed[Variant][1],  amount = Bed[Variant][2] }
             -- More to be added below
         },
         results = {
@@ -84,8 +80,11 @@ local function createGreenhouseRecipe(Variant, Order)
         add_ingr("electronic-circuit",  6)
     end
 
-    -- Adds glass, perhaps from other mods, in a particular order:
-    if SETTING.GLASS then
+    -- Chooses only one glass item name and amount to be used, from among various mods. Ordered so
+    -- that smaller mods and mods that modify other mods go first. Special care must be taken with
+    -- AAI Industry and Krastorio 2, since the former chooses the glass name of the latter, if both
+    -- are present.
+        if SETTING.GLASS then
         add_ingr(PREFIX.."glass", 24) -- 100% glass : stone
     -- Glass:
     elseif mods["Glass"] and item_exists("Glass", "glass-plate") then
@@ -324,7 +323,7 @@ if SETTING.TREE_GREENHOUSE then
         createCropGrowthRecipe("tree",        "a"),
     })
 end
-if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_1 ~= "disabled" then
+if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_1 then
     data:extend({
         createRecipeCategory  ("yumako-tree"     ),
         createGreenhouseRecipe("yumako-tree", "b"),

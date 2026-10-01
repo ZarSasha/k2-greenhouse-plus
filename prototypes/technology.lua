@@ -104,24 +104,15 @@ if SPACE_AGE then
         local seed_tech  = data.raw.technology["tree-seeding"]
         seed_tech.unit.count = 1
     end
-    if SETTING.GLEBA_GREENHOUSES_1 == "with-overgrowth-soil" then
-        -- Unlocks yumako/jellynut greenhouses with Artificial Soil tech:
-        local soil1_tech = data.raw.technology["overgrowth-soil"]
-        table.insert(soil1_tech.effects, unlock(PREFIX.."greenhouse-for-yumako-tree"   ))
-        table.insert(soil1_tech.effects, unlock(PREFIX.."greenhouse-for-jellystem"     ))
-        table.insert(soil1_tech.effects, unlock(PREFIX.."greenhouse-yumako-tree-growth"))
-        table.insert(soil1_tech.effects, unlock(PREFIX.."greenhouse-jellystem-growth"  ))
-    elseif SETTING.GLEBA_GREENHOUSES_1 == "with-artificial-soil" then
-        -- Unlocks yumako/jellynut greenhouses with Overgrowth Soil tech:
-        local soil2_tech = data.raw.technology["artificial-soil"]
-        table.insert(soil2_tech.effects, unlock(PREFIX.."greenhouse-for-yumako-tree"   ))
-        table.insert(soil2_tech.effects, unlock(PREFIX.."greenhouse-for-jellystem"     ))
-        table.insert(soil2_tech.effects, unlock(PREFIX.."greenhouse-yumako-tree-growth"))
-        table.insert(soil2_tech.effects, unlock(PREFIX.."greenhouse-jellystem-growth"  ))
+    -- Unlocks Gleba greenhouses with Agriculture tech, depending on settings:
+    local agri_tech  = data.raw.technology["agriculture"]
+    if SETTING.GLEBA_GREENHOUSES_1 then
+        table.insert(agri_tech.effects, unlock(PREFIX.."greenhouse-for-yumako-tree"   ))
+        table.insert(agri_tech.effects, unlock(PREFIX.."greenhouse-for-jellystem"     ))
+        table.insert(agri_tech.effects, unlock(PREFIX.."greenhouse-yumako-tree-growth"))
+        table.insert(agri_tech.effects, unlock(PREFIX.."greenhouse-jellystem-growth"  ))
     end
     if SETTING.GLEBA_GREENHOUSES_2 then
-        -- Unlocks slipstack and sunnycomb greenhouses with Agriculture tech:
-        local agri_tech  = data.raw.technology["agriculture"]
         table.insert(agri_tech.effects,  unlock(PREFIX.."greenhouse-for-slipstack"     ))
         table.insert(agri_tech.effects,  unlock(PREFIX.."greenhouse-for-sunnycomb"     ))
         table.insert(agri_tech.effects,  unlock(PREFIX.."greenhouse-slipstack-growth"  ))

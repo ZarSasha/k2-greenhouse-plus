@@ -22,15 +22,10 @@ local startup_settings = {
         order = "a1"
     },
     {-- Space Age: Allow Yumako and Jellynut trees to be grown in their own greenhouses.
-        type = "string-setting",
+        type = "bool-setting",
         name = "k2gp-enable-main-gleba-greenhouses",
         setting_type = "startup",
-        default_value = "with-overgrowth-soil",
-        allowed_values = {
-            "with-overgrowth-soil",
-            "with-artificial-soil",
-            "disabled"
-        },
+        default_value = "true",
         hidden = not space_age,
         order = "a2"
     },
