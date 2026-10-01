@@ -25,7 +25,7 @@ local startup_settings = {
         type = "bool-setting",
         name = "k2gp-enable-main-gleba-greenhouses",
         setting_type = "startup",
-        default_value = "true",
+        default_value = true,
         hidden = not space_age,
         order = "a2"
     },
