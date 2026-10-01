@@ -321,7 +321,8 @@ if SETTING.TREE_GREENHOUSE then
         createCropGrowthRecipe("tree",        "a"),
     })
 end
-if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_1 then
+if SPACE_AGE and (SETTING.GLEBA_GREENHOUSES == "main"
+or SETTING.GLEBA_GREENHOUSES == "all") then
     data:extend({
         createRecipeCategory  ("yumako-tree"     ),
         createGreenhouseRecipe("yumako-tree", "b"),
@@ -331,7 +332,8 @@ if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_1 then
         createCropGrowthRecipe("jellystem",   "c"),
     })
 end
-if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
+if SPACE_AGE and (SETTING.GLEBA_GREENHOUSES == "other"
+or SETTING.GLEBA_GREENHOUSES == "all") then
     data:extend({
         createRecipeCategory("slipstack"),
         createGreenhouseRecipe("slipstack", "d"),

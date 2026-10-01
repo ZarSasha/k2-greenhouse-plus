@@ -25,8 +25,7 @@ KRASTORIO2    = mods["Krastorio2"] and true or false
 local function conf(Name) return settings.startup[Name].value end
 SETTING = {
     TREE_GREENHOUSE     = conf "k2gp-enable-tree-greenhouse",
-    GLEBA_GREENHOUSES_1 = conf "k2gp-enable-main-gleba-greenhouses",
-    GLEBA_GREENHOUSES_2 = conf "k2gp-enable-other-gleba-greenhouses",
+    GLEBA_GREENHOUSES   = conf "k2gp-enable-gleba-greenhouses",
     GLASS               = conf "k2gp-provide-glass-for-greenhouses",
     PYROLYSIS           = conf "k2gp-enable-pyrolysis-recipes",
     EARLY_LIQUEFACTION  = conf "k2gp-unlock-coal-liquefaction-early",

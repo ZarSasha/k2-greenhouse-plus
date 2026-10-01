@@ -74,13 +74,15 @@ if SETTING.TREE_GREENHOUSE then
         createGreenhouseItem("tree",        "a")
     })
 end
-if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_1 then
+if SPACE_AGE and (SETTING.GLEBA_GREENHOUSES == "main"
+or SETTING.GLEBA_GREENHOUSES == "all") then
     data:extend({
         createGreenhouseItem("yumako-tree", "b"),
         createGreenhouseItem("jellystem",   "c")
     })
 end
-if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
+if SPACE_AGE and (SETTING.GLEBA_GREENHOUSES == "other"
+or SETTING.GLEBA_GREENHOUSES == "all") then
     data:extend({
         createGreenhouseItem("slipstack", "d"),
         createGreenhouseItem("sunnycomb", "e")

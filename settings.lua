@@ -21,21 +21,19 @@ local startup_settings = {
         default_value = true,
         order = "a1"
     },
-    {-- Space Age: Allow Yumako and Jellynut trees to be grown in their own greenhouses.
-        type = "bool-setting",
-        name = "k2gp-enable-main-gleba-greenhouses",
+    {-- Space Age: Allow Gleba trees to be grown in their own greenhouses.
+        type = "string-setting",
+        name = "k2gp-enable-gleba-greenhouses",
         setting_type = "startup",
-        default_value = true,
+        default_value = "all",
+        allowed_values = {
+            "all",
+            "main",    -- Yumako and Jellynut
+            "other",   -- Slipstack and Sunnycomb
+            "disabled"
+        },
         hidden = not space_age,
         order = "a2"
-    },
-    {-- Space Age: Allow Slipstack and Sunnycomb to be grown in their own greenhouses.
-        type = "bool-setting",
-        name = "k2gp-enable-other-gleba-greenhouses",
-        setting_type = "startup",
-        default_value = true,
-        hidden = not space_age,
-        order = "a3"
     },
     {-- Lets the mod provide its own source of glass for the greenhouses.
         type = "bool-setting",
