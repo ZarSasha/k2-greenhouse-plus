@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.5.2
+Date: 2026-10-01
+  Balancing:
+    - Greenhouse for trees: Lowered pressure requirement a bit so the greenhouse can also be built
+      on the planet Lignumis from the mod of the same name. Also increased the ceiling on solar
+      power a bit, but not with any particular planet in mind. Just a quick fix.
+  Info:
+    - Fixed some info text for the greenhouse glass.
+  Locale:
+    - Updated Chinese translation.
+---------------------------------------------------------------------------------------------------
 Version: 1.5.1
 Date: 2026-09-25
   Changes:
