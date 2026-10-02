@@ -15,6 +15,7 @@ Date: 2026-10-02
     - Created a migration script informing the player of the changes above.
     - Added Factoriopedia entries for the greenhouses, warning that their rate of output cannot
       benefit from quality.
+    - Updated numbers in mod descriptions.
   Locale:
     - Updated Chinese translation using DeepL.
   Notes:
