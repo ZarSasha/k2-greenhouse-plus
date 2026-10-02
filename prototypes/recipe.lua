@@ -28,7 +28,7 @@ local function createGreenhouseRecipe(Variant, Order)
         results = {
             { type = "item", name = PREFIX.."greenhouse-for-"..Variant, amount = 1 }
         },
-        sort_item_ingredients = false -- I want them in the order they are added!
+        sort_item_ingredients = false
     }
 
     -- Helper function to add ingredients to recipe:
@@ -94,7 +94,7 @@ local function createGreenhouseRecipe(Variant, Order)
         ["sunnycomb"]   = {"stone",     15}
     }
     add_ingr(4, Seed[Variant][1], Seed[Variant][2])
-    add_ingr(5, Bed[Variant][1],  Bed[Variant][2])
+    add_ingr(5, Bed[Variant][1],  Bed[Variant][2] )
 
     return output
 end
