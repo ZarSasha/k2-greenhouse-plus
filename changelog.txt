@@ -8,14 +8,15 @@ Date: 2026-10-02
     - NB: Merged settings for Gleba greenhouses into one. Cannot migrate, so check settings!
   Info:
     - Created a migration script informing the player of the changes above.
-    - Removed obsolete descriptions, created description for new, merged setting.
-    - Now sorts the ingredients for the greenhouses so their order remains consistent.
+    - Updated mod setting descriptions.
+    - Now manually sorts ingredients for greenhouse recipes.
     - Changed tech recipe unlock order.
     - Fixed several changelog entries ("Locales:" -> "Locale:").
   Locale:
     - Updated Chinese translation using DeepL.
   Internal:
-    - Tidied up the way that the code keeps track of what has been enabled.
+    - Changed the the way that the code keeps track of what has been enabled according to settings
+      and presence of mods.
     - Created a separate file with a small library of functions.
 ---------------------------------------------------------------------------------------------------
 Version: 1.5.2
