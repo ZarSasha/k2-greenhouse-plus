@@ -3,7 +3,7 @@ Version: 1.7.0
 Date: 2026-10-02
   Balancing:
     - IMPORTANT: Greenhouses: Nerfed quality variants so they no longer receive any speed bonus!
-      Doubled the consumption of electricity to 50kW, because of changes below.
+      Doubled the consumption of electricity to 50kW, because of the changes below.
       Gleba greenhouses: Increased default base production rate to 1/s, since quality no longer
       needs to play a factor in balancing. This way, a greenhouse setup should produce ~93.5% pr.
       area compared to an agricultural tower setup.
