@@ -81,9 +81,9 @@ local startup_settings = {
         name = "k2gp-greenhouse-tree-output-pr-sec",
         setting_type = "startup",
         default_value = 0.5,   -- The equivalent of 75 planted trees when growth time is 10 min.
-        minimum_value = 0.01,  -- and each harvest yields 4 wood. (It is an amount that could
+        minimum_value = 0.01,  -- and each harvest yields 4 wood (it is an amount that could
         maximum_value = 10,    -- technically be planted within a 7x7 area, the size of the
-        order = "e1"           -- greenhouse's collision box.
+        order = "e1"           -- greenhouse's collision box).
     },
     {-- Space Age: Greenhouse yumako production rate (items/s.)
         type = "double-setting",
