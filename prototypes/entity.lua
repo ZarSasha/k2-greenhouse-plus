@@ -61,6 +61,7 @@ local function createGreenhouse(Variant)
     local output = {
         type = "assembling-machine",
         name = PREFIX.."greenhouse-for-"..Variant,
+        factoriopedia_description = {"factoriopedia-description.k2gp-greenhouse-for-"..Variant},
         icon = ASSETS_ICON.."greenhouse-"..Variant.."-icon.png",
         icon_size = 64,
         icon_draw_specification = {scale = 2, shift = {0, -0.2}},
