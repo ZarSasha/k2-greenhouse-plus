@@ -4,6 +4,7 @@ Date: 2026-10-02
   Balancing:
     - Main Gleba greenhouse recipes: Removed the option for making them require overgrowth soil,
       instead just made them require artifical soil, and in much lower amount.
+    - Other Gleba greenhouse recipes: Reduced the amount of spoilage required.
   Changes:
     - NB: Merged settings for Gleba greenhouses into one. Cannot migrate, so check settings!
   Info:
