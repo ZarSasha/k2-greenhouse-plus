@@ -2,20 +2,22 @@
 Version: 1.7.0
 Date: 2026-10-02
   Balancing:
-    - IMPORTANT: Greenhouses: Nerfed quality variants so they no longer receive any speed bonus!
-      Increased the consumption of electricity to 37.5kW, because of the changes below.
+    - Greenhouses:
+      - IMPORTANT: Nerfed quality variants so they no longer receive any speed bonus!
+      - Increased the consumption of electricity to 37.5kW, because of the changes below.
       Gleba greenhouses: Doubled default base production rate to 0.75/s, since quality no longer
       needs to play a factor in balancing. This way, a greenhouse setup should produce ~70% pr.
       area compared to an agricultural tower setup.
     - Greenhouse for trees: Increased default base production rate by 50% to 0.375/s, in order to
       somewhat keep up with the other changes. (It is the equivalent of 56.25 trees, which is still
-      less than ~76.6 trees, an amount that technically could be planted within a 7x7 area, the
+      less than ~76.56 trees, an amount that technically could be planted within a 7x7 area, the
       size of the greenhouse collision box).
   Info:
     - Created a migration script informing the player of the changes above.
     - Added Factoriopedia entries for the greenhouses, warning that their rate of output cannot
       benefit from quality.
     - Updated numbers in mod descriptions.
+    - Simplified mod description.
   Locale:
     - Updated Chinese translation using DeepL.
   Notes:
@@ -23,10 +25,6 @@ Date: 2026-10-02
       balance. Agricultural towers cannot benefit from quality either, after all. (I wasn't able
       to perform this balancing until the crafting_speed_quality_multiplier entity property became
       available with Factorio v2.0.58 on 2025-06-23, and I only discovered this addition recently.)
-    - I elected to not increase the amount of wood/tree seeds required by the recipe for the
-      greenhouse for trees. One could argue that it should be ~56, but that is just excessive. In
-      the first place, it seems really unfair how low output normal trees have, compared to Yumako
-      & Jellynut trees. So I'll leave it at 10, which is still twice as much as 5.
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.0
 Date: 2026-10-02
