@@ -23,8 +23,8 @@ Date: 2026-10-02
   Notes:
     - I know that the change at the top may disappoint some, but I think it is important for
       balance. Agricultural towers cannot benefit from quality either, after all. (I wasn't able
-      to perform this balancing until the crafting_speed_quality_multiplier entity property became
-      available with Factorio v2.0.58 on 2025-06-23, and I only discovered this addition recently.)
+      to perform this balancing until an API update in Factorio v2.0.58 on 2025-06-23, and I only
+      discovered the update recently.)
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.0
 Date: 2026-10-02
