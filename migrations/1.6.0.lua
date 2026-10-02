@@ -3,6 +3,6 @@
 ---------------------------------------------------------------------------------------------------
 
 game.print("[color=acid]Krastorio 2 Greenhouse + Wood Pyrolysis:[/color]")
-game.print("  v1.6.0: Gleba greenhouse recipes and related settings were significantly altered!")
-game.print("  See changelog for more details.")
+game.print("  v1.6.0: Gleba greenhouse recipes and related settings were")
+game.print("  significantly altered! See changelog for more details.")
 ---------------------------------------------------------------------------------------------------
