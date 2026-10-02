@@ -2,9 +2,8 @@
 Version: 1.6.0
 Date: 2026-10-02
   Balancing:
-    - Greenhouse recipes: Simplified and made cheaper. Greenhouses no longer require landfill or
-      special soils, but instead just stone or nutrients. The main Gleba Greenhouse recipes also
-      unlock earlier so they can work as an immediate alternative to agricultural towers.
+    - Greenhouse recipes: Simplified and made cheaper. Greenhouses require either landfill or a
+      artificial soil. The main Gleba greenhouses unlock with Artificial Soil tech.
   Changes:
     - NB: Merged settings for Gleba greenhouses into one. Cannot migrate, so check settings!
   Info:

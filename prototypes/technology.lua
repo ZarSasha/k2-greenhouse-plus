@@ -104,19 +104,19 @@ if SPACE_AGE then
         local seed_tech  = data.raw.technology["tree-seeding"]
         seed_tech.unit.count = 1
     end
-    -- Unlocks Gleba greenhouses with Agriculture tech, depending on settings:
-    local agri_tech  = data.raw.technology["agriculture"]
+    -- Unlocks Gleba greenhouses with Artificial Soil tech, if they are enabled:
+    local soil_tech  = data.raw.technology["artificial-soil"]
     if ENABLED.MAIN_GLEBA_GREENHOUSES then
-        table.insert(agri_tech.effects, unlock(PREFIX.."greenhouse-for-yumako-tree"   ))
-        table.insert(agri_tech.effects, unlock(PREFIX.."greenhouse-yumako-tree-growth"))
-        table.insert(agri_tech.effects, unlock(PREFIX.."greenhouse-for-jellystem"     ))
-        table.insert(agri_tech.effects, unlock(PREFIX.."greenhouse-jellystem-growth"  ))
+        table.insert(soil_tech.effects, unlock(PREFIX.."greenhouse-for-yumako-tree"   ))
+        table.insert(soil_tech.effects, unlock(PREFIX.."greenhouse-yumako-tree-growth"))
+        table.insert(soil_tech.effects, unlock(PREFIX.."greenhouse-for-jellystem"     ))
+        table.insert(soil_tech.effects, unlock(PREFIX.."greenhouse-jellystem-growth"  ))
     end
     if ENABLED.OTHER_GLEBA_GREENHOUSES then
-        table.insert(agri_tech.effects,  unlock(PREFIX.."greenhouse-for-slipstack"     ))
-        table.insert(agri_tech.effects,  unlock(PREFIX.."greenhouse-slipstack-growth"  ))
-        table.insert(agri_tech.effects,  unlock(PREFIX.."greenhouse-for-sunnycomb"     ))
-        table.insert(agri_tech.effects,  unlock(PREFIX.."greenhouse-sunnycomb-growth"  ))
+        table.insert(soil_tech.effects,  unlock(PREFIX.."greenhouse-for-slipstack"     ))
+        table.insert(soil_tech.effects,  unlock(PREFIX.."greenhouse-slipstack-growth"  ))
+        table.insert(soil_tech.effects,  unlock(PREFIX.."greenhouse-for-sunnycomb"     ))
+        table.insert(soil_tech.effects,  unlock(PREFIX.."greenhouse-sunnycomb-growth"  ))
     end
 end
 ---------------------------------------------------------------------------------------------------

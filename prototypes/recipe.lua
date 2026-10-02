@@ -87,11 +87,11 @@ local function createGreenhouseRecipe(Variant, Order)
     }
     if SPACE_AGE then Seed["tree"] = {"tree-seed", 10} end
     local Bed = {
-        ["tree"]        = {"stone",     15},
-        ["yumako-tree"] = {"nutrients", 25},
-        ["jellystem"]   = {"nutrients", 25},
-        ["slipstack"]   = {"stone",     15},
-        ["sunnycomb"]   = {"stone",     15}
+        ["tree"]        = {"landfill",                 1},
+        ["yumako-tree"] = {"artificial-yumako-soil",   1},
+        ["jellystem"]   = {"artificial-jellynut-soil", 1},
+        ["slipstack"]   = {"landfill",                 1},
+        ["sunnycomb"]   = {"landfill",                 1},
     }
     add_ingr(4, Seed[Variant][1], Seed[Variant][2])
     add_ingr(5, Bed[Variant][1],  Bed[Variant][2] )
