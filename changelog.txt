@@ -5,7 +5,7 @@ Date: 2026-10-02
     - Greenhouses:
       - IMPORTANT: Nerfed quality variants so they no longer receive any speed bonus!
       - Increased the consumption of electricity to 37.5kW, because of the changes below.
-      Gleba greenhouses: Doubled default base production rate to 0.75/s, since quality no longer
+    - Gleba greenhouses: Doubled default base production rate to 0.75/s, since quality no longer
       needs to play a factor in balancing. This way, a greenhouse setup should produce ~70% pr.
       area compared to an agricultural tower setup.
     - Greenhouse for trees: Increased default base production rate by 50% to 0.375/s, in order to
