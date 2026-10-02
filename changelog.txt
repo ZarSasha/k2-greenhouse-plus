@@ -7,7 +7,7 @@ Date: 2026-10-03
       - Increased the consumption of electricity to 37.5kW, because of the changes below.
     - Gleba greenhouses: Doubled default base production rate to 0.75/s, since quality no longer
       needs to play a factor in balancing. This way, a greenhouse setup should produce at least
-      ~70% pr. area compared to an agricultural tower setup.
+      ~70% (instead of ~35%) pr. area compared to an agricultural tower setup.
     - Greenhouse for trees: Increased default base production rate by 50% to 0.375/s, in order to
       somewhat keep up with the other changes. (It is the equivalent of 56.25 trees, which is still
       less than ~76.56 trees, an amount that technically could be planted within a 7x7 area, the
@@ -17,7 +17,7 @@ Date: 2026-10-03
     - Added Factoriopedia entries for the greenhouses, warning that their rate of output cannot
       benefit from quality.
     - Updated numbers in mod descriptions related to greenhouse absorption/emissions.
-    - Now uses only one description of setting for modules, regardless of presence of Space Age.
+    - Now uses only one description for modules setting, regardless of presence of Space Age.
     - Simplified mod description.
   Locale:
     - Updated Chinese translation using DeepL (also fixed missing translations).
