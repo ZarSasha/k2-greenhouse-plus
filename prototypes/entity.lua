@@ -81,7 +81,7 @@ local function createGreenhouse(Variant)
             emissions_per_minute = ActiveEmissions[Variant],
             drain = "0kW"
         },
-        energy_usage = "25kW",
+        energy_usage = "50kW",
         crafting_speed = 1,
         crafting_categories = {PREFIX.."greenhouse-"..Variant.."-recipes"},
         module_slots = SETTING.MODULE_SLOTS,
