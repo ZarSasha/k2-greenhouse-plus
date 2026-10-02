@@ -51,7 +51,7 @@ local function createGreenhouseRecipe(Variant, Order)
     -- that smaller mods and mods that modify other mods go first. Special care must be taken with
     -- AAI Industry and Krastorio 2, since the former chooses the glass name of the latter, if both
     -- are present.
-    if SETTING.GLASS then
+    if ENABLED.GLASS then
         add_ingr(2, PREFIX.."glass", 24) -- 100% glass : stone
     -- Glass:
     elseif mods["Glass"] and ItemExists("Glass", "glass-plate") then
