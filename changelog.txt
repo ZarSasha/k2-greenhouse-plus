@@ -14,7 +14,7 @@ Date: 2026-10-02
     - Now sorts the ingredients for the greenhouses so their order remains consistent.
     - Changed tech recipe unlock order.
   Locale:
-    - Update Chinese translation.
+    - Updated Chinese translation.
 ---------------------------------------------------------------------------------------------------
 Version: 1.5.2
 Date: 2026-10-01
