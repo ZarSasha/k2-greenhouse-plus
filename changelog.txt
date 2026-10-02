@@ -13,7 +13,7 @@ Date: 2026-10-02
     - Added Factoriopedia entries for the greenhouses, warning that their rate of output cannot
       benefit from quality.
   Locale:
-    - TODO: Updated Chinese translation using DeepL.
+    - Updated Chinese translation using DeepL.
   Notes:
     - I know that the change at the top may disappoint some, but I think it is important for
       balance. Agricultural towers cannot benefit from quality either, after all. (I wasn't able
