@@ -50,7 +50,7 @@ local startup_settings = {
         allowed_values = {
             "both-recipes",
             "carbonization",
-            "distillation", -- includes a recipe variant exclusive to the biochamber
+            "distillation", -- Includes a variant exclusive to the biochamber from Space Age.
             "disabled"
         },
         order = "b1"
@@ -65,14 +65,9 @@ local startup_settings = {
     {-- Greenhouse module slot amount.
         type = "int-setting",
         name = "k2gp-greenhouse-module-slot-amount",
-        localised_description = (not space_age and {
-            "mod-setting-description.k2gp-greenhouse-module-slot-amount-base-game"
-        }) or {
-            "mod-setting-description.k2gp-greenhouse-module-slot-amount-space-age"
-        },
         setting_type = "startup",
-        default_value = 0,    -- Set to 0 by default, to match the agricultural tower.
-        minimum_value = 0,
+        default_value = 0,     -- Set to 0 by default, to match the
+        minimum_value = 0,     -- agricultural tower from Space Age.
         maximum_value = 20,
         order = "c"
     },
@@ -124,8 +119,21 @@ local startup_settings = {
         maximum_value = 10,
         hidden = not space_age,
         order = "e5"
+    },
+
+    --- HIDDEN SETTINGS ---
+
+    {-- Quality: Allows the output rate for greenhouses to scale normally with quality.
+     -- Disabled by default, because it breaks game balance.
+        type = "bool-setting",
+        name = "k2gp-allow-greenhouse-quality-scaling",
+        setting_type = "startup",
+        default_value = false,
+        hidden = true,
+        order = "f"
     }
 }
+
 ---------------------------------------------------------------------------------------------------
 -- FINAL DATA WRITE
 ---------------------------------------------------------------------------------------------------

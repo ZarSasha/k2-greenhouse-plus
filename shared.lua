@@ -37,7 +37,8 @@ SETTING = {
         ["jellystem"  ] = conf "k2gp-greenhouse-jellystem-output-pr-sec",
         ["slipstack"  ] = conf "k2gp-greenhouse-slipstack-output-pr-sec",
         ["sunnycomb"  ] = conf "k2gp-greenhouse-sunnycomb-output-pr-sec"
-    }
+    },
+    QUALITY_SCALING     = conf "k2gp-allow-greenhouse-quality-scaling" -- HIDDEN
 }
 
 ---------------------------------------------------------------------------------------------------
@@ -45,10 +46,10 @@ SETTING = {
 ---------------------------------------------------------------------------------------------------
 ENABLED = {
     TREE_GREENHOUSE = SETTING.TREE_GREENHOUSE,
-    MAIN_GLEBA_GREENHOUSES = SPACE_AGE and TableContainsValue(
+    MAIN_GLEBA_GREENHOUSES = TableContainsValue(
         {"all", "main"}, SETTING.GLEBA_GREENHOUSES
     ),
-    OTHER_GLEBA_GREENHOUSES = SPACE_AGE and TableContainsValue(
+    OTHER_GLEBA_GREENHOUSES = TableContainsValue(
         {"all", "other"}, SETTING.GLEBA_GREENHOUSES
     ),
     GLASS = SETTING.GLASS,
@@ -58,9 +59,10 @@ ENABLED = {
     DISTILLATION = TableContainsValue(
         {"both-recipes", "distillation"}, SETTING.PYROLYSIS
     ),
-    ENHANCED_DISTILLATION = SPACE_AGE and TableContainsValue(
+    ENHANCED_DISTILLATION = TableContainsValue(
         {"both-recipes", "distillation"}, SETTING.PYROLYSIS
     ),
-    EARLY_LIQUEFACTION = SETTING.EARLY_LIQUEFACTION
+    EARLY_LIQUEFACTION = SETTING.EARLY_LIQUEFACTION,
+    QUALITY_SCALING = SETTING.QUALITY_SCALING -- HIDDEN
 }
 ---------------------------------------------------------------------------------------------------

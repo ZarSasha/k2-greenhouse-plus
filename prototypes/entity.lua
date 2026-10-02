@@ -118,12 +118,15 @@ local function createGreenhouse(Variant)
         -- Allows quality modules and effects:
         table.insert(output.allowed_module_categories, "quality")
         table.insert(output.allowed_effects, "quality")
-        -- Completely nerfs quality speed bonuses:
-        local quality_multipliers = {}
-        for _, quality in pairs(data.raw.quality) do
-            quality_multipliers[quality.name] = 1.0
+
+        if not ENABLED.QUALITY_SCALING then -- Default, hidden setting.
+            -- Completely nerfs quality speed bonuses:
+            local quality_multipliers = {}
+            for _, quality in pairs(data.raw.quality) do
+                quality_multipliers[quality.name] = 1.0
+            end
+            output.crafting_speed_quality_multiplier = quality_multipliers
         end
-        output.crafting_speed_quality_multiplier = quality_multipliers
     end
 
     if SPACE_AGE then
@@ -138,11 +141,11 @@ end
 if ENABLED.TREE_GREENHOUSE then data:extend({
     createGreenhouse("tree")
 }) end
-if ENABLED.MAIN_GLEBA_GREENHOUSES then data:extend({
+if SPACE_AGE and ENABLED.MAIN_GLEBA_GREENHOUSES then data:extend({
     createGreenhouse("yumako-tree"),
     createGreenhouse("jellystem")
 }) end
-if ENABLED.OTHER_GLEBA_GREENHOUSES then data:extend({
+if SPACE_AGE and ENABLED.OTHER_GLEBA_GREENHOUSES then data:extend({
     createGreenhouse("slipstack"),
     createGreenhouse("sunnycomb")
 }) end
