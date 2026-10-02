@@ -4,52 +4,18 @@
 --  ┛┗┗┛┗┛┻┣┛┗┛
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
--- HELPER FUNCTIONS
----------------------------------------------------------------------------------------------------
--- Checks for presence of item, returns error in log if missing.
-local function item_exists(ModName, Item)
-    if data.raw.item[Item] ~= nil then
-        return true
-    else
-        log("item with ID \""..Item.."\" from the mod \""..ModName.."\" does not exist!")
-        return false
-    end
-end
----------------------------------------------------------------------------------------------------
 -- GREENHOUSE: RECIPE CATEGORIES
 ---------------------------------------------------------------------------------------------------
 local function createRecipeCategory(Variant)
     return {type = "recipe-category", name = PREFIX.."greenhouse-"..Variant.."-recipes" }
 end
+
 ---------------------------------------------------------------------------------------------------
 -- ASSEMBLING MACHINE: GREENHOUSE ENTITIES
 ---------------------------------------------------------------------------------------------------
--- Recipes for greenhouse variants. Mods may replace iron plates with some variant of glass. The
--- amounts required will reflect the cost of producing that glass.
+-- Creates recipes for greenhouse variants.
 local function createGreenhouseRecipe(Variant, Order)
-    -- Chooses only one glass item name and amount to be used, from among various mods. Ordered so
-    -- that smaller mods and mods that modify other mods go first. Special care must be taken with
-    -- AAI Industry and Krastorio 2, since the former chooses the glass name of the latter, if both
-    -- are present.
-
-    local TreeSeed = SPACE_AGE and "tree-seed" or "wood" -- assumes 1 wood to 1 seed
-
-    local Set  = SETTING.GLEBA_GREENHOUSES_1
-
-    local Soil = {
-        ["disabled"]             = "overgrowth", -- value doesn't matter, greenhouse is disabled
-        ["with-overgrowth-soil"] = "overgrowth",
-        ["with-artificial-soil"] = "artificial"
-    }
-
-    local Crop = {
-        ["tree"]        = { seed = {TreeSeed,       10}, soil = {"landfill",                  1} },
-        ["yumako-tree"] = { seed = {"yumako-seed",   5}, soil = {Soil[Set].."-yumako-soil",   8} },
-        ["jellystem"]   = { seed = {"jellynut-seed", 5}, soil = {Soil[Set].."-jellynut-soil", 8} },
-        ["slipstack"]   = { seed = {"spoilage",     50}, soil = {"landfill",                  1} },
-        ["sunnycomb"]   = { seed = {"spoilage",     50}, soil = {"landfill",                  1} }
-    }
-
+    -- Main prototype table:
     local output = {
         type     = "recipe",
         name     = PREFIX.."greenhouse-for-"..Variant,
@@ -58,58 +24,77 @@ local function createGreenhouseRecipe(Variant, Order)
         order    = (SPACE_AGE and "a" or "g").."[greenhouse]-"..Order.."["..Variant.."]",
         enabled  = false,
         energy_required = nil, -- defined below
-        ingredients = {
-            { type = "item", name = Crop[Variant].seed[1], amount = Crop[Variant].seed[2] },
-            { type = "item", name = Crop[Variant].soil[1], amount = Crop[Variant].soil[2] }
-            -- More to be added below
-        },
+        ingredients = {}, -- filled below
         results = {
             { type = "item", name = PREFIX.."greenhouse-for-"..Variant, amount = 1 }
-        }
+        },
+        sort_item_ingredients = false
     }
 
-    local function add_ingr(Name, Amount)
-        table.insert(output.ingredients, { type = "item", name = Name ,amount = Amount })
+    -- Helper function to add ingredients to recipe:
+    local function add_ingr(Position, Name, Amount)
+        table.insert(output.ingredients, Position, { type = "item", name = Name ,amount = Amount })
     end
 
     -- Adds various ingredients and changes energy need depending on mods installed.
     if KRASTORIO2 then
         output.energy_required = 10
-        add_ingr("kr-iron-beam",       10)
-        add_ingr("kr-automation-core", 10)
-
+        add_ingr(1, "kr-iron-beam",       10)
+        add_ingr(3, "kr-automation-core", 10)
     else
         output.energy_required = 5
-        add_ingr("steel-plate",         8)
-        add_ingr("electronic-circuit",  6)
+        add_ingr(1, "steel-plate",         8)
+        add_ingr(3, "electronic-circuit",  6)
     end
 
-    -- Adds glass, perhaps from other mods, in a particular order:
-    if SETTING.GLASS then
-        add_ingr(PREFIX.."glass", 24) -- 100% glass : stone
+    -- Chooses only one glass item name and amount to be used, from among various mods. Ordered so
+    -- that smaller mods and mods that modify other mods go first. Special care must be taken with
+    -- AAI Industry and Krastorio 2, since the former chooses the glass name of the latter, if both
+    -- are present.
+    if ENABLED.GLASS then
+        add_ingr(2, PREFIX.."glass", 24) -- 100% glass : stone
     -- Glass:
-    elseif mods["Glass"] and item_exists("Glass", "glass-plate") then
-        add_ingr("glass-plate",   24) -- 100% glass : stone
+    elseif mods["Glass"] and ItemExists("Glass", "glass-plate") then
+        add_ingr(2, "glass-plate",   24) -- 100% glass : stone
     -- QuirkyCat Glass, Sand and Clay (and minerals) :
-    elseif mods["quirkycat_glass"] and item_exists("quirkycat_glass", "glass") then
-        add_ingr("glass",         32) -- 150% glass : stone
+    elseif mods["quirkycat_glass"] and ItemExists("quirkycat_glass", "glass") then
+        add_ingr(2, "glass",         32) -- 150% glass : stone
     -- Crushing Industry:
     elseif mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
-    and item_exists("crushing-industry", "glass") then
-        add_ingr("glass",         20) --  80% glass : stone
+    and ItemExists("crushing-industry", "glass") then
+        add_ingr(2, "glass",         20) --  80% glass : stone
     -- Factorio+:
-    elseif mods["factorioplus"] and item_exists("factorioplus", "glass-plate") then
-        add_ingr("glass-plate",   24) -- 100% glass : stone
+    elseif mods["factorioplus"] and ItemExists("factorioplus", "glass-plate") then
+        add_ingr(2, "glass-plate",   24) -- 100% glass : stone
     -- AAI Industry (but not Krastorio 2):
-    elseif mods["aai-industry"] and not KRASTORIO2 and item_exists("aai-industry", "glass") then
-        add_ingr("glass",         12) -- 50% glass : stone
+    elseif mods["aai-industry"] and not KRASTORIO2 and ItemExists("aai-industry", "glass") then
+        add_ingr(2, "glass",         12) -- 50% glass : stone
     -- Krastorio 2:
-    elseif KRASTORIO2 and item_exists("Krastorio2", "kr-glass") then
-        add_ingr("kr-glass",      20) -- 125% glass : stone, but kr-greenhouse uses 20 plates
+    elseif KRASTORIO2 and ItemExists("Krastorio2", "kr-glass") then
+        add_ingr(2, "kr-glass",      20) -- 125% glass : stone, but kr-greenhouse uses 20 plates
     -- No glass provided by any recognized source:
     else
-        add_ingr("iron-plate",  24)
+        add_ingr(2, "iron-plate",    24)
     end
+
+    -- Adds seeds and bed to recipe:
+    local Seed = {
+        ["tree"]        = {"wood",          10},
+        ["yumako-tree"] = {"yumako-seed",    5},
+        ["jellystem"]   = {"jellynut-seed",  5},
+        ["slipstack"]   = {"spoilage",      25},
+        ["sunnycomb"]   = {"spoilage",      25}
+    }
+    if SPACE_AGE then Seed["tree"] = {"tree-seed", 10} end
+    local Bed = {
+        ["tree"]        = {"landfill",                 1},
+        ["yumako-tree"] = {"artificial-yumako-soil",   1},
+        ["jellystem"]   = {"artificial-jellynut-soil", 1},
+        ["slipstack"]   = {"landfill",                 1},
+        ["sunnycomb"]   = {"landfill",                 1},
+    }
+    add_ingr(4, Seed[Variant][1], Seed[Variant][2])
+    add_ingr(5, Bed[Variant][1],  Bed[Variant][2] )
 
     return output
 end
@@ -287,63 +272,41 @@ local glassRecipe =  {
 ---------------------------------------------------------------------------------------------------
 -- FINAL DATA WRITE --
 ---------------------------------------------------------------------------------------------------
-if SETTING.PYROLYSIS == "both-recipes" then
-    data:extend({
-        WoodCarbonizationRecipe,
-        WoodDistillationRecipe,
-    })
-    if SPACE_AGE then
-        data:extend({
-            EnhancedWoodDistillationRecipe
-        })
-    end
-elseif SETTING.PYROLYSIS == "carbonization" then
-    data:extend({
-        WoodCarbonizationRecipe
-    })
-elseif SETTING.PYROLYSIS == "distillation" then
-    data:extend({
-        WoodDistillationRecipe,
-    })
-    if SPACE_AGE then
-        data:extend({
-            EnhancedWoodDistillationRecipe
-        })
-    end
-end
-if SETTING.GLASS then
-    data:extend({
-        sandRecipe,
-        glassRecipe
-    })
-end
-if SETTING.TREE_GREENHOUSE then
-    data:extend({
-        createRecipeCategory  ("tree"            ),
-        createGreenhouseRecipe("tree",        "a"),
-        createCropGrowthRecipe("tree",        "a"),
-    })
-end
-if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_1 ~= "disabled" then
-    data:extend({
-        createRecipeCategory  ("yumako-tree"     ),
-        createGreenhouseRecipe("yumako-tree", "b"),
-        createCropGrowthRecipe("yumako-tree", "b"),
-        createRecipeCategory  ("jellystem"       ),
-        createGreenhouseRecipe("jellystem",   "c"),
-        createCropGrowthRecipe("jellystem",   "c"),
-    })
-end
-if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
-    data:extend({
-        createRecipeCategory("slipstack"),
-        createGreenhouseRecipe("slipstack", "d"),
-        createCropGrowthRecipe("slipstack", "d"),
-        createRecipeCategory("sunnycomb"),
-        createGreenhouseRecipe("sunnycomb", "e"),
-        createCropGrowthRecipe("sunnycomb", "e"),
-    })
-end
+if ENABLED.GLASS then data:extend({
+    sandRecipe,
+    glassRecipe
+}) end
+if ENABLED.TREE_GREENHOUSE then data:extend({
+    createRecipeCategory  ("tree"            ),
+    createGreenhouseRecipe("tree",        "a"),
+    createCropGrowthRecipe("tree",        "a"),
+}) end
+if ENABLED.MAIN_GLEBA_GREENHOUSES then data:extend({
+    createRecipeCategory  ("yumako-tree"     ),
+    createGreenhouseRecipe("yumako-tree", "b"),
+    createCropGrowthRecipe("yumako-tree", "b"),
+    createRecipeCategory  ("jellystem"       ),
+    createGreenhouseRecipe("jellystem",   "c"),
+    createCropGrowthRecipe("jellystem",   "c"),
+}) end
+if ENABLED.OTHER_GLEBA_GREENHOUSES then data:extend({
+    createRecipeCategory("slipstack"),
+    createGreenhouseRecipe("slipstack", "d"),
+    createCropGrowthRecipe("slipstack", "d"),
+    createRecipeCategory("sunnycomb"),
+    createGreenhouseRecipe("sunnycomb", "e"),
+    createCropGrowthRecipe("sunnycomb", "e"),
+}) end
+if ENABLED.CARBONIZATION then data:extend({
+    WoodCarbonizationRecipe
+}) end
+if ENABLED.DISTILLATION then data:extend({
+    WoodDistillationRecipe
+}) end
+if ENABLED.ENHANCED_DISTILLATION then data:extend({
+    EnhancedWoodDistillationRecipe
+}) end
+
 ---------------------------------------------------------------------------------------------------
 -- SPACE AGE: TREE PROCESSING
 ---------------------------------------------------------------------------------------------------

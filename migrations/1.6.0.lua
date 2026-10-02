@@ -1,14 +1,8 @@
 ---------------------------------------------------------------------------------------------------
---  ┳┓┏┓┏┳┓┏┓
---  ┃┃┣┫ ┃ ┣┫
---  ┻┛┛┗ ┻ ┛┗
+-- MIGRATIONS FOR V1.6.0
 ---------------------------------------------------------------------------------------------------
-require "functions"
-require "shared"
-require "prototypes.entity"
-require "prototypes.explosion"
-require "prototypes.item"
-require "prototypes.recipe"
-require "prototypes.remnants"
-require "prototypes.technology"
+
+game.print("[color=acid]Krastorio 2 Greenhouse + Wood Pyrolysis:[/color]")
+game.print("  v1.6.0: Gleba greenhouse recipes and related settings were significantly altered!")
+game.print("  See changelog for more details.")
 ---------------------------------------------------------------------------------------------------

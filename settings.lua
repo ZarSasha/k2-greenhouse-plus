@@ -21,26 +21,19 @@ local startup_settings = {
         default_value = true,
         order = "a1"
     },
-    {-- Space Age: Allow Yumako and Jellynut trees to be grown in their own greenhouses.
+    {-- Space Age: Allow Gleba trees to be grown in their own greenhouses.
         type = "string-setting",
-        name = "k2gp-enable-main-gleba-greenhouses",
+        name = "k2gp-enable-gleba-greenhouses",
         setting_type = "startup",
-        default_value = "with-overgrowth-soil",
+        default_value = "all",
         allowed_values = {
-            "with-overgrowth-soil",
-            "with-artificial-soil",
+            "all",
+            "main",    -- Yumako and Jellynut
+            "other",   -- Slipstack and Sunnycomb
             "disabled"
         },
         hidden = not space_age,
         order = "a2"
-    },
-    {-- Space Age: Allow Slipstack and Sunnycomb to be grown in their own greenhouses.
-        type = "bool-setting",
-        name = "k2gp-enable-other-gleba-greenhouses",
-        setting_type = "startup",
-        default_value = true,
-        hidden = not space_age,
-        order = "a3"
     },
     {-- Lets the mod provide its own source of glass for the greenhouses.
         type = "bool-setting",
@@ -90,14 +83,14 @@ local startup_settings = {
         default_value = 0.25,  -- The equivalent of 37.5 planted trees (10 min growth time).
         minimum_value = 0.01,  -- Energy output may be twice that of solar + accu in practice,
         maximum_value = 10,    -- but burning the wood for energy also pollutes a lot. And I
-        order = "e1"           -- don't really want the output to be any lower than this.
+        order = "e1"           -- really don't want the output to be any lower than this.
     },
     {-- Space Age: Greenhouse yumako production rate (items/s.)
         type = "double-setting",
         name = "k2gp-greenhouse-yumako-tree-output-pr-sec",
         setting_type = "startup",
         default_value = 0.375, -- Balanced so a legendary tier greenhouse produces slightly
-        minimum_value = 0.01,  -- more pr. area than an agricultural tower setup does.
+        minimum_value = 0.01,  -- less pr. area than an agricultural tower setup does.
         maximum_value = 10,
         hidden = not space_age,
         order = "e2"

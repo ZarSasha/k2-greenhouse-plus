@@ -63,27 +63,19 @@ local glassItem = {
 ---------------------------------------------------------------------------------------------------
 -- FINAL DATA WRITE
 ---------------------------------------------------------------------------------------------------
-if SETTING.GLASS then
-    data:extend({
-        sandItem,
-        glassItem
-    })
-end
-if SETTING.TREE_GREENHOUSE then
-    data:extend({
-        createGreenhouseItem("tree",        "a")
-    })
-end
-if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_1 ~= "disabled" then
-    data:extend({
-        createGreenhouseItem("yumako-tree", "b"),
-        createGreenhouseItem("jellystem",   "c")
-    })
-end
-if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
-    data:extend({
-        createGreenhouseItem("slipstack", "d"),
-        createGreenhouseItem("sunnycomb", "e")
-    })
-end
+if ENABLED.GLASS then data:extend({
+    sandItem,
+    glassItem
+}) end
+if ENABLED.TREE_GREENHOUSE then data:extend({
+    createGreenhouseItem("tree",        "a")
+}) end
+if ENABLED.MAIN_GLEBA_GREENHOUSES then data:extend({
+    createGreenhouseItem("yumako-tree", "b"),
+    createGreenhouseItem("jellystem",   "c")
+}) end
+if ENABLED.OTHER_GLEBA_GREENHOUSES then data:extend({
+    createGreenhouseItem("slipstack", "d"),
+    createGreenhouseItem("sunnycomb", "e")
+}) end
 ---------------------------------------------------------------------------------------------------

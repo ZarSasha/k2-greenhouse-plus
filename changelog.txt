@@ -1,4 +1,25 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.6.0
+Date: 2026-10-02
+  Balancing:
+    - Main Gleba greenhouse recipes: Removed the option for requiring overgrowth soil, now they
+      simply require artificial soil, and in much lower amount.
+    - Other Gleba greenhouse recipes: Reduced the amount of spoilage required.
+  Changes:
+    - NB: Merged settings for Gleba greenhouses into one. Cannot migrate, so check settings!
+  Info:
+    - Created a migration script informing the player of the changes above.
+    - Updated mod setting descriptions.
+    - Now manually sorts ingredients for greenhouse recipes.
+    - Changed tech recipe unlock order.
+    - Fixed several changelog entries ("Locales:" -> "Locale:").
+  Locale:
+    - Updated Chinese translation using DeepL.
+  Internal:
+    - Changed the the way that the code keeps track of what has been enabled according to settings
+      and presence of mods.
+    - Created a separate file with a small library of functions.
+---------------------------------------------------------------------------------------------------
 Version: 1.5.2
 Date: 2026-10-01
   Balancing:
@@ -33,7 +54,7 @@ Date: 2026-09-25
   Info:
     - Fixed minor errors in changelog entry for v1.4.6.
     - Updated description of recipes and some related settings.
-  Locales:
+  Locale:
     - Updated Chinese translation with DeepL.
   Internal:
     - Updated and expanded end note in recipe.lua about balancing.
@@ -71,7 +92,7 @@ Version: 1.4.5
 Date: 2026-09-23
   Info:
     - Updated some references to pyrolysis recipes in a startup setting.
-  Locales:
+  Locale:
     - Updated Chinese translation with DeepL.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.4
@@ -96,7 +117,7 @@ Date: 2026-09-23
       with the biochamber in Space Age, since the "advanced" recipe works in it now).
     - Updated description of setting related to the greenhouse for trees.
     - Fixed changelog entry for v1.0.0.
-  Locales:
+  Locale:
     - Updated Chinese translation with DeepL.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.3
@@ -111,7 +132,7 @@ Date: 2026-09-22
     - Main Gleba greenhuses: Reduced spore production slightly.
   Info:
     - Updated values in descriptions of startup settings.
-  Locales:
+  Locale:
     - Updated values in Chinese translation.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.2

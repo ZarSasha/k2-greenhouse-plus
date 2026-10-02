@@ -50,7 +50,7 @@ local function createGreenhouse(Variant)
         ["yumako-tree"] = {spores  = 18.5 * SETTING.OUTPUT_RATE["yumako-tree"]},
         ["jellystem"]   = {spores  = 18.5 * SETTING.OUTPUT_RATE["jellystem"  ]}
     }
-    local Conditions = {
+    local SurfaceConditions = {
         ["tree"]        = {cond("solar-power",  50, 120), cond("pressure",  800, 2000)}, -- Nauvis, Gleba
         ["yumako-tree"] = {cond("solar-power",  50,  50), cond("pressure", 2000, 2000)}, -- Gleba
         ["jellystem"]   = {cond("solar-power",  50,  50), cond("pressure", 2000, 2000)}, -- Gleba
@@ -119,7 +119,7 @@ local function createGreenhouse(Variant)
     end
 
     if SPACE_AGE then
-        output.surface_conditions = Conditions[Variant]
+        output.surface_conditions = SurfaceConditions[Variant]
     end
 
     return output
@@ -127,21 +127,15 @@ end
 ---------------------------------------------------------------------------------------------------
 -- FINAL DATA WRITE
 ---------------------------------------------------------------------------------------------------
-if SETTING.TREE_GREENHOUSE then
-    data:extend({
-        createGreenhouse("tree")
-    })
-end
-if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_1 ~= "disabled" then
-    data:extend({
-        createGreenhouse("yumako-tree"),
-        createGreenhouse("jellystem")
-    })
-end
-if SPACE_AGE and SETTING.GLEBA_GREENHOUSES_2 then
-    data:extend({
-        createGreenhouse("slipstack"),
-        createGreenhouse("sunnycomb")
-    })
-end
+if ENABLED.TREE_GREENHOUSE then data:extend({
+    createGreenhouse("tree")
+}) end
+if ENABLED.MAIN_GLEBA_GREENHOUSES then data:extend({
+    createGreenhouse("yumako-tree"),
+    createGreenhouse("jellystem")
+}) end
+if ENABLED.OTHER_GLEBA_GREENHOUSES then data:extend({
+    createGreenhouse("slipstack"),
+    createGreenhouse("sunnycomb")
+}) end
 ---------------------------------------------------------------------------------------------------
