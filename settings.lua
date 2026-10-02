@@ -83,14 +83,14 @@ local startup_settings = {
         default_value = 0.25,  -- The equivalent of 37.5 planted trees (10 min growth time).
         minimum_value = 0.01,  -- Energy output may be twice that of solar + accu in practice,
         maximum_value = 10,    -- but burning the wood for energy also pollutes a lot. And I
-        order = "e1"           -- don't really want the output to be any lower than this.
+        order = "e1"           -- really don't want the output to be any lower than this.
     },
     {-- Space Age: Greenhouse yumako production rate (items/s.)
         type = "double-setting",
         name = "k2gp-greenhouse-yumako-tree-output-pr-sec",
         setting_type = "startup",
         default_value = 0.375, -- Balanced so a legendary tier greenhouse produces slightly
-        minimum_value = 0.01,  -- more pr. area than an agricultural tower setup does.
+        minimum_value = 0.01,  -- less pr. area than an agricultural tower setup does.
         maximum_value = 10,
         hidden = not space_age,
         order = "e2"
