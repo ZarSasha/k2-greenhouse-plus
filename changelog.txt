@@ -11,6 +11,8 @@ Date: 2026-10-02
     - Created a migration script informing the player of the change at the top.
     - Removed obsolete descriptions, created description for new, merged setting.
     - Fixed several changelog entries ("Locales:" -> "Locale:").
+    - No longer allows greenhouse recipe ingredients to be automatically sorted.
+    - Changed tech recipe unlock order.
   Locales:
     - TODO: Update Chinese translation.
 ---------------------------------------------------------------------------------------------------

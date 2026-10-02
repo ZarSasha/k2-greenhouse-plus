@@ -27,6 +27,69 @@ end
 ---------------------------------------------------------------------------------------------------
 -- Creates recipes for greenhouse variants.
 local function createGreenhouseRecipe(Variant, Order)
+    -- Main prototype table:
+    local output = {
+        type     = "recipe",
+        name     = PREFIX.."greenhouse-for-"..Variant,
+        categories = {"crafting"},
+        subgroup = SPACE_AGE and "agriculture" or "production-machine",
+        order    = (SPACE_AGE and "a" or "g").."[greenhouse]-"..Order.."["..Variant.."]",
+        enabled  = false,
+        energy_required = nil, -- defined below
+        ingredients = {}, -- filled below
+        results = {
+            { type = "item", name = PREFIX.."greenhouse-for-"..Variant, amount = 1 }
+        },
+        sort_item_ingredients = false -- I want them in the order they are added!
+    }
+
+    -- Helper function to add ingredients to recipe:
+    local function add_ingr(Position, Name, Amount)
+        table.insert(output.ingredients, Position, { type = "item", name = Name ,amount = Amount })
+    end
+
+    -- Adds various ingredients and changes energy need depending on mods installed.
+    if KRASTORIO2 then
+        output.energy_required = 10
+        add_ingr(1, "kr-iron-beam",       10)
+        add_ingr(3, "kr-automation-core", 10)
+    else
+        output.energy_required = 5
+        add_ingr(1, "steel-plate",         8)
+        add_ingr(3, "electronic-circuit",  6)
+    end
+
+    -- Chooses only one glass item name and amount to be used, from among various mods. Ordered so
+    -- that smaller mods and mods that modify other mods go first. Special care must be taken with
+    -- AAI Industry and Krastorio 2, since the former chooses the glass name of the latter, if both
+    -- are present.
+    if SETTING.GLASS then
+        add_ingr(2, PREFIX.."glass", 24) -- 100% glass : stone
+    -- Glass:
+    elseif mods["Glass"] and item_exists("Glass", "glass-plate") then
+        add_ingr(2, "glass-plate",   24) -- 100% glass : stone
+    -- QuirkyCat Glass, Sand and Clay (and minerals) :
+    elseif mods["quirkycat_glass"] and item_exists("quirkycat_glass", "glass") then
+        add_ingr(2, "glass",         32) -- 150% glass : stone
+    -- Crushing Industry:
+    elseif mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
+    and item_exists("crushing-industry", "glass") then
+        add_ingr(2, "glass",         20) --  80% glass : stone
+    -- Factorio+:
+    elseif mods["factorioplus"] and item_exists("factorioplus", "glass-plate") then
+        add_ingr(2, "glass-plate",   24) -- 100% glass : stone
+    -- AAI Industry (but not Krastorio 2):
+    elseif mods["aai-industry"] and not KRASTORIO2 and item_exists("aai-industry", "glass") then
+        add_ingr(2, "glass",         12) -- 50% glass : stone
+    -- Krastorio 2:
+    elseif KRASTORIO2 and item_exists("Krastorio2", "kr-glass") then
+        add_ingr(2, "kr-glass",      20) -- 125% glass : stone, but kr-greenhouse uses 20 plates
+    -- No glass provided by any recognized source:
+    else
+        add_ingr(2, "iron-plate",    24)
+    end
+
+    -- Adds seeds and bed to recipe:
     local Seed = {
         ["tree"]        = {"wood",          10},
         ["yumako-tree"] = {"yumako-seed",    5},
@@ -42,71 +105,8 @@ local function createGreenhouseRecipe(Variant, Order)
         ["slipstack"]   = {"stone",     15},
         ["sunnycomb"]   = {"stone",     15}
     }
-
-    -- Main prototype table:
-    local output = {
-        type     = "recipe",
-        name     = PREFIX.."greenhouse-for-"..Variant,
-        categories = {"crafting"},
-        subgroup = SPACE_AGE and "agriculture" or "production-machine",
-        order    = (SPACE_AGE and "a" or "g").."[greenhouse]-"..Order.."["..Variant.."]",
-        enabled  = false,
-        energy_required = nil, -- defined below
-        ingredients = {
-            { type = "item", name = Seed[Variant][1], amount = Seed[Variant][2] },
-            { type = "item", name = Bed[Variant][1],  amount = Bed[Variant][2] }
-            -- More to be added below
-        },
-        results = {
-            { type = "item", name = PREFIX.."greenhouse-for-"..Variant, amount = 1 }
-        }
-    }
-
-    -- Helper function to add ingredients to recipe:
-    local function add_ingr(Name, Amount)
-        table.insert(output.ingredients, { type = "item", name = Name ,amount = Amount })
-    end
-
-    -- Adds various ingredients and changes energy need depending on mods installed.
-    if KRASTORIO2 then
-        output.energy_required = 10
-        add_ingr("kr-iron-beam",       10)
-        add_ingr("kr-automation-core", 10)
-    else
-        output.energy_required = 5
-        add_ingr("steel-plate",         8)
-        add_ingr("electronic-circuit",  6)
-    end
-
-    -- Chooses only one glass item name and amount to be used, from among various mods. Ordered so
-    -- that smaller mods and mods that modify other mods go first. Special care must be taken with
-    -- AAI Industry and Krastorio 2, since the former chooses the glass name of the latter, if both
-    -- are present.
-    if SETTING.GLASS then
-        add_ingr(PREFIX.."glass", 24) -- 100% glass : stone
-    -- Glass:
-    elseif mods["Glass"] and item_exists("Glass", "glass-plate") then
-        add_ingr("glass-plate",   24) -- 100% glass : stone
-    -- QuirkyCat Glass, Sand and Clay (and minerals) :
-    elseif mods["quirkycat_glass"] and item_exists("quirkycat_glass", "glass") then
-        add_ingr("glass",         32) -- 150% glass : stone
-    -- Crushing Industry:
-    elseif mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
-    and item_exists("crushing-industry", "glass") then
-        add_ingr("glass",         20) --  80% glass : stone
-    -- Factorio+:
-    elseif mods["factorioplus"] and item_exists("factorioplus", "glass-plate") then
-        add_ingr("glass-plate",   24) -- 100% glass : stone
-    -- AAI Industry (but not Krastorio 2):
-    elseif mods["aai-industry"] and not KRASTORIO2 and item_exists("aai-industry", "glass") then
-        add_ingr("glass",         12) -- 50% glass : stone
-    -- Krastorio 2:
-    elseif KRASTORIO2 and item_exists("Krastorio2", "kr-glass") then
-        add_ingr("kr-glass",      20) -- 125% glass : stone, but kr-greenhouse uses 20 plates
-    -- No glass provided by any recognized source:
-    else
-        add_ingr("iron-plate",    24)
-    end
+    add_ingr(4, Seed[Variant][1], Seed[Variant][2])
+    add_ingr(5, Bed[Variant][1],  Bed[Variant][2])
 
     return output
 end

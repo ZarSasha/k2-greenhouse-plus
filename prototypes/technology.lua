@@ -108,14 +108,14 @@ if SPACE_AGE then
     local agri_tech  = data.raw.technology["agriculture"]
     if SETTING.GLEBA_GREENHOUSES == "main" or SETTING.GLEBA_GREENHOUSES == "all" then
         table.insert(agri_tech.effects, unlock(PREFIX.."greenhouse-for-yumako-tree"   ))
-        table.insert(agri_tech.effects, unlock(PREFIX.."greenhouse-for-jellystem"     ))
         table.insert(agri_tech.effects, unlock(PREFIX.."greenhouse-yumako-tree-growth"))
+        table.insert(agri_tech.effects, unlock(PREFIX.."greenhouse-for-jellystem"     ))
         table.insert(agri_tech.effects, unlock(PREFIX.."greenhouse-jellystem-growth"  ))
     end
     if SETTING.GLEBA_GREENHOUSES == "other" or SETTING.GLEBA_GREENHOUSES == "all" then
         table.insert(agri_tech.effects,  unlock(PREFIX.."greenhouse-for-slipstack"     ))
-        table.insert(agri_tech.effects,  unlock(PREFIX.."greenhouse-for-sunnycomb"     ))
         table.insert(agri_tech.effects,  unlock(PREFIX.."greenhouse-slipstack-growth"  ))
+        table.insert(agri_tech.effects,  unlock(PREFIX.."greenhouse-for-sunnycomb"     ))
         table.insert(agri_tech.effects,  unlock(PREFIX.."greenhouse-sunnycomb-growth"  ))
     end
 end
