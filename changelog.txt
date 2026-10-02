@@ -1,4 +1,25 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.7.0
+Date: 2026-10-02
+  Balancing:
+    - IMPORTANT: Greenhouses: Nerfed quality variants so they no longer receive any speed bonus!
+      Gleba greenhouses: Increased default base production rate to 1/s, since quality no longer
+      needs to play a factor in balancing. This way, they should produce ~93.5% pr. area compared
+      to an efficient agricultural tower setup.
+    - Greenhouse for trees: Doubled default base production rate to 0.5/s to somewhat keep up
+      with the other changes. (It is the equivalent of 75 trees, an amount that technically could
+      be planted within a 7x7 area, the size of the greenhouse collision box).
+  Notes:
+    - I know that the change at the top may disappoint some, but I think it is important for
+      balance. Agricultural towers cannot benefit from quality either, after all. (I wasn't able
+      to perform this balancing until the crafting_speed_quality_multiplier entity property became
+      available with Factorio v2.0.58 on 2026-06-23, and I only discovered this addition recently.)
+    - I elected to not increase the amount of wood/tree seeds required by the recipe for the
+      greenhouse for trees. One could argue that it should be 75, but that is just excessive. In
+      the first place, it seems really unfair how low output trees have, compared to Yumako &
+      Jellynut trees that grow on a planet with less sunlight. My mod is generally balanced to at
+      least somewhat close the gap between them.
+---------------------------------------------------------------------------------------------------
 Version: 1.6.0
 Date: 2026-10-02
   Balancing:
