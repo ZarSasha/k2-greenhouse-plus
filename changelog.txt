@@ -2,16 +2,16 @@
 Version: 1.6.0
 Date: 2026-10-02
   Balancing:
-    - Greenhouse recipes: Simplified and made cheaper. Greenhouses require either landfill or a
-      artificial soil. The main Gleba greenhouses unlock with Artificial Soil tech.
+    - Main Gleba greenhouse recipes: Removed the option for making them require overgrowth soil,
+      instead just made them require artifical soil, and in much lower amount.
   Changes:
     - NB: Merged settings for Gleba greenhouses into one. Cannot migrate, so check settings!
   Info:
     - Created a migration script informing the player of the changes above.
     - Removed obsolete descriptions, created description for new, merged setting.
-    - Fixed several changelog entries ("Locales:" -> "Locale:").
     - Now sorts the ingredients for the greenhouses so their order remains consistent.
     - Changed tech recipe unlock order.
+    - Fixed several changelog entries ("Locales:" -> "Locale:").
   Locale:
     - Updated Chinese translation using DeepL.
   Internal:
