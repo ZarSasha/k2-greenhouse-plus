@@ -118,13 +118,11 @@ local function createGreenhouse(Variant)
         table.insert(output.allowed_module_categories, "quality")
         table.insert(output.allowed_effects, "quality")
         -- Completely nerfs quality speed bonuses:
-        local quality_names = {}
+        local quality_multipliers = {}
         for _, quality in pairs(data.raw.quality) do
-            table.insert(quality_names, quality.name)
+            quality_multipliers[quality.name] = 1.0
         end
-        for _, quality_name in pairs(quality_names) do
-            output.crafting_speed_quality_multiplier[quality_name] = 1.0
-        end
+        output.crafting_speed_quality_multiplier = quality_multipliers
     end
 
     if SPACE_AGE then
