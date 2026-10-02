@@ -11,9 +11,9 @@ Date: 2026-10-02
     - Created a migration script informing the player of the recent changes.
     - Removed obsolete descriptions, created description for new, merged setting.
     - Fixed several changelog entries ("Locales:" -> "Locale:").
-    - Now forces the sorting of ingredients for the greenhouses so their order remains consistent.
+    - Now sorts the ingredients for the greenhouses so their order remains consistent.
     - Changed tech recipe unlock order.
-  Locales:
+  Locale:
     - Update Chinese translation.
 ---------------------------------------------------------------------------------------------------
 Version: 1.5.2
