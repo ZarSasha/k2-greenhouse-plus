@@ -3,6 +3,7 @@
 --  ┃┃┣┫ ┃ ┣┫
 --  ┻┛┛┗ ┻ ┛┗
 ---------------------------------------------------------------------------------------------------
+require "functions"
 require "shared"
 require "prototypes.entity"
 require "prototypes.explosion"

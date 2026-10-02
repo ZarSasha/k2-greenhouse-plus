@@ -23,6 +23,7 @@ KRASTORIO2    = mods["Krastorio2"] and true or false
 -- STARTUP SETTINGS
 ---------------------------------------------------------------------------------------------------
 local function conf(Name) return settings.startup[Name].value end
+
 SETTING = {
     TREE_GREENHOUSE     = conf "k2gp-enable-tree-greenhouse",
     GLEBA_GREENHOUSES   = conf "k2gp-enable-gleba-greenhouses",
@@ -37,5 +38,29 @@ SETTING = {
         ["slipstack"  ] = conf "k2gp-greenhouse-slipstack-output-pr-sec",
         ["sunnycomb"  ] = conf "k2gp-greenhouse-sunnycomb-output-pr-sec"
     }
+}
+
+---------------------------------------------------------------------------------------------------
+-- ENABLED FEATURES
+---------------------------------------------------------------------------------------------------
+ENABLED = {
+    TREE_GREENHOUSE = SETTING.TREE_GREENHOUSE,
+    MAIN_GLEBA_GREENHOUSES = SPACE_AGE and TableContainsValue(
+        {"all", "main"}, SETTING.GLEBA_GREENHOUSES
+    ),
+    OTHER_GLEBA_GREENHOUSES = SPACE_AGE and TableContainsValue(
+        {"all", "other"}, SETTING.GLEBA_GREENHOUSES
+    ),
+    GLASS = SETTING.GLASS,
+    CARBONIZATION = TableContainsValue(
+        {"both-recipes", "carbonization"}, SETTING.PYROLYSIS
+    ),
+    DISTILLATION = TableContainsValue(
+        {"both-recipes", "distillation"}, SETTING.PYROLYSIS
+    ),
+    ENHANCED_DISTILLATION = SPACE_AGE and TableContainsValue(
+        {"both-recipes", "distillation"}, SETTING.PYROLYSIS
+    ),
+    EARLY_LIQUEFACTION = SETTING.EARLY_LIQUEFACTION
 }
 ---------------------------------------------------------------------------------------------------

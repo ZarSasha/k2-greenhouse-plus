@@ -4,18 +4,6 @@
 --  ┛┗┗┛┗┛┻┣┛┗┛
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------
--- HELPER FUNCTIONS
----------------------------------------------------------------------------------------------------
--- Checks for presence of item, returns error in log if missing.
-local function item_exists(ModName, Item)
-    if data.raw.item[Item] ~= nil then
-        return true
-    else
-        log("item with ID \""..Item.."\" from the mod \""..ModName.."\" does not exist!")
-        return false
-    end
-end
----------------------------------------------------------------------------------------------------
 -- GREENHOUSE: RECIPE CATEGORIES
 ---------------------------------------------------------------------------------------------------
 local function createRecipeCategory(Variant)
@@ -66,23 +54,23 @@ local function createGreenhouseRecipe(Variant, Order)
     if SETTING.GLASS then
         add_ingr(2, PREFIX.."glass", 24) -- 100% glass : stone
     -- Glass:
-    elseif mods["Glass"] and item_exists("Glass", "glass-plate") then
+    elseif mods["Glass"] and ItemExists("Glass", "glass-plate") then
         add_ingr(2, "glass-plate",   24) -- 100% glass : stone
     -- QuirkyCat Glass, Sand and Clay (and minerals) :
-    elseif mods["quirkycat_glass"] and item_exists("quirkycat_glass", "glass") then
+    elseif mods["quirkycat_glass"] and ItemExists("quirkycat_glass", "glass") then
         add_ingr(2, "glass",         32) -- 150% glass : stone
     -- Crushing Industry:
     elseif mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
-    and item_exists("crushing-industry", "glass") then
+    and ItemExists("crushing-industry", "glass") then
         add_ingr(2, "glass",         20) --  80% glass : stone
     -- Factorio+:
-    elseif mods["factorioplus"] and item_exists("factorioplus", "glass-plate") then
+    elseif mods["factorioplus"] and ItemExists("factorioplus", "glass-plate") then
         add_ingr(2, "glass-plate",   24) -- 100% glass : stone
     -- AAI Industry (but not Krastorio 2):
-    elseif mods["aai-industry"] and not KRASTORIO2 and item_exists("aai-industry", "glass") then
+    elseif mods["aai-industry"] and not KRASTORIO2 and ItemExists("aai-industry", "glass") then
         add_ingr(2, "glass",         12) -- 50% glass : stone
     -- Krastorio 2:
-    elseif KRASTORIO2 and item_exists("Krastorio2", "kr-glass") then
+    elseif KRASTORIO2 and ItemExists("Krastorio2", "kr-glass") then
         add_ingr(2, "kr-glass",      20) -- 125% glass : stone, but kr-greenhouse uses 20 plates
     -- No glass provided by any recognized source:
     else
@@ -284,65 +272,41 @@ local glassRecipe =  {
 ---------------------------------------------------------------------------------------------------
 -- FINAL DATA WRITE --
 ---------------------------------------------------------------------------------------------------
-if SETTING.PYROLYSIS == "both-recipes" then
-    data:extend({
-        WoodCarbonizationRecipe,
-        WoodDistillationRecipe,
-    })
-    if SPACE_AGE then
-        data:extend({
-            EnhancedWoodDistillationRecipe
-        })
-    end
-elseif SETTING.PYROLYSIS == "carbonization" then
-    data:extend({
-        WoodCarbonizationRecipe
-    })
-elseif SETTING.PYROLYSIS == "distillation" then
-    data:extend({
-        WoodDistillationRecipe,
-    })
-    if SPACE_AGE then
-        data:extend({
-            EnhancedWoodDistillationRecipe
-        })
-    end
-end
-if SETTING.GLASS then
-    data:extend({
-        sandRecipe,
-        glassRecipe
-    })
-end
-if SETTING.TREE_GREENHOUSE then
-    data:extend({
-        createRecipeCategory  ("tree"            ),
-        createGreenhouseRecipe("tree",        "a"),
-        createCropGrowthRecipe("tree",        "a"),
-    })
-end
-if SPACE_AGE and (SETTING.GLEBA_GREENHOUSES == "main"
-or SETTING.GLEBA_GREENHOUSES == "all") then
-    data:extend({
-        createRecipeCategory  ("yumako-tree"     ),
-        createGreenhouseRecipe("yumako-tree", "b"),
-        createCropGrowthRecipe("yumako-tree", "b"),
-        createRecipeCategory  ("jellystem"       ),
-        createGreenhouseRecipe("jellystem",   "c"),
-        createCropGrowthRecipe("jellystem",   "c"),
-    })
-end
-if SPACE_AGE and (SETTING.GLEBA_GREENHOUSES == "other"
-or SETTING.GLEBA_GREENHOUSES == "all") then
-    data:extend({
-        createRecipeCategory("slipstack"),
-        createGreenhouseRecipe("slipstack", "d"),
-        createCropGrowthRecipe("slipstack", "d"),
-        createRecipeCategory("sunnycomb"),
-        createGreenhouseRecipe("sunnycomb", "e"),
-        createCropGrowthRecipe("sunnycomb", "e"),
-    })
-end
+if ENABLED.GLASS then data:extend({
+    sandRecipe,
+    glassRecipe
+}) end
+if ENABLED.TREE_GREENHOUSE then data:extend({
+    createRecipeCategory  ("tree"            ),
+    createGreenhouseRecipe("tree",        "a"),
+    createCropGrowthRecipe("tree",        "a"),
+}) end
+if ENABLED.MAIN_GLEBA_GREENHOUSES then data:extend({
+    createRecipeCategory  ("yumako-tree"     ),
+    createGreenhouseRecipe("yumako-tree", "b"),
+    createCropGrowthRecipe("yumako-tree", "b"),
+    createRecipeCategory  ("jellystem"       ),
+    createGreenhouseRecipe("jellystem",   "c"),
+    createCropGrowthRecipe("jellystem",   "c"),
+}) end
+if ENABLED.OTHER_GLEBA_GREENHOUSES then data:extend({
+    createRecipeCategory("slipstack"),
+    createGreenhouseRecipe("slipstack", "d"),
+    createCropGrowthRecipe("slipstack", "d"),
+    createRecipeCategory("sunnycomb"),
+    createGreenhouseRecipe("sunnycomb", "e"),
+    createCropGrowthRecipe("sunnycomb", "e"),
+}) end
+if ENABLED.CARBONIZATION then data:extend({
+    WoodCarbonizationRecipe
+}) end
+if ENABLED.DISTILLATION then data:extend({
+    WoodDistillationRecipe
+}) end
+if ENABLED.ENHANCED_DISTILLATION then data:extend({
+    EnhancedWoodDistillationRecipe
+}) end
+
 ---------------------------------------------------------------------------------------------------
 -- SPACE AGE: TREE PROCESSING
 ---------------------------------------------------------------------------------------------------
