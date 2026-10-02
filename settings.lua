@@ -124,12 +124,13 @@ local startup_settings = {
     --- HIDDEN SETTINGS ---
 
     {-- Quality: Allows the output rate for greenhouses to scale normally with quality.
-     -- Disabled by default, because it breaks game balance.
+     -- Forced disabled, because it breaks game balance.
         type = "bool-setting",
         name = "k2gp-allow-greenhouse-quality-scaling",
         setting_type = "startup",
         default_value = false,
         hidden = true,
+        forced_value = false, -- loaded when |hidden = true|.
         order = "f"
     }
 }

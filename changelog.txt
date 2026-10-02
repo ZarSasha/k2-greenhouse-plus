@@ -14,6 +14,7 @@ Date: 2026-10-03
       size of the greenhouse collision box).
   Info:
     - Created a migration script informing the player of the changes above.
+    - Adjusted migration script for v1.5.0.
     - Added Factoriopedia entries for the greenhouses, warning that their rate of output cannot
       benefit from quality.
     - Updated numbers in mod descriptions related to greenhouse absorption/emissions.
@@ -25,9 +26,9 @@ Date: 2026-10-03
     - Created a hidden setting for greenhouse quality scaling. Disabled by default.
   Notes:
     - I know that the change at the top may disappoint some, but I think it is important for
-      balance. Agricultural towers cannot benefit from quality either, after all. (I wasn't able
-      to perform this balancing until an API update in Factorio v2.0.58 on 2025-06-23, and I only
-      discovered the update recently.)
+      balance. Agricultural towers cannot benefit from higher quality tiers either, after all.
+      (I wasn't able to perform this balancing until an API update in Factorio v2.0.58 on
+      2025-06-23, and I only discovered the update recently.)
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.0
 Date: 2026-10-02
