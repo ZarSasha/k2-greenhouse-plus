@@ -8,19 +8,18 @@ Date: 2026-10-03
         but it was only recently that I discovered the needed update to the API (v2.0.58). I figure
         that not everyone will like this change, so there is an option to re-enable the scaling
         in the settings.
-      - Made consumption of electricity scale with the output rate of the greenhouse for trees
-        (50kW at the new default rate of 0.5/s, minimum of 5kW).
+      - Doubled consumption of electricity (25kW -> 50kW) because of changes below.
     - Gleba greenhouses: Increased default base output rate (0.375/s -> 1.0/s) since quality no
       longer needs to be considered for balancing. This way, a greenhouse setup should produce
       ~93.5% (instead of only ~35%) pr. area compared to an agricultural tower setup. (The new
-      output is the equivalent of 6 trees).
+      output rate is the equivalent of 6 trees).
     - Greenhouse for trees: Doubled default base production rate (0.25/s -> 0.5/s) to somewhat keep
       up with the other changes. (The new output is the equivalent of 75 trees, an amount that
       could technically be planted within a 7x7 area, the size of the greenhouse collision box. It
       it still less than the 0.67/s provided by the greenhouse in Krastorio 2.)
   Changes:
     - NB: Merged some settings, because I felt that there are too many. Yumako trees + Jellystems
-      and Slipstacks + Sunnycombs now have their outputs configured as groups. No migrations are
+      and Slipstacks + Sunnycombs now have their output rates configured as groups. No migrations
       provided, so check the settings!
   Compatibility:
     - Added Quality as an optional dependency so it loads first.
