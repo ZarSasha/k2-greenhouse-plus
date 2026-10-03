@@ -9,6 +9,7 @@
   "dependencies": [
     "base",
     "? space-age",
+    "? quality",
     "? Krastorio2",
     "? aai-industry",
     "? factorioplus",
