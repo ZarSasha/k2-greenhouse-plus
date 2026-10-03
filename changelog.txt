@@ -18,6 +18,8 @@ Date: 2026-10-03
       up with the other changes. (The new output is the equivalent of 75 trees, an amount that
       could technically be planted within a 7x7 area, the size of the greenhouse collision box. It
       it still less than the 0.67/s provided by the greenhouse in Krastorio 2.)
+  Changes:
+    - Added Quality as an optional dependency so it loads first.
   Info:
     - Created a migration script informing the player of the changes above.
     - Adjusted migration script for v1.6.0.
