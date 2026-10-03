@@ -3,31 +3,30 @@ Version: 1.7.0
 Date: 2026-10-03
   Balancing:
     - Greenhouses:
-      - For the sake of balance, quality variants no longer receive any crafting speed bonus by
-        default! This can be re-enabled in the setting.
+      - NB: Quality variants no longer receive any crafting speed bonus by default! This can be
+        re-enabled in the settings.
       - Made consumption of electricity scale with the output rate of the greenhouse for trees
-        (50kW at the default rate of 0.5/s).
-    - Gleba greenhouses: Increased default base production rate (0.375/s -> 1.0/s), since quality
-      no longer needs to play a factor in balancing. This way, a greenhouse setup should produce
+        (50kW at the default rate of 0.5/s, minimum of 5kW).
+    - Gleba greenhouses: Increased default base production rate (0.375/s -> 1.0/s) since quality
+      no longer needs to be considered for balancing. This way, a greenhouse setup should produce
       ~93.5% (instead of only ~35%) pr. area compared to an agricultural tower setup.
-    - Greenhouse for trees: Doubled default base production rate (0.25/s -> 0.5/s), to somewhat
+    - Greenhouse for trees: Doubled default base production rate (0.25/s -> 0.5/s) to somewhat
       keep up with the other changes. (It is the equivalent of 75 trees, an amount that could
-      technically be planted within a 7x7 area, the size of the greenhouse collision box).
+      technically be planted within a 7x7 area, the size of the greenhouse collision box. It it
+      still less than the 0.67/s provided by the greenhouse in Krastorio 2 v2.1.3).
   Info:
     - Created a migration script informing the player of the changes above.
     - Adjusted migration script for v1.6.0.
-    - Updated numbers in mod descriptions related to greenhouse absorption/emissions.
+    - TODO: Updated numbers in mod descriptions related to greenhouse absorption/emissions.
     - Now uses only one description for modules setting, regardless of presence of Space Age.
     - Simplified mod description.
   Locale:
     - TODO: Updated Chinese translation using DeepL (also fixed missing translations).
-  Internal:
-    - Created a hidden setting for greenhouse quality scaling. Disabled by default.
   Notes:
-    - Greenhouse quality speed bonus: I always wanted to disable this for the sake of balance, but
-      it was only recently that I discovered the update to the API that allows this (v2.0.58).
-      Anyway, I decided to create an option for the quality scaling, so that players who already
-      rely on it can re-enable it in the settings.
+    - Greenhouse quality speed bonus: I always wanted to disable this since planted trees and
+      agricultural towers can't benefit from quality, but it was only recently that I discovered
+      the needed update to the API (v2.0.58). Anyway, I decided to create an option for the quality
+      scaling so that players who already rely on it can re-enable it in the settings.
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.0
 Date: 2026-10-02
