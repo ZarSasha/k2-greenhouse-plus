@@ -3,8 +3,10 @@ Version: 1.7.0
 Date: 2026-10-03
   Balancing:
     - Greenhouses:
-      - NB: Quality variants no longer receive any crafting speed bonus by default! This can be
-        re-enabled in the settings.
+      - NB: Quality variants no longer receive any crafting speed bonus by default! I always wanted
+        to disable this since planted trees and agricultural towers can't benefit from quality, but
+        it was only recently that I discovered the needed update to the API (v2.0.58). There is an
+        option to re-enable it in the settings.
       - Made consumption of electricity scale with the output rate of the greenhouse for trees
         (50kW at the new default rate of 0.5/s, minimum of 5kW).
     - Gleba greenhouses: Increased default base output rate (0.375/s -> 1.0/s) since quality no
@@ -22,11 +24,6 @@ Date: 2026-10-03
     - Simplified mod description.
   Locale:
     - Updated Chinese translation using DeepL (also fixed missing translations).
-  Notes:
-    - Greenhouse quality speed bonus: I always wanted to disable this since planted trees and
-      agricultural towers can't benefit from quality, but it was only recently that I discovered
-      the needed update to the API (v2.0.58). Anyway, I decided to create an option for the quality
-      scaling so that players who already rely on it can re-enable it in the settings.
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.0
 Date: 2026-10-02
