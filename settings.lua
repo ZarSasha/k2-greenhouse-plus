@@ -92,9 +92,9 @@ local startup_settings = {
         maximum_value = 10,    -- technically be planted within a 7x7 area, just barely).
         order = "e1"
     },
-    {-- Space Age: Greenhouse yumako production rate (items/s.)
+    {-- Space Age: Greenhouse yumako/jellynut production rate (items/s.)
         type = "double-setting",
-        name = "k2gp-greenhouse-yumako-tree-output-pr-sec",
+        name = "k2gp-greenhouse-gleba-main-trees-output-pr-sec",
         setting_type = "startup",
         default_value = 1,     -- Balanced to produce a bit less (~93.5%) pr. area of
         minimum_value = 0.01,  -- what an agricultural tower is capable of.
@@ -102,37 +102,16 @@ local startup_settings = {
         hidden = not space_age,
         order = "e2"
     },
-    {-- Space Age: Greenhouse jellynut production rate (items/s.)
+    {-- Space Age: Greenhouse slipstack/sunnycomb production rate (items/s.)
         type = "double-setting",
-        name = "k2gp-greenhouse-jellystem-output-pr-sec",
+        name = "k2gp-greenhouse-gleba-other-trees-output-pr-sec",
         setting_type = "startup",
-        default_value = 1,     -- Same as above ^
-        minimum_value = 0.01,
-        maximum_value = 10,
-        hidden = not space_age,
-        order = "e3"
-    },
-    {-- Space Age: Greenhouse slipstack production rate (items/s.)
-        type = "double-setting",
-        name = "k2gp-greenhouse-slipstack-output-pr-sec",
-        setting_type = "startup",
-        default_value = 1,     -- 0.6 spoilage, 0.4 stone
+        default_value = 1, -- slipstack: 60% spoilage, 40% stone
         minimum_value = 0.01,
         maximum_value = 10,
         hidden = not space_age,
         order = "e4"
-    },
-    {-- Space Age: Greenhouse sunnycomb production rate (items/s.)
-        type = "double-setting",
-        name = "k2gp-greenhouse-sunnycomb-output-pr-sec",
-        setting_type = "startup",
-        default_value = 1,
-        minimum_value = 0.01,
-        maximum_value = 10,
-        hidden = not space_age,
-        order = "e5"
-    },
-
+    }
 }
 
 ---------------------------------------------------------------------------------------------------

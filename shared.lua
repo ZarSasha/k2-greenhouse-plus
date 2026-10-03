@@ -34,10 +34,10 @@ SETTING = {
     QUALITY_SCALING     = conf "k2gp-allow-greenhouse-quality-scaling",
     OUTPUT_RATE = {
         ["tree"       ] = conf "k2gp-greenhouse-tree-output-pr-sec",
-        ["yumako-tree"] = conf "k2gp-greenhouse-yumako-tree-output-pr-sec",
-        ["jellystem"  ] = conf "k2gp-greenhouse-jellystem-output-pr-sec",
-        ["slipstack"  ] = conf "k2gp-greenhouse-slipstack-output-pr-sec",
-        ["sunnycomb"  ] = conf "k2gp-greenhouse-sunnycomb-output-pr-sec"
+        ["yumako-tree"] = conf "k2gp-greenhouse-gleba-main-trees-output-pr-sec",
+        ["jellystem"  ] = conf "k2gp-greenhouse-gleba-main-trees-output-pr-sec",
+        ["slipstack"  ] = conf "k2gp-greenhouse-gleba-other-trees-output-pr-sec",
+        ["sunnycomb"  ] = conf "k2gp-greenhouse-gleba-other-trees-output-pr-sec"
     }
 }
 

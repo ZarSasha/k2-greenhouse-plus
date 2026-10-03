@@ -19,12 +19,15 @@ Date: 2026-10-03
       could technically be planted within a 7x7 area, the size of the greenhouse collision box. It
       it still less than the 0.67/s provided by the greenhouse in Krastorio 2.)
   Changes:
+    - NB: Merged some settings, because I felt that there are too many. Yumako trees + Jellystems
+      and Slipstacks + Sunnycombs now have their outputs configured as groups. No migrations are
+      provided, so check the settings!
+  Compatibility:
     - Added Quality as an optional dependency so it loads first.
   Info:
     - Created a migration script informing the player of the changes above.
     - Adjusted migration script for v1.6.0.
-    - Updated descriptions of settings. Now also uses only one description for modules setting,
-      regardless of presence of Space Age.
+    - Updated and simplified descriptions of many settings.
     - Simplified mod description.
   Locale:
     - Updated Chinese translation using DeepL (also fixed missing translations).
