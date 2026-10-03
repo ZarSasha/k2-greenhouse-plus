@@ -75,7 +75,7 @@ if ENABLED.DISTILLATION then
     }
 end
 
-if ENABLED.ENHANCED_DISTILLATION then
+if SPACE_AGE and ENABLED.ENHANCED_DISTILLATION then
     -- Unlocks enhanced wood distillation with the biochamber.
     local bio_tech = data.raw.technology["biochamber"]
     table.insert(bio_tech.effects, unlock(PREFIX.."wood-distillation-enhanced"))
@@ -103,14 +103,14 @@ if SPACE_AGE and ENABLED.TREE_GREENHOUSE then
     local seed_tech  = data.raw.technology["tree-seeding"]
     seed_tech.unit.count = 1
 end
-if ENABLED.MAIN_GLEBA_GREENHOUSES then
+if SPACE_AGE and ENABLED.MAIN_GLEBA_GREENHOUSES then
     local soil_tech  = data.raw.technology["artificial-soil"]
     table.insert(soil_tech.effects, unlock(PREFIX.."greenhouse-for-yumako-tree"   ))
     table.insert(soil_tech.effects, unlock(PREFIX.."greenhouse-yumako-tree-growth"))
     table.insert(soil_tech.effects, unlock(PREFIX.."greenhouse-for-jellystem"     ))
     table.insert(soil_tech.effects, unlock(PREFIX.."greenhouse-jellystem-growth"  ))
 end
-if ENABLED.OTHER_GLEBA_GREENHOUSES then
+if SPACE_AGE and ENABLED.OTHER_GLEBA_GREENHOUSES then
     -- Unlocks other Gleba greenhouses with Agriculture tech:
     local agri_tech  = data.raw.technology["agriculture"]
     table.insert(agri_tech.effects,  unlock(PREFIX.."greenhouse-for-slipstack"     ))

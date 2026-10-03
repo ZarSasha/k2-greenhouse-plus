@@ -31,12 +31,13 @@ SETTING = {
     PYROLYSIS           = conf "k2gp-enable-pyrolysis-recipes",
     EARLY_LIQUEFACTION  = conf "k2gp-unlock-coal-liquefaction-early",
     MODULE_SLOTS        = conf "k2gp-greenhouse-module-slot-amount",
+    QUALITY_SCALING     = conf "k2gp-allow-greenhouse-quality-scaling",
     OUTPUT_RATE = {
         ["tree"       ] = conf "k2gp-greenhouse-tree-output-pr-sec",
-        ["yumako-tree"] = conf "k2gp-greenhouse-yumako-tree-output-pr-sec",
-        ["jellystem"  ] = conf "k2gp-greenhouse-jellystem-output-pr-sec",
-        ["slipstack"  ] = conf "k2gp-greenhouse-slipstack-output-pr-sec",
-        ["sunnycomb"  ] = conf "k2gp-greenhouse-sunnycomb-output-pr-sec"
+        ["yumako-tree"] = conf "k2gp-greenhouse-gleba-main-trees-output-pr-sec",
+        ["jellystem"  ] = conf "k2gp-greenhouse-gleba-main-trees-output-pr-sec",
+        ["slipstack"  ] = conf "k2gp-greenhouse-gleba-other-trees-output-pr-sec",
+        ["sunnycomb"  ] = conf "k2gp-greenhouse-gleba-other-trees-output-pr-sec"
     }
 }
 
@@ -45,10 +46,10 @@ SETTING = {
 ---------------------------------------------------------------------------------------------------
 ENABLED = {
     TREE_GREENHOUSE = SETTING.TREE_GREENHOUSE,
-    MAIN_GLEBA_GREENHOUSES = SPACE_AGE and TableContainsValue(
+    MAIN_GLEBA_GREENHOUSES = TableContainsValue(
         {"all", "main"}, SETTING.GLEBA_GREENHOUSES
     ),
-    OTHER_GLEBA_GREENHOUSES = SPACE_AGE and TableContainsValue(
+    OTHER_GLEBA_GREENHOUSES = TableContainsValue(
         {"all", "other"}, SETTING.GLEBA_GREENHOUSES
     ),
     GLASS = SETTING.GLASS,
@@ -58,9 +59,10 @@ ENABLED = {
     DISTILLATION = TableContainsValue(
         {"both-recipes", "distillation"}, SETTING.PYROLYSIS
     ),
-    ENHANCED_DISTILLATION = SPACE_AGE and TableContainsValue(
+    ENHANCED_DISTILLATION = TableContainsValue(
         {"both-recipes", "distillation"}, SETTING.PYROLYSIS
     ),
-    EARLY_LIQUEFACTION = SETTING.EARLY_LIQUEFACTION
+    EARLY_LIQUEFACTION = SETTING.EARLY_LIQUEFACTION,
+    QUALITY_SCALING = SETTING.QUALITY_SCALING
 }
 ---------------------------------------------------------------------------------------------------

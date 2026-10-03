@@ -78,14 +78,14 @@ local function createGreenhouseRecipe(Variant, Order)
     end
 
     -- Adds seeds and bed to recipe:
+    local TreeSeed = SPACE_AGE and "tree-seed" or "wood"
     local Seed = {
-        ["tree"]        = {"wood",          10},
+        ["tree"]        = {TreeSeed,        10},
         ["yumako-tree"] = {"yumako-seed",    5},
         ["jellystem"]   = {"jellynut-seed",  5},
         ["slipstack"]   = {"spoilage",      25},
         ["sunnycomb"]   = {"spoilage",      25}
     }
-    if SPACE_AGE then Seed["tree"] = {"tree-seed", 10} end
     local Bed = {
         ["tree"]        = {"landfill",                 1},
         ["yumako-tree"] = {"artificial-yumako-soil",   1},
@@ -281,7 +281,7 @@ if ENABLED.TREE_GREENHOUSE then data:extend({
     createGreenhouseRecipe("tree",        "a"),
     createCropGrowthRecipe("tree",        "a"),
 }) end
-if ENABLED.MAIN_GLEBA_GREENHOUSES then data:extend({
+if SPACE_AGE and ENABLED.MAIN_GLEBA_GREENHOUSES then data:extend({
     createRecipeCategory  ("yumako-tree"     ),
     createGreenhouseRecipe("yumako-tree", "b"),
     createCropGrowthRecipe("yumako-tree", "b"),
@@ -289,7 +289,7 @@ if ENABLED.MAIN_GLEBA_GREENHOUSES then data:extend({
     createGreenhouseRecipe("jellystem",   "c"),
     createCropGrowthRecipe("jellystem",   "c"),
 }) end
-if ENABLED.OTHER_GLEBA_GREENHOUSES then data:extend({
+if SPACE_AGE and ENABLED.OTHER_GLEBA_GREENHOUSES then data:extend({
     createRecipeCategory("slipstack"),
     createGreenhouseRecipe("slipstack", "d"),
     createCropGrowthRecipe("slipstack", "d"),
@@ -303,7 +303,7 @@ if ENABLED.CARBONIZATION then data:extend({
 if ENABLED.DISTILLATION then data:extend({
     WoodDistillationRecipe
 }) end
-if ENABLED.ENHANCED_DISTILLATION then data:extend({
+if SPACE_AGE and ENABLED.ENHANCED_DISTILLATION then data:extend({
     EnhancedWoodDistillationRecipe
 }) end
 

@@ -70,11 +70,11 @@ if ENABLED.GLASS then data:extend({
 if ENABLED.TREE_GREENHOUSE then data:extend({
     createGreenhouseItem("tree",        "a")
 }) end
-if ENABLED.MAIN_GLEBA_GREENHOUSES then data:extend({
+if SPACE_AGE and ENABLED.MAIN_GLEBA_GREENHOUSES then data:extend({
     createGreenhouseItem("yumako-tree", "b"),
     createGreenhouseItem("jellystem",   "c")
 }) end
-if ENABLED.OTHER_GLEBA_GREENHOUSES then data:extend({
+if SPACE_AGE and ENABLED.OTHER_GLEBA_GREENHOUSES then data:extend({
     createGreenhouseItem("slipstack", "d"),
     createGreenhouseItem("sunnycomb", "e")
 }) end

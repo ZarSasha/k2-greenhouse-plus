@@ -80,7 +80,7 @@ local function createGreenhouse(Variant)
             emissions_per_minute = ActiveEmissions[Variant],
             drain = "0kW"
         },
-        energy_usage = "25kW",
+        energy_usage ="50kW",
         crafting_speed = 1,
         crafting_categories = {PREFIX.."greenhouse-"..Variant.."-recipes"},
         module_slots = SETTING.MODULE_SLOTS,
@@ -114,8 +114,18 @@ local function createGreenhouse(Variant)
     }
 
     if QUALITY then
+        -- Allows quality modules and effects:
         table.insert(output.allowed_module_categories, "quality")
         table.insert(output.allowed_effects, "quality")
+
+        if not ENABLED.QUALITY_SCALING then
+            -- Completely nerfs quality speed bonuses:
+            local quality_multipliers = {}
+            for _, quality in pairs(data.raw.quality) do
+                quality_multipliers[quality.name] = 1.0
+            end
+            output.crafting_speed_quality_multiplier = quality_multipliers
+        end
     end
 
     if SPACE_AGE then
@@ -130,11 +140,11 @@ end
 if ENABLED.TREE_GREENHOUSE then data:extend({
     createGreenhouse("tree")
 }) end
-if ENABLED.MAIN_GLEBA_GREENHOUSES then data:extend({
+if SPACE_AGE and ENABLED.MAIN_GLEBA_GREENHOUSES then data:extend({
     createGreenhouse("yumako-tree"),
     createGreenhouse("jellystem")
 }) end
-if ENABLED.OTHER_GLEBA_GREENHOUSES then data:extend({
+if SPACE_AGE and ENABLED.OTHER_GLEBA_GREENHOUSES then data:extend({
     createGreenhouse("slipstack"),
     createGreenhouse("sunnycomb")
 }) end

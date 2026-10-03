@@ -4,6 +4,7 @@
 --  ┗┛┗┛ ┻  ┻ ┻┛┗┗┛┗┛
 ---------------------------------------------------------------------------------------------------
 local space_age = false; if mods["space-age"] then space_age = true end
+local quality   = false; if mods["quality"]   then quality   = true end
 ---------------------------------------------------------------------------------------------------
 -- STARTUP SETTINGS
 ---------------------------------------------------------------------------------------------------
@@ -35,7 +36,7 @@ local startup_settings = {
         hidden = not space_age,
         order = "a2"
     },
-    {-- Lets the mod provide its own source of glass for the greenhouses.
+    {-- Let the mod provide its own source of glass for the greenhouses.
         type = "bool-setting",
         name = "k2gp-provide-glass-for-greenhouses",
         setting_type = "startup",
@@ -50,7 +51,7 @@ local startup_settings = {
         allowed_values = {
             "both-recipes",
             "carbonization",
-            "distillation", -- includes a recipe variant exclusive to the biochamber
+            "distillation", -- Includes a variant exclusive to the biochamber from Space Age.
             "disabled"
         },
         order = "b1"
@@ -62,70 +63,57 @@ local startup_settings = {
         default_value = true,
         order = "b2"
     },
-    {-- Greenhouse module slot amount.
+    {-- Greenhouse module slot amount. Set to 0 by default since the agricultural tower in
+     -- Space Age cannot receive any modules.
         type = "int-setting",
         name = "k2gp-greenhouse-module-slot-amount",
-        localised_description = (not space_age and {
-            "mod-setting-description.k2gp-greenhouse-module-slot-amount-base-game"
-        }) or {
-            "mod-setting-description.k2gp-greenhouse-module-slot-amount-space-age"
-        },
         setting_type = "startup",
-        default_value = 0,    -- Set to 0 by default, since the growth of planted trees
-        minimum_value = 0,    -- cannot be accelerated in any way.
+        default_value = 0,
+        minimum_value = 0,
         maximum_value = 20,
-        order = "c"
+        order = "c1"
+    },
+    {-- Quality: Allow the output rate for greenhouses to scale normally with quality.
+     -- Disabled by default, because it breaks game balance.
+        type = "bool-setting",
+        name = "k2gp-allow-greenhouse-quality-scaling",
+        setting_type = "startup",
+        default_value = false,
+        hidden = not quality,
+        forced_value = false,  -- loaded when |hidden = true|
+        order = "c2"
     },
     {-- Greenhouse wood production rate (items/s.)
         type = "double-setting",
         name = "k2gp-greenhouse-tree-output-pr-sec",
         setting_type = "startup",
-        default_value = 0.25,  -- The equivalent of 37.5 planted trees (10 min growth time).
-        minimum_value = 0.01,  -- Energy output may be twice that of solar + accu in practice,
-        maximum_value = 10,    -- but burning the wood for energy also pollutes a lot. And I
-        order = "e1"           -- really don't want the output to be any lower than this.
+        default_value = 0.5,   -- The equivalent of 75 planted trees when growth time is
+        minimum_value = 0.01,  -- 10 min. and each harvest yields 4 wood (this many could
+        maximum_value = 10,    -- technically be planted within a 7x7 area, just barely).
+        order = "e1"
     },
-    {-- Space Age: Greenhouse yumako production rate (items/s.)
+    {-- Space Age: Greenhouse yumako/jellynut production rate (items/s.)
         type = "double-setting",
-        name = "k2gp-greenhouse-yumako-tree-output-pr-sec",
+        name = "k2gp-greenhouse-gleba-main-trees-output-pr-sec",
         setting_type = "startup",
-        default_value = 0.375, -- Balanced so a legendary tier greenhouse produces slightly
-        minimum_value = 0.01,  -- less pr. area than an agricultural tower setup does.
+        default_value = 1,     -- Balanced to produce a bit less (~93.5%) pr. area of
+        minimum_value = 0.01,  -- what an agricultural tower is capable of.
         maximum_value = 10,
         hidden = not space_age,
         order = "e2"
     },
-    {-- Space Age: Greenhouse jellynut production rate (items/s.)
+    {-- Space Age: Greenhouse slipstack/sunnycomb production rate (items/s.)
         type = "double-setting",
-        name = "k2gp-greenhouse-jellystem-output-pr-sec",
+        name = "k2gp-greenhouse-gleba-other-trees-output-pr-sec",
         setting_type = "startup",
-        default_value = 0.375, -- Same as above ^
-        minimum_value = 0.01,
-        maximum_value = 10,
-        hidden = not space_age,
-        order = "e3"
-    },
-    {-- Space Age: Greenhouse slipstack production rate (items/s.)
-        type = "double-setting",
-        name = "k2gp-greenhouse-slipstack-output-pr-sec",
-        setting_type = "startup",
-        default_value = 0.375, -- 0.225 spoilage, 0.15 stone pr. sec.
+        default_value = 1, -- slipstack: 60% spoilage, 40% stone
         minimum_value = 0.01,
         maximum_value = 10,
         hidden = not space_age,
         order = "e4"
-    },
-    {-- Space Age: Greenhouse sunnycomb production rate (items/s.)
-        type = "double-setting",
-        name = "k2gp-greenhouse-sunnycomb-output-pr-sec",
-        setting_type = "startup",
-        default_value = 0.375,
-        minimum_value = 0.01,
-        maximum_value = 10,
-        hidden = not space_age,
-        order = "e5"
     }
 }
+
 ---------------------------------------------------------------------------------------------------
 -- FINAL DATA WRITE
 ---------------------------------------------------------------------------------------------------
