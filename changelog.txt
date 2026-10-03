@@ -3,19 +3,21 @@ Version: 1.7.0
 Date: 2026-10-03
   Balancing:
     - Greenhouses:
-      - NB: Quality variants no longer receive any crafting speed bonus by default! I always wanted
-        to disable this since planted trees and agricultural towers can't benefit from quality, but
-        it was only recently that I discovered the needed update to the API (v2.0.58). There is an
-        option to re-enable it in the settings.
+      - NB: Quality variants no longer receive any output speed bonus by default! I always wanted
+        to ret rid of this since planted trees and agricultural towers can't benefit from quality,
+        but it was only recently that I discovered the needed update to the API (v2.0.58). I figure
+        that not everyone will like this change, so there is an option to re-enable the scaling
+        in the settings.
       - Made consumption of electricity scale with the output rate of the greenhouse for trees
         (50kW at the new default rate of 0.5/s, minimum of 5kW).
     - Gleba greenhouses: Increased default base output rate (0.375/s -> 1.0/s) since quality no
       longer needs to be considered for balancing. This way, a greenhouse setup should produce
-      ~93.5% (instead of only ~35%) pr. area compared to an agricultural tower setup.
-    - Greenhouse for trees: Doubled default base production rate (0.25/s -> 0.5/s) to somewhat
-      keep up with the other changes. (It is the equivalent of 75 trees, an amount that could
-      technically be planted within a 7x7 area, the size of the greenhouse collision box. It it
-      still less than the 0.67/s provided by the greenhouse in Krastorio 2.)
+      ~93.5% (instead of only ~35%) pr. area compared to an agricultural tower setup. (The new
+      output is the equivalent of 6 trees).
+    - Greenhouse for trees: Doubled default base production rate (0.25/s -> 0.5/s) to somewhat keep
+      up with the other changes. (The new output is the equivalent of 75 trees, an amount that
+      could technically be planted within a 7x7 area, the size of the greenhouse collision box. It
+      it still less than the 0.67/s provided by the greenhouse in Krastorio 2.)
   Info:
     - Created a migration script informing the player of the changes above.
     - Adjusted migration script for v1.6.0.

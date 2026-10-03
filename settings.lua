@@ -36,7 +36,7 @@ local startup_settings = {
         hidden = not space_age,
         order = "a2"
     },
-    {-- Lets the mod provide its own source of glass for the greenhouses.
+    {-- Let the mod provide its own source of glass for the greenhouses.
         type = "bool-setting",
         name = "k2gp-provide-glass-for-greenhouses",
         setting_type = "startup",
@@ -63,23 +63,24 @@ local startup_settings = {
         default_value = true,
         order = "b2"
     },
-    {-- Greenhouse module slot amount.
+    {-- Greenhouse module slot amount. Set to 0 by default since the agricultural tower in
+     -- Space Age cannot receive any modules.
         type = "int-setting",
         name = "k2gp-greenhouse-module-slot-amount",
         setting_type = "startup",
-        default_value = 0,     -- Set to 0 by default, to match the
-        minimum_value = 0,     -- agricultural tower from Space Age.
+        default_value = 0,
+        minimum_value = 0,
         maximum_value = 20,
         order = "c1"
     },
-    {-- Quality: Allows the output rate for greenhouses to scale normally with quality.
+    {-- Quality: Allow the output rate for greenhouses to scale normally with quality.
      -- Disabled by default, because it breaks game balance.
         type = "bool-setting",
         name = "k2gp-allow-greenhouse-quality-scaling",
         setting_type = "startup",
         default_value = false,
         hidden = not quality,
-        --forced_value = false, -- loaded when |hidden = true|
+        forced_value = false,  -- loaded when |hidden = true|
         order = "c2"
     },
     {-- Greenhouse wood production rate (items/s.)
@@ -88,15 +89,15 @@ local startup_settings = {
         setting_type = "startup",
         default_value = 0.5,   -- The equivalent of 75 planted trees when growth time is
         minimum_value = 0.01,  -- 10 min. and each harvest yields 4 wood (this many could
-        maximum_value = 10,    -- technically be planted with a 7x7 area).
+        maximum_value = 10,    -- technically be planted within a 7x7 area, just barely).
         order = "e1"
     },
     {-- Space Age: Greenhouse yumako production rate (items/s.)
         type = "double-setting",
         name = "k2gp-greenhouse-yumako-tree-output-pr-sec",
         setting_type = "startup",
-        default_value = 1,     -- Balanced to produce ~70% pr. area of what
-        minimum_value = 0.01,  -- an agricultural tower is capable of.
+        default_value = 1,     -- Balanced to produce a bit less (~93.5%) pr. area of
+        minimum_value = 0.01,  -- what an agricultural tower is capable of.
         maximum_value = 10,
         hidden = not space_age,
         order = "e2"
@@ -115,7 +116,7 @@ local startup_settings = {
         type = "double-setting",
         name = "k2gp-greenhouse-slipstack-output-pr-sec",
         setting_type = "startup",
-        default_value = 1,     -- 60% spoilage, 40% stone
+        default_value = 1,     -- 0.6 spoilage, 0.4 stone
         minimum_value = 0.01,
         maximum_value = 10,
         hidden = not space_age,
