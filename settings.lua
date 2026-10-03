@@ -4,6 +4,7 @@
 --  ┗┛┗┛ ┻  ┻ ┻┛┗┗┛┗┛
 ---------------------------------------------------------------------------------------------------
 local space_age = false; if mods["space-age"] then space_age = true end
+local quality   = false; if mods["quality"]   then quality   = true end
 ---------------------------------------------------------------------------------------------------
 -- STARTUP SETTINGS
 ---------------------------------------------------------------------------------------------------
@@ -69,22 +70,32 @@ local startup_settings = {
         default_value = 0,     -- Set to 0 by default, to match the
         minimum_value = 0,     -- agricultural tower from Space Age.
         maximum_value = 20,
-        order = "c"
+        order = "c1"
+    },
+    {-- Quality: Allows the output rate for greenhouses to scale normally with quality.
+     -- Disabled by default, because it breaks game balance.
+        type = "bool-setting",
+        name = "k2gp-allow-greenhouse-quality-scaling",
+        setting_type = "startup",
+        default_value = false,
+        hidden = not quality,
+        --forced_value = false, -- loaded when |hidden = true|
+        order = "c2"
     },
     {-- Greenhouse wood production rate (items/s.)
         type = "double-setting",
         name = "k2gp-greenhouse-tree-output-pr-sec",
         setting_type = "startup",
-        default_value = 0.375, -- The equivalent of 56.25 planted trees when growth time is
-        minimum_value = 0.01,  -- 10 min. and each harvest yields 4 wood (as many as ~76.6
-        maximum_value = 10,    -- trees could technically be planted within a 7x7 area).
+        default_value = 0.5,   -- The equivalent of 75 planted trees when growth time is
+        minimum_value = 0.01,  -- 10 min. and each harvest yields 4 wood (this many could
+        maximum_value = 10,    -- technically be planted with a 7x7 area).
         order = "e1"
     },
     {-- Space Age: Greenhouse yumako production rate (items/s.)
         type = "double-setting",
         name = "k2gp-greenhouse-yumako-tree-output-pr-sec",
         setting_type = "startup",
-        default_value = 0.75,  -- Balanced to produce ~70% pr. area of what
+        default_value = 1,     -- Balanced to produce ~70% pr. area of what
         minimum_value = 0.01,  -- an agricultural tower is capable of.
         maximum_value = 10,
         hidden = not space_age,
@@ -94,7 +105,7 @@ local startup_settings = {
         type = "double-setting",
         name = "k2gp-greenhouse-jellystem-output-pr-sec",
         setting_type = "startup",
-        default_value = 0.75,  -- Same as above ^
+        default_value = 1,     -- Same as above ^
         minimum_value = 0.01,
         maximum_value = 10,
         hidden = not space_age,
@@ -104,7 +115,7 @@ local startup_settings = {
         type = "double-setting",
         name = "k2gp-greenhouse-slipstack-output-pr-sec",
         setting_type = "startup",
-        default_value = 0.75,  -- 60% spoilage, 40% stone
+        default_value = 1,     -- 60% spoilage, 40% stone
         minimum_value = 0.01,
         maximum_value = 10,
         hidden = not space_age,
@@ -114,25 +125,13 @@ local startup_settings = {
         type = "double-setting",
         name = "k2gp-greenhouse-sunnycomb-output-pr-sec",
         setting_type = "startup",
-        default_value = 0.75,
+        default_value = 1,
         minimum_value = 0.01,
         maximum_value = 10,
         hidden = not space_age,
         order = "e5"
     },
 
-    --- HIDDEN SETTINGS ---
-
-    {-- Quality: Allows the output rate for greenhouses to scale normally with quality.
-     -- Forced disabled, because it breaks game balance.
-        type = "bool-setting",
-        name = "k2gp-allow-greenhouse-quality-scaling",
-        setting_type = "startup",
-        default_value = false,
-        hidden = true,
-        forced_value = false, -- loaded when |hidden = true|.
-        order = "f"
-    }
 }
 
 ---------------------------------------------------------------------------------------------------

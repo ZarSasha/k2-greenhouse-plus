@@ -31,14 +31,14 @@ SETTING = {
     PYROLYSIS           = conf "k2gp-enable-pyrolysis-recipes",
     EARLY_LIQUEFACTION  = conf "k2gp-unlock-coal-liquefaction-early",
     MODULE_SLOTS        = conf "k2gp-greenhouse-module-slot-amount",
+    QUALITY_SCALING     = conf "k2gp-allow-greenhouse-quality-scaling",
     OUTPUT_RATE = {
         ["tree"       ] = conf "k2gp-greenhouse-tree-output-pr-sec",
         ["yumako-tree"] = conf "k2gp-greenhouse-yumako-tree-output-pr-sec",
         ["jellystem"  ] = conf "k2gp-greenhouse-jellystem-output-pr-sec",
         ["slipstack"  ] = conf "k2gp-greenhouse-slipstack-output-pr-sec",
         ["sunnycomb"  ] = conf "k2gp-greenhouse-sunnycomb-output-pr-sec"
-    },
-    QUALITY_SCALING     = conf "k2gp-allow-greenhouse-quality-scaling" -- HIDDEN
+    }
 }
 
 ---------------------------------------------------------------------------------------------------
@@ -63,6 +63,6 @@ ENABLED = {
         {"both-recipes", "distillation"}, SETTING.PYROLYSIS
     ),
     EARLY_LIQUEFACTION = SETTING.EARLY_LIQUEFACTION,
-    QUALITY_SCALING = SETTING.QUALITY_SCALING -- HIDDEN
+    QUALITY_SCALING = SETTING.QUALITY_SCALING
 }
 ---------------------------------------------------------------------------------------------------

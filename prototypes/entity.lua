@@ -81,7 +81,7 @@ local function createGreenhouse(Variant)
             emissions_per_minute = ActiveEmissions[Variant],
             drain = "0kW"
         },
-        energy_usage = "37.5kW",
+        energy_usage = (SETTING.OUTPUT_RATE["tree"] * 100).."kW", -- 50kW by default
         crafting_speed = 1,
         crafting_categories = {PREFIX.."greenhouse-"..Variant.."-recipes"},
         module_slots = SETTING.MODULE_SLOTS,
@@ -119,7 +119,7 @@ local function createGreenhouse(Variant)
         table.insert(output.allowed_module_categories, "quality")
         table.insert(output.allowed_effects, "quality")
 
-        if not ENABLED.QUALITY_SCALING then -- Default, hidden setting.
+        if not ENABLED.QUALITY_SCALING then
             -- Completely nerfs quality speed bonuses:
             local quality_multipliers = {}
             for _, quality in pairs(data.raw.quality) do
