@@ -18,8 +18,8 @@ if KRASTORIO2 then
     table.insert(green_tech.effects, 3, unlock(PREFIX.."greenhouse-for-tree"))
     table.insert(green_tech.effects, 4, unlock(PREFIX.."greenhouse-tree-growth"))
     if ENABLED.GLASS then
-        table.insert(green_tech.effects, 5, unlock(PREFIX.."sand"))
-        table.insert(green_tech.effects, 6, unlock(PREFIX.."glass"))
+        table.insert(green_tech.effects, 5, unlock(PREFIX.."glass"))
+        table.insert(green_tech.effects, 6, unlock(PREFIX.."sand"))
     end
     if SPACE_AGE then -- NB: Krastorio 2 isn't properly adapted for Space Age
         table.insert(green_tech.effects, 5, unlock("tree-seed"))
