@@ -7,10 +7,30 @@
 -- HELPER FUNCTIONS
 ---------------------------------------------------------------------------------------------------
 local function unlock(Recipe) return {type = "unlock-recipe", recipe = Recipe} end
+
+---------------------------------------------------------------------------------------------------
+-- KRASTORIO 2 COMPATIBILITY
+---------------------------------------------------------------------------------------------------
+-- Unlocks greenhouse for trees alongside the existing greenhouse. Note: Recipe also adapted.
+if KRASTORIO2 then
+    local green_tech = data.raw.technology["kr-greenhouse"]
+    if green_tech == nil then goto skip end
+    table.insert(green_tech.effects, 3, unlock(PREFIX.."greenhouse-for-tree"))
+    table.insert(green_tech.effects, 4, unlock(PREFIX.."greenhouse-tree-growth"))
+    if ENABLED.GLASS then
+        table.insert(green_tech.effects, 5, unlock(PREFIX.."sand"))
+        table.insert(green_tech.effects, 6, unlock(PREFIX.."glass"))
+    end
+    if SPACE_AGE then -- Krastorio 2 isn't actually adapted for Space Age
+        table.insert(green_tech.effects, 5, unlock("tree-seed"))
+    end
+    ::skip::
+end
+
 ---------------------------------------------------------------------------------------------------
 -- GREENHOUSE TECH: WOOD
 ---------------------------------------------------------------------------------------------------
--- Unlocks the greenhouse for wood. Also unlocks the wood processing recipe with it.
+-- Unlocks the greenhouse for wood through its own tech. Also unlocks the wood processing recipe.
 local function createGreenhouseTech()
     local desc = SPACE_AGE and {"technology-description.k2gp-greenhouse-tech-space-age"}
                             or {"technology-description.k2gp-greenhouse-tech-base-game"}
@@ -37,25 +57,39 @@ local function createGreenhouseTech()
             }
         }
     }
-    if SPACE_AGE then -- Space Age: Unlocks tree seed recipe much earlier
-        table.insert(output.effects, 1, unlock("tree-seed"))
-    end
+
+    -- Space Age: Unlocks tree seed recipe much earlier, with the greenhouse tech:
+   if SPACE_AGE then
+       table.insert(output.effects, 1, unlock("tree-seed"))
+   end
+
+    -- Unlocks sand and glass recipes if the setting for it is enabled. Otherwise, a glass item
+    -- will be chosen from another mod, and any relevant glass tech will be made a prerequisite.
     if ENABLED.GLASS then
-        table.insert(output.effects, unlock(PREFIX.."sand"))
         table.insert(output.effects, unlock(PREFIX.."glass"))
+        table.insert(output.effects, unlock(PREFIX.."sand"))
+    else
+        -- Factorio+:
+        if mods["factorioplus"] then
+            table.insert(output.prerequisites, "glass-processing")
+        -- Angel's Smelting (uses glass from Bob's Metals, Chemicals and Intermediates):
+        elseif mods["angelssmelting"] then
+            table.insert(output.prerequisites, "angels-glass-smelting-1")
+        -- AAI Industry:
+        elseif mods["aai-industry"] then
+            table.insert(output.prerequisites, "glass-processing")
+        end
     end
-    if mods["aai-industry"]      -- AAI Industry
-    or mods["factorioplus"] then -- Factorio+
-        table.insert(output.prerequisites, "glass-processing")
-    end
+
     return output
 end
 ---------------------------------------------------------------------------------------------------
 -- FINAL DATA WRITE
 ---------------------------------------------------------------------------------------------------
-if ENABLED.TREE_GREENHOUSE then data:extend({
-        createGreenhouseTech()
+if ENABLED.TREE_GREENHOUSE and not KRASTORIO2 then data:extend({
+    createGreenhouseTech()
 }) end
+
 ---------------------------------------------------------------------------------------------------
 -- OIL PROCESSING TECH: ADVANCED WOOD PYROLYSIS + BASIC COAL LIQUEFACTION + COAL LIQUEFACTION
 ---------------------------------------------------------------------------------------------------
@@ -95,6 +129,7 @@ if ENABLED.EARLY_LIQUEFACTION then
         }
     }
 end
+
 ---------------------------------------------------------------------------------------------------
 -- SPACE AGE: TREE SEEDING AND SOIL TECH UNLOCKS
 ---------------------------------------------------------------------------------------------------
@@ -118,4 +153,5 @@ if SPACE_AGE and ENABLED.OTHER_GLEBA_GREENHOUSES then
     table.insert(agri_tech.effects,  unlock(PREFIX.."greenhouse-for-sunnycomb"     ))
     table.insert(agri_tech.effects,  unlock(PREFIX.."greenhouse-sunnycomb-growth"  ))
 end
+
 ---------------------------------------------------------------------------------------------------

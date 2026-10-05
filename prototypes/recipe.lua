@@ -15,13 +15,14 @@ end
 ---------------------------------------------------------------------------------------------------
 -- Creates recipes for greenhouse variants.
 local function createGreenhouseRecipe(Variant, Order)
+    local ModOrder = (KRASTORIO2 and "d-g3") or (SPACE_AGE and "a") or "g"
     -- Main prototype table:
     local output = {
         type     = "recipe",
         name     = PREFIX.."greenhouse-for-"..Variant,
         categories = {"crafting"},
         subgroup = SPACE_AGE and "agriculture" or "production-machine",
-        order    = (SPACE_AGE and "a" or "g").."[greenhouse]-"..Order.."["..Variant.."]",
+        order    = ModOrder.."[greenhouse]-"..Order.."["..Variant.."]",
         enabled  = false,
         energy_required = nil, -- defined below
         ingredients = {}, -- filled below
@@ -66,6 +67,9 @@ local function createGreenhouseRecipe(Variant, Order)
     -- Factorio+:
     elseif mods["factorioplus"] and ItemExists("factorioplus", "glass-plate") then
         add_ingr(2, "glass-plate",   24) -- 100% glass : stone
+    -- Bob's Metals, Chemicals and Intermediates:
+    elseif mods["bobplates"] and ItemExists("bobplates", "bob-glass") then
+        add_ingr(2, "bob-glass",     24) -- made from quartz resource
     -- AAI Industry (but not Krastorio 2):
     elseif mods["aai-industry"] and not KRASTORIO2 and ItemExists("aai-industry", "glass") then
         add_ingr(2, "glass",         12) -- 50% glass : stone
@@ -78,20 +82,21 @@ local function createGreenhouseRecipe(Variant, Order)
     end
 
     -- Adds seeds and bed to recipe:
-    local TreeSeed = SPACE_AGE and "tree-seed" or "wood"
+    local TreeSeed = SPACE_AGE and {"tree-seed", 10} or {"wood", 10}
+    local Landfill = KRASTORIO2 and {"stone", 25} or {"landfill", 1}
     local Seed = {
-        ["tree"]        = {TreeSeed,        10},
+        ["tree"]        = TreeSeed,
         ["yumako-tree"] = {"yumako-seed",    5},
         ["jellystem"]   = {"jellynut-seed",  5},
         ["slipstack"]   = {"spoilage",      25},
         ["sunnycomb"]   = {"spoilage",      25}
     }
     local Bed = {
-        ["tree"]        = {"landfill",                 1},
+        ["tree"]        = Landfill,
         ["yumako-tree"] = {"artificial-yumako-soil",   1},
         ["jellystem"]   = {"artificial-jellynut-soil", 1},
-        ["slipstack"]   = {"landfill",                 1},
-        ["sunnycomb"]   = {"landfill",                 1},
+        ["slipstack"]   = Landfill,
+        ["sunnycomb"]   = Landfill
     }
     add_ingr(4, Seed[Variant][1], Seed[Variant][2])
     add_ingr(5, Bed[Variant][1],  Bed[Variant][2] )

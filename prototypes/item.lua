@@ -9,13 +9,14 @@ local item_sounds = require("__base__.prototypes.item_sounds")
 ---------------------------------------------------------------------------------------------------
 local function createGreenhouseItem(Variant, Order)
     local Subgroup = SPACE_AGE and "agriculture" or "production-machine"
+    local ModOrder = KRASTORIO2 and "d-g3" or "a"
     local output   = {
         type = "item",
         name = PREFIX .. "greenhouse-for-" .. Variant,
         icon = ASSETS_ICON .. "greenhouse-" .. Variant .. "-icon.png",
         icon_size = 64,
         subgroup = Subgroup,
-        order = "a[greenhouse]-" .. Order .. "[" .. Variant .. "]",
+        order = ModOrder.."[greenhouse]-" .. Order .. "[" .. Variant .. "]",
         inventory_move_sound = item_sounds.mechanical_inventory_move,
         pick_sound = item_sounds.mechanical_inventory_pickup,
         drop_sound = item_sounds.mechanical_inventory_move,
