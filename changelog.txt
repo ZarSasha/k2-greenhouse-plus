@@ -7,6 +7,7 @@ Date: 2026-10-05
       plates are used as a fallback) or 3) disable the use of glass entirely, in which case iron
       plates are used instead. NB: No migrations provided!
   Info:
+    - Added a migration script that informs the player of the change above.
     - Improved description of setting for glass.
     - Reordered some settings.
   Locale:
