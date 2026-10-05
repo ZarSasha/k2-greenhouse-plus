@@ -60,7 +60,7 @@ local function createGreenhouseTech()
 
     -- Space Age: Unlocks tree seed recipe much earlier, with the greenhouse tech:
    if SPACE_AGE then
-       table.insert(output.effects, 1, unlock("tree-seed"))
+       table.insert(output.effects, unlock("tree-seed"))
    end
 
     -- Unlocks sand and glass recipes if the setting for it is enabled. Otherwise, a glass item
