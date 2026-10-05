@@ -8,6 +8,7 @@ Date: 2026-10-05
       plates are used instead. NB: No migrations provided!
   Info:
     - Improved description of setting for glass.
+    - Reordered some settings.
   Locale:
     - Updated Chinese translation using DeepL.
 ---------------------------------------------------------------------------------------------------
