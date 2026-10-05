@@ -11,7 +11,7 @@ local function unlock(Recipe) return {type = "unlock-recipe", recipe = Recipe} e
 ---------------------------------------------------------------------------------------------------
 -- KRASTORIO 2 COMPATIBILITY
 ---------------------------------------------------------------------------------------------------
--- Unlocks greenhouse for trees alongside the existing greenhouse. Note: Recipe also adapted.
+-- Unlocks greenhouse for trees alongside the existing greenhouse. Note: Recipes also adapted.
 if KRASTORIO2 then
     local green_tech = data.raw.technology["kr-greenhouse"]
     if green_tech == nil then goto skip end
@@ -21,7 +21,7 @@ if KRASTORIO2 then
         table.insert(green_tech.effects, 5, unlock(PREFIX.."sand"))
         table.insert(green_tech.effects, 6, unlock(PREFIX.."glass"))
     end
-    if SPACE_AGE then -- Krastorio 2 isn't actually adapted for Space Age
+    if SPACE_AGE then -- NB: Krastorio 2 isn't properly adapted for Space Age
         table.insert(green_tech.effects, 5, unlock("tree-seed"))
     end
     ::skip::
