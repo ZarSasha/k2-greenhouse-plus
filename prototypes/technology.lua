@@ -17,7 +17,7 @@ if KRASTORIO2 then
     if green_tech == nil then goto skip end
     table.insert(green_tech.effects, 3, unlock(PREFIX.."greenhouse-for-tree"))
     table.insert(green_tech.effects, 4, unlock(PREFIX.."greenhouse-tree-growth"))
-    if ENABLED.DEFAULT_GLASS then
+    if SETTING.GLASS == "default" then
         table.insert(green_tech.effects, 5, unlock(PREFIX.."glass"))
         table.insert(green_tech.effects, 6, unlock(PREFIX.."sand"))
     end
@@ -65,7 +65,7 @@ local function createGreenhouseTech()
 
     -- Unlocks sand and glass recipes if the setting for it is enabled. Otherwise, a glass item
     -- will be chosen from another mod, and any relevant glass tech will be made a prerequisite.
-    if ENABLED.DEFAULT_GLASS then
+    if SETTING.GLASS == "default" then
         table.insert(output.effects, unlock(PREFIX.."glass"))
         table.insert(output.effects, unlock(PREFIX.."sand"))
     else
@@ -109,7 +109,7 @@ if ENABLED.DISTILLATION then
     }
 end
 
-if SPACE_AGE and ENABLED.ENHANCED_DISTILLATION then
+if SPACE_AGE and ENABLED.DISTILLATION then
     -- Unlocks enhanced wood distillation with the biochamber.
     local bio_tech = data.raw.technology["biochamber"]
     table.insert(bio_tech.effects, unlock(PREFIX.."wood-distillation-enhanced"))

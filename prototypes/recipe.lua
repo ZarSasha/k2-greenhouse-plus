@@ -54,10 +54,10 @@ local function createGreenhouseRecipe(Variant, Order)
     -- are present.
 
     -- Default (the mod provides its own glass):
-    if ENABLED.DEFAULT_GLASS then
+    if SETTING.GLASS == "default" then
         add_ingr(2, PREFIX.."glass", 24) -- 100% glass : stone
     -- Compatible mods will provide the glass, if any are installed:
-    elseif ENABLED.OTHER_GLASS then
+    elseif SETTING.GLASS == "other" then
         -- Glass:
         if mods["Glass"] and ItemExists("Glass", "glass-plate") then
             add_ingr(2, "glass-plate",   24) -- 100% glass : stone
@@ -286,7 +286,7 @@ local glassRecipe =  {
 ---------------------------------------------------------------------------------------------------
 -- FINAL DATA WRITE --
 ---------------------------------------------------------------------------------------------------
-if ENABLED.DEFAULT_GLASS then data:extend({
+if SETTING.GLASS == "default" then data:extend({
     sandRecipe,
     glassRecipe
 }) end
@@ -317,7 +317,7 @@ if ENABLED.CARBONIZATION then data:extend({
 if ENABLED.DISTILLATION then data:extend({
     WoodDistillationRecipe
 }) end
-if SPACE_AGE and ENABLED.ENHANCED_DISTILLATION then data:extend({
+if SPACE_AGE and ENABLED.DISTILLATION then data:extend({
     EnhancedWoodDistillationRecipe
 }) end
 

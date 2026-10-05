@@ -52,15 +52,10 @@ ENABLED = {
     OTHER_GLEBA_GREENHOUSES = TableContainsValue(
         {"all", "other"}, SETTING.GLEBA_GREENHOUSES
     ),
-    DEFAULT_GLASS = SETTING.GLASS == "default",
-    OTHER_GLASS = SETTING.GLASS == "other",
     CARBONIZATION = TableContainsValue(
         {"both-recipes", "carbonization"}, SETTING.PYROLYSIS
     ),
     DISTILLATION = TableContainsValue(
-        {"both-recipes", "distillation"}, SETTING.PYROLYSIS
-    ),
-    ENHANCED_DISTILLATION = TableContainsValue(
         {"both-recipes", "distillation"}, SETTING.PYROLYSIS
     ),
     EARLY_LIQUEFACTION = SETTING.EARLY_LIQUEFACTION,
