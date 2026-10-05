@@ -64,7 +64,7 @@ local glassItem = {
 ---------------------------------------------------------------------------------------------------
 -- FINAL DATA WRITE
 ---------------------------------------------------------------------------------------------------
-if ENABLED.GLASS then data:extend({
+if ENABLED.DEFAULT_GLASS then data:extend({
     sandItem,
     glassItem
 }) end

@@ -36,11 +36,16 @@ local startup_settings = {
         hidden = not space_age,
         order = "a2"
     },
-    {-- Let the mod provide its own source of glass for the greenhouses.
-        type = "bool-setting",
+    {-- Choose a source of glass for the greenhouses.
+        type = "string-setting",
         name = "k2gp-provide-glass-for-greenhouses",
         setting_type = "startup",
         default_value = true,
+        allowed_values = {
+            "default", -- The mod provides its own sand and glass.
+            "other",   -- A compatible mod provides glass, falls back to iron plates.
+            "disabled" -- Iron plates are used instead of any glass.
+        },
         order = "a4"
     },
     {-- Enable the pyrolysis recipes. Option useful in relation to mod compatibility.
