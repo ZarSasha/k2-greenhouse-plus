@@ -5,10 +5,13 @@ Date: 2026-10-05
     - Improved compatibility for Krastorio 2. Now unlocks the greenhouse for trees alongside the
       existing one, and adapts recipes to require some stone instead of landfill. Also reordered
       items and recipes.
-    - Added "Bob's Metals, Chemicals and Intermediates" as a possible source of glass.
-    - With "Angel's Smelting" installed, greenhouses will require the glass tech to be unlocked.
+    - Added "Bob's Metals, Chemicals and Intermediates" as a possible source of glass for the
+      greenhouses. When "Angel's Smelting" is also installed, the greenhouse tech will require the
+      glass tech to be unlocked first.
     - Greenhouses no longer require any glass tech from other mods to be unlocked when the glass
       is already provided by the mod itself.
+  Balancing:
+    - Greenhouse for trees: Relaxed surface requirements a bit more.
   Notes:
     - It still seems best to just disable the greenhouse for trees and the greenhouse glass when
       Krastorio 2 is installed.

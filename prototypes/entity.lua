@@ -51,7 +51,7 @@ local function createGreenhouse(Variant)
         ["jellystem"]   = {spores  = 18.5 * SETTING.OUTPUT_RATE["jellystem"  ]}
     }
     local SurfaceConditions = {
-        ["tree"]        = {cond("solar-power",  50, 120), cond("pressure",  800, 2000)}, -- Nauvis, Gleba
+        ["tree"]        = {cond("solar-power",  50, 125), cond("pressure",  750, 2000)}, -- Nauvis, Gleba
         ["yumako-tree"] = {cond("solar-power",  50,  50), cond("pressure", 2000, 2000)}, -- Gleba
         ["jellystem"]   = {cond("solar-power",  50,  50), cond("pressure", 2000, 2000)}, -- Gleba
         ["slipstack"]   = {cond("solar-power",  50,  50), cond("pressure", 2000, 2000)}, -- Gleba
