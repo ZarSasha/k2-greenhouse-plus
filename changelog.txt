@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.7.2
+Date: 2026-10-05
+  Changes:
+    - The setting for greenhouse glass now has three options: 1) Use the specialized glass provided
+      by this mod, 2) only use glass from a compatible mod (smaller mods are prioritized, iron
+      plates are used as a fallback) or 3) disable the use of glass entirely, in which case iron
+      plates are used instead. NB: No migrations provided!
+  Info:
+    - Added a migration script that informs the player of the change above.
+    - Improved description of setting for glass.
+    - Reordered some settings.
+  Locale:
+    - Updated Chinese translation using DeepL.
+---------------------------------------------------------------------------------------------------
 Version: 1.7.1
 Date: 2026-10-05
   Compatibility:

@@ -49,36 +49,45 @@ local function createGreenhouseRecipe(Variant, Order)
     end
 
     -- Chooses only one glass item name and amount to be used, from among various mods. Ordered so
-    -- that smaller mods and mods that modify other mods go first. Special care must be taken with
-    -- AAI Industry and Krastorio 2, since the former chooses the glass name of the latter, if both
+    -- that smaller mods and mods that modify other mods go first. Special care was taken with AAI
+    -- Industry and Krastorio 2, since the former chooses the glass name of the latter, if both
     -- are present.
-    if ENABLED.GLASS then
+
+    -- Default (the mod provides its own glass):
+    if SETTING.GLASS == "default" then
         add_ingr(2, PREFIX.."glass", 24) -- 100% glass : stone
-    -- Glass:
-    elseif mods["Glass"] and ItemExists("Glass", "glass-plate") then
-        add_ingr(2, "glass-plate",   24) -- 100% glass : stone
-    -- QuirkyCat Glass, Sand and Clay (and minerals) :
-    elseif mods["quirkycat_glass"] and ItemExists("quirkycat_glass", "glass") then
-        add_ingr(2, "glass",         32) -- 150% glass : stone
-    -- Crushing Industry:
-    elseif mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
-    and ItemExists("crushing-industry", "glass") then
-        add_ingr(2, "glass",         20) --  80% glass : stone
-    -- Factorio+:
-    elseif mods["factorioplus"] and ItemExists("factorioplus", "glass-plate") then
-        add_ingr(2, "glass-plate",   24) -- 100% glass : stone
-    -- Bob's Metals, Chemicals and Intermediates:
-    elseif mods["bobplates"] and ItemExists("bobplates", "bob-glass") then
-        add_ingr(2, "bob-glass",     24) -- made from quartz resource
-    -- AAI Industry (but not Krastorio 2):
-    elseif mods["aai-industry"] and not KRASTORIO2 and ItemExists("aai-industry", "glass") then
-        add_ingr(2, "glass",         12) -- 50% glass : stone
-    -- Krastorio 2:
-    elseif KRASTORIO2 and ItemExists("Krastorio2", "kr-glass") then
-        add_ingr(2, "kr-glass",      20) -- 125% glass : stone, but kr-greenhouse uses 20 plates
-    -- No glass provided by any recognized source:
+    -- Compatible mods will provide the glass, if any are installed:
+    elseif SETTING.GLASS == "other" then
+        -- Glass:
+        if mods["Glass"] and ItemExists("Glass", "glass-plate") then
+            add_ingr(2, "glass-plate",   24) -- 100% glass : stone
+        -- QuirkyCat Glass, Sand and Clay (and minerals) :
+        elseif mods["quirkycat_glass"] and ItemExists("quirkycat_glass", "glass") then
+            add_ingr(2, "glass",         32) -- 150% glass : stone
+        -- Crushing Industry:
+        elseif mods["crushing-industry"] and settings.startup["crushing-industry-glass"].value
+        and ItemExists("crushing-industry", "glass") then
+            add_ingr(2, "glass",         20) --  80% glass : stone
+        -- Factorio+:
+        elseif mods["factorioplus"] and ItemExists("factorioplus", "glass-plate") then
+            add_ingr(2, "glass-plate",   24) -- 100% glass : stone
+        -- Bob's Metals, Chemicals and Intermediates:
+        elseif mods["bobplates"] and ItemExists("bobplates", "bob-glass") then
+            add_ingr(2, "bob-glass",     24) -- made from quartz resource
+        -- AAI Industry (but not Krastorio 2):
+        elseif mods["aai-industry"] and not KRASTORIO2 and ItemExists("aai-industry", "glass") then
+            add_ingr(2, "glass",         12) -- 50% glass : stone
+        -- Krastorio 2:
+        elseif KRASTORIO2 and ItemExists("Krastorio2", "kr-glass") then
+            add_ingr(2, "kr-glass",      20) -- 125% glass : stone, but kr-greenhouse uses 20 plates
+        -- Fallback ingredient (iron plates):
+        else
+            add_ingr(2, "iron-plate", 24)
+            log("No glass from compatible mods was found.")
+        end
+    -- If glass is disabled, iron plates are used instead:
     else
-        add_ingr(2, "iron-plate",    24)
+        add_ingr(2, "iron-plate", 24)
     end
 
     -- Adds seeds and bed to recipe:
@@ -277,7 +286,7 @@ local glassRecipe =  {
 ---------------------------------------------------------------------------------------------------
 -- FINAL DATA WRITE --
 ---------------------------------------------------------------------------------------------------
-if ENABLED.GLASS then data:extend({
+if SETTING.GLASS == "default" then data:extend({
     sandRecipe,
     glassRecipe
 }) end
@@ -308,7 +317,7 @@ if ENABLED.CARBONIZATION then data:extend({
 if ENABLED.DISTILLATION then data:extend({
     WoodDistillationRecipe
 }) end
-if SPACE_AGE and ENABLED.ENHANCED_DISTILLATION then data:extend({
+if SPACE_AGE and ENABLED.DISTILLATION then data:extend({
     EnhancedWoodDistillationRecipe
 }) end
 

@@ -36,12 +36,17 @@ local startup_settings = {
         hidden = not space_age,
         order = "a2"
     },
-    {-- Let the mod provide its own source of glass for the greenhouses.
-        type = "bool-setting",
+    {-- Choose a source of glass for the greenhouses.
+        type = "string-setting",
         name = "k2gp-provide-glass-for-greenhouses",
         setting_type = "startup",
-        default_value = true,
-        order = "a4"
+        default_value = "default",
+        allowed_values = {
+            "default", -- The mod provides its own sand and glass.
+            "other",   -- A compatible mod provides glass, falls back to iron plates.
+            "disabled" -- Iron plates are used instead of any glass.
+        },
+        order = "a3"
     },
     {-- Enable the pyrolysis recipes. Option useful in relation to mod compatibility.
         type = "string-setting",
@@ -63,16 +68,6 @@ local startup_settings = {
         default_value = true,
         order = "b2"
     },
-    {-- Greenhouse module slot amount. Set to 0 by default since the agricultural tower in
-     -- Space Age cannot receive any modules.
-        type = "int-setting",
-        name = "k2gp-greenhouse-module-slot-amount",
-        setting_type = "startup",
-        default_value = 0,
-        minimum_value = 0,
-        maximum_value = 20,
-        order = "c1"
-    },
     {-- Quality: Allow the output rate for greenhouses to scale normally with quality.
      -- Disabled by default, because it breaks game balance.
         type = "bool-setting",
@@ -81,6 +76,16 @@ local startup_settings = {
         default_value = false,
         hidden = not quality,
         forced_value = false,  -- loaded when |hidden = true|
+        order = "c1"
+    },
+    {-- Greenhouse module slot amount. Set to 0 by default since the agricultural tower in
+     -- Space Age cannot receive any modules.
+        type = "int-setting",
+        name = "k2gp-greenhouse-module-slot-amount",
+        setting_type = "startup",
+        default_value = 0,
+        minimum_value = 0,
+        maximum_value = 20,
         order = "c2"
     },
     {-- Greenhouse wood production rate (items/s.)
