@@ -21,7 +21,7 @@ local function createGreenhouseRecipe(Variant, Order)
         type     = "recipe",
         name     = PREFIX.."greenhouse-for-"..Variant,
         categories = {"crafting"},
-        subgroup = SPACE_AGE and "agriculture" or "production-machine",
+        subgroup = SPACE_AGE and not KRASTORIO2 and "agriculture" or "production-machine",
         order    = ModOrder.."[greenhouse]-"..Order.."["..Variant.."]",
         enabled  = false,
         energy_required = nil, -- defined below
