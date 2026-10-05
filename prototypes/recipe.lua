@@ -85,7 +85,7 @@ local function createGreenhouseRecipe(Variant, Order)
             add_ingr(2, "iron-plate", 24)
             log("No glass from compatible mods was found.")
         end
-    -- If glass is disabled, a fallback ingredient is used instead (iron plates):
+    -- If glass is disabled, iron plates are used instead:
     else
         add_ingr(2, "iron-plate", 24)
     end
