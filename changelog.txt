@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.7.3
+Date: 2026-10-05
+  Compatibility:
+    - Arig + Any Planet Start: Fixed that the first distillation recipe can't unlock with the Oil
+      Processing tech because the effects are overwritten when Any Planet Start is present. Adds
+      the recipe at the second prototype stage instead.
+---------------------------------------------------------------------------------------------------
 Version: 1.7.2
 Date: 2026-10-05
   Changes:
