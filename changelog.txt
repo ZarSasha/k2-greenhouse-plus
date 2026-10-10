@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.7.4
+Date: 2026-10-10
+  Bugfixes:
+    - Fixed that coal could be recycled back into wood (had forgotten to disable the automatic
+      generation of a recycling recipe for the carbonization recipe).
+---------------------------------------------------------------------------------------------------
 Version: 1.7.3
 Date: 2026-10-06
   Compatibility:
