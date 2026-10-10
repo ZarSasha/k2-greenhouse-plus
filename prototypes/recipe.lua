@@ -179,7 +179,8 @@ local WoodCarbonizationRecipe = {
     results = {
         { type = "item", name = "coal", amount = 4 }
     },
-    allow_productivity = true
+    allow_productivity = true,
+    auto_recycle = false
 }
 
 ---------------------------------------------------------------------------------------------------
@@ -213,7 +214,8 @@ local WoodDistillationRecipe = {
         tertiary   = {r = 0.875, g = 0.716, b = 0.586, a = 1.000}, -- Outer smoke. 1st input color?
         quaternary = {r = 1.000, g = 0.614, b = 0.280, a = 1.000}  -- Inner smoke. 2nd input color?
     },
-    allow_productivity = true
+    allow_productivity = true,
+    auto_recycle = false
 }
 
 ---------------------------------------------------------------------------------------------------
@@ -245,7 +247,8 @@ local EnhancedWoodDistillationRecipe = {
         primary    = {r = 0.250, g = 0.200, b = 0.250, a = 1.000}, -- Liquid.     1st output color?
         secondary  = {r = 0.100, g = 0.080, b = 0.100, a = 1.000}  -- Foam.       2nd output color?
     },
-    allow_productivity = true
+    allow_productivity = true,
+    auto_recycle = false
 }
 
 ---------------------------------------------------------------------------------------------------
@@ -254,7 +257,6 @@ local EnhancedWoodDistillationRecipe = {
 local sandRecipe = {
     type = "recipe",
     name = PREFIX .. "sand",
-    auto_recycle = false,
     energy_required = 0.8,
     ingredients = {
         { type = "item", name = "stone",          amount = 1 }
@@ -262,7 +264,8 @@ local sandRecipe = {
     results = {
         { type = "item", name = PREFIX .. "sand", amount = 1 }
     },
-    allow_productivity = true
+    allow_productivity = true,
+    auto_recycle = false
 }
 
 ---------------------------------------------------------------------------------------------------
@@ -272,7 +275,6 @@ local glassRecipe =  {
    type = "recipe",
    name = PREFIX .. "glass",
    categories = {"smelting"},
-   auto_recycle = false,
    energy_required = 3.2,
    ingredients = {
        { type = "item", name = PREFIX .. "sand",  amount = 1 }
@@ -280,7 +282,8 @@ local glassRecipe =  {
    results = {
        { type = "item", name = PREFIX .. "glass", amount = 1 }
    },
-   allow_productivity = true
+   allow_productivity = true,
+   auto_recycle = false,
  }
 
 ---------------------------------------------------------------------------------------------------
