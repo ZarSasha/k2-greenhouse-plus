@@ -4,7 +4,8 @@ Date: 2026-10-20
   Compatibility:
     - Simple Sea Block: Added as optional dependency so it loads first and does not duplicate a
       a prerequisite for the oil processing tech (which would cause a load error). Also forcefully
-      disables the setting for early coal liquefaction since the mod has its own solution.
+      disables settings for early coal liquefaction as well as conversion of wood to coal or oil
+      products.
 ---------------------------------------------------------------------------------------------------
 Version: 1.7.4
 Date: 2026-10-10
