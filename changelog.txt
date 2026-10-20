@@ -4,9 +4,9 @@ Date: 2026-10-20
   Compatibility:
     - Simple Sea Block: Added as optional dependency so it loads first and does not duplicate a
       a prerequisite for the oil processing tech (which would cause a load error). Forcefully
-      disables setting for early coal liquefaction. Suggestion: Since the mod converts wood into
-      coal with a 20x efficiency factor, you should probably set output rate for the wood
-      greenhouse to just 0.033-0.036, for equivalency.
+      disables early coal liquefaction as well as the pyrolysis recipes. Suggestion: Since the mod
+      converts wood into coal with a 20x efficiency factor, you should probably set output rate for
+      the wood greenhouse to just 0.033-0.036, for equivalency.
 ---------------------------------------------------------------------------------------------------
 Version: 1.7.4
 Date: 2026-10-10

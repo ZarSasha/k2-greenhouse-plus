@@ -61,6 +61,8 @@ local startup_settings = {
             "distillation", -- Includes a variant exclusive to the biochamber from Space Age.
             "disabled"
         },
+        hidden = simple_seablock,
+        forced_value = false, -- loaded when |hidden = true|
         order = "b1"
     },
     {-- Unlock Coal Liquefaction tech right after Advanced Oil Processing, at lower cost.
