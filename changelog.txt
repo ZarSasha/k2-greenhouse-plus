@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.7.5
+Date: 2026-10-20
+  Compatibility:
+    - Simple Sea Block: Added as optional dependency so it loads first and does not duplicate a
+      a prerequisite for the oil processing tech (which would cause a load error).
+---------------------------------------------------------------------------------------------------
 Version: 1.7.4
 Date: 2026-10-10
   Bugfixes:

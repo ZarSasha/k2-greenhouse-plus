@@ -11,6 +11,8 @@ local function unlock(Recipe) return {type = "unlock-recipe", recipe = Recipe} e
 ---------------------------------------------------------------------------------------------------
 -- COMPATIBILITY FOR ARIG + ANY PLANET START
 ---------------------------------------------------------------------------------------------------
+-- Re-adds missing recipe.
+
 if ENABLED.DISTILLATION and mods["planetaris-arig"] and mods["any-planet-start"]
 and settings.startup["aps-planet"].value == "arig" then
     table.insert(
