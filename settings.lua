@@ -3,8 +3,10 @@
 --  ┗┓┣  ┃  ┃ ┃┃┃┃┓┗┓
 --  ┗┛┗┛ ┻  ┻ ┻┛┗┗┛┗┛
 ---------------------------------------------------------------------------------------------------
-local space_age = false; if mods["space-age"] then space_age = true end
-local quality   = false; if mods["quality"]   then quality   = true end
+local space_age       = false; if mods["space-age"]      then space_age       = true end
+local quality         = false; if mods["quality"]        then quality         = true end
+local simple_seablock = false; if mods["SimpleSeablock"] then simple_seablock = true end
+
 ---------------------------------------------------------------------------------------------------
 -- STARTUP SETTINGS
 ---------------------------------------------------------------------------------------------------
@@ -66,6 +68,8 @@ local startup_settings = {
         name = "k2gp-unlock-coal-liquefaction-early",
         setting_type = "startup",
         default_value = true,
+        hidden = simple_seablock,
+        forced_value = false, -- loaded when |hidden = true|
         order = "b2"
     },
     {-- Quality: Allow the output rate for greenhouses to scale normally with quality.
