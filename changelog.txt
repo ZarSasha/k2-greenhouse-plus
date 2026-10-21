@@ -2,11 +2,8 @@
 Version: 1.7.5
 Date: 2026-10-21
   Compatibility:
-    - Simple Sea Block: Provided very basic compatibility, only enough for it to not crash on load.
-      NB: Forcefully disables early coal liquefaction and the pyrolysis recipes! (The mod has its
-      own charcoal recipe that converts wood into coal with a 20x efficiency factor, so don't
-      expect any reasonable balance as it is! You may want to reduce the wood greenhouse output to
-      about 0.033-0.036 for parity in regards to land use with the agricultural towers.
+    - Simple Sea Block: Provided very basic compatibility with no thoughts to balance, only enough
+      for it to not crash on load. NB: Forcefully disables early coal liquefaction.
 ---------------------------------------------------------------------------------------------------
 Version: 1.7.4
 Date: 2026-10-10
