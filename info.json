@@ -1,7 +1,7 @@
 {
   "name": "k2-greenhouse-plus",
   "title": "Krastorio 2 Greenhouse + Wood Pyrolysis",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "factorio_version": "2.1",
   "author": "ZarSasha",
   "license": "GNU LGPLv3",
@@ -19,6 +19,7 @@
     "? quirkycat_glass",
     "? Glass",
     "? planetaris-arig",
-    "? any-planet-start"
+    "? any-planet-start",
+    "? SimpleSeablock"
   ]
 }
