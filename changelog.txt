@@ -2,7 +2,7 @@
 Version: 1.7.5
 Date: 2026-10-21
   Compatibility:
-    - Simple Sea Block: Provided very basic compatibility with no thoughts to balance, only enough
+    - Simple Seablock: Provided very basic compatibility with no thoughts to balance, only enough
       for it to not crash on load. NB: Forcefully disables early coal liquefaction.
 ---------------------------------------------------------------------------------------------------
 Version: 1.7.4
