@@ -3,7 +3,8 @@ Version: 1.7.5
 Date: 2026-10-21
   Compatibility:
     - Simple Seablock: Provided very basic compatibility with no thoughts to balance, only enough
-      for it to not crash on load. NB: Forcefully disables early coal liquefaction.
+      for it to not crash on load. Forcefully disables the setting for early coal liquefaction,
+      because the mod already unlocks that early, but in a different way.
 ---------------------------------------------------------------------------------------------------
 Version: 1.7.4
 Date: 2026-10-10
