@@ -33,8 +33,9 @@ end
 -- really no issue with that.
 
 if mods["SimpleSeablock"] then
-    -- Nerfs charcoal recipe.
+    -- Nerfs charcoal recipe, increases crafting time to match recipe from this mod.
     local wood_to_coal = data.raw.recipe["wood-to-coal"]
+    wood_to_coal.energy_required = 6.4 * (20/8)
     wood_to_coal.ingredients = {{type = "item", name = "wood", amount = 20}}
     -- Hides and disables own recipe.
     local carbonization = data.raw.recipe[PREFIX.."wood-carbonization"]
