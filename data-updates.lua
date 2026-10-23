@@ -33,9 +33,15 @@ end
 -- really no issue with that.
 
 if mods["SimpleSeablock"] then
+    -- Nerfs charcoal recipe.
     local wood_to_coal = data.raw.recipe["wood-to-coal"]
-    wood_to_coal.hidden = true
-    wood_to_coal.enabled = false
+    wood_to_coal.ingredients = {{type = "item", name = "wood", amount = 20}}
+    -- Hides and disables own recipe.
+    local carbonization = data.raw.recipe[PREFIX.."wood-carbonization"]
+    if carbonization ~= nil then
+        carbonization.enabled = false
+        carbonization.hidden = true
+    end
 end
 
 -- Note: Other greenhouse mods must account for seed extraction, but not this one.
