@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.7.6
+Date: 2026-10-23
+  Minor Features:
+    - TODO: Created a setting to choose whether the seed extraction recipe should be made more
+      efficient, for the sake of mod compatibility, and to not surprise players.
+  Compatibility:
+    - Simple Seablock: Automatically hides the charcoal recipe that benefits from a 20x energy
+      bonus multiplier, since the greenhouse for trees is plenty efficient.
+---------------------------------------------------------------------------------------------------
 Version: 1.7.5
 Date: 2026-10-21
   Compatibility:
