@@ -34,7 +34,6 @@ end
 
 if mods["SimpleSeablock"] then
     local wood_to_coal = data.raw.recipe["wood-to-coal"]
-    table.insert(wood_to_coal.flags, "hidden[overridden]")
     wood_to_coal.hidden = true
     wood_to_coal.enabled = false
 end
