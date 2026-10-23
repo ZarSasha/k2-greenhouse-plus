@@ -43,6 +43,28 @@ if mods["SimpleSeablock"] then
         carbonization.enabled = false
         carbonization.hidden = true
     end
+
+    -- Allows much higher productivity bonuses.
+    local distillation_1 = data.raw.recipe[PREFIX.."wood-distillation"]
+    distillation_1.maximum_productivity = 9999
+    local distillation_2 = data.raw.recipe[PREFIX.."wood-distillation-enhanced"]
+    distillation_2.maximum_productivity = 9999
+
+    -- Adds diamond to distillation recipe results if Bob Ores does that for coal.
+    if mods["bobores"] and settings.startup["bobmods-ores-gemsfromotherores"].value then
+        local diamond_chance =
+            settings.startup["bobmods-ores-gemprobability"].value * -- default: 0.05
+            settings.startup["bobmods-gems-diamondratio"].value *   -- default: 0.2
+            (15/2) -- recipe takes 15 wood, the equivalent of 7.5 coal
+        table.insert(distillation_1.results, {
+            type = "item", name = "bob-diamond-ore", amount = 1,
+            independent_probability = diamond_chance
+        })
+        table.insert(distillation_2.results, {
+            type = "item", name = "bob-diamond-ore", amount = 1,
+            independent_probability = diamond_chance
+        })
+    end
 end
 
 -- Note: Other greenhouse mods must account for seed extraction, but not this one.
