@@ -54,7 +54,7 @@ if mods["SimpleSeablock"] then
     tree_plant.growth_ticks = 60 * 60 * 5 -- default: 10 minutes.
     for _, result in pairs(tree_plant.minable.results) do
         if result.name == "wood" then
-            result = {type = "item", name = "wood", amount = 30} -- default: 4
+            result.amount = 30 -- default: 4
         end
     end
 
