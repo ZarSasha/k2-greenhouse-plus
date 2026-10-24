@@ -47,19 +47,23 @@ if mods["SimpleSeablock"] then
     distillation_2.maximum_productivity = 9999
 
     -- Applies up to 10 levels of 10% mining productivity bonus to a recipe.
-    local function addMiningProductivity(recipe)
+    local function addMiningProductivity(recipe, pos)
         for i = 1, 10 do
             local miningProductivity = data.raw.technology["mining-productivity-" .. tostring(i)]
             if miningProductivity == nil then break end -- no more to go through
+            table.insert(miningProductivity.effects, pos, {
+                type = "change-recipe-productivity", recipe = recipe, change = 0.1
+            })
+            --[[
             local miningProductivity_effects_0 = miningProductivity.effects
             miningProductivity_effects_0[#miningProductivity_effects_0 + 1] =
-                {type = "change-recipe-productivity", recipe = recipe, change = 0.1}
+                {type = "change-recipe-productivity", recipe = recipe, change = 0.1}]]
         end
     end
 
     -- Makes distillation recipes benefit from mining productivity.
-    addMiningProductivity(PREFIX.."wood-distillation")
-    addMiningProductivity(PREFIX.."wood-distillation-enhanced")
+    addMiningProductivity(PREFIX.."wood-distillation", 2)
+    addMiningProductivity(PREFIX.."wood-distillation-enhanced", 3)
 
     --- ADDITIONAL COMPATIBILITY FOR BOB'S ORES ---
 
