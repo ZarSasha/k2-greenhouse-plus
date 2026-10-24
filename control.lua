@@ -11,14 +11,14 @@ script.on_configuration_changed(function(data)
             if plant.valid then
                 -- Save current position and quality (if applicable in Space Age)
                 local pos = plant.position
-                local qual = plant.quality
+                local grown = plant.tick_grown
                 -- Destroy the stuck plant and instantly recreate it
                 -- This forces the engine to recalculate the new growth_ticks
                 plant.destroy()
                 surface.create_entity{
                     name = "tree-plant",
                     position = pos,
-                    quality = qual,
+                    tick_grown = grown,
                     raise_built = false -- Avoid triggering other mods' build events
                 }
             end
