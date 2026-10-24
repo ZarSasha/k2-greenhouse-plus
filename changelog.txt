@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.7.7
+Date: 2026-10-24
+  Bugfixes:
+    - Fixed misspelled optional dependency ("bob-plates" -> "bobplates"). Probably didn't actually
+      matter since the mod's spelling puts it before this one.
+  Info:
+    - Got rid of old migration scripts that output text to the console, so that the screen won't
+      be filled up with messages upon first installation.
+---------------------------------------------------------------------------------------------------
 Version: 1.7.6
 Date: 2026-10-24
   Compatibility:
