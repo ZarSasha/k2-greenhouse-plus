@@ -54,14 +54,10 @@ if mods["SimpleSeablock"] then
             table.insert(miningProductivity.effects, pos, {
                 type = "change-recipe-productivity", recipe = recipe, change = 0.1
             })
-            --[[
-            local miningProductivity_effects_0 = miningProductivity.effects
-            miningProductivity_effects_0[#miningProductivity_effects_0 + 1] =
-                {type = "change-recipe-productivity", recipe = recipe, change = 0.1}]]
         end
     end
 
-    -- Makes distillation recipes benefit from mining productivity.
+    -- Makes distillation recipes benefit from mining productivity, up to 100% from 10 levels.
     addMiningProductivity(PREFIX.."wood-distillation", 2)
     addMiningProductivity(PREFIX.."wood-distillation-enhanced", 3)
 
