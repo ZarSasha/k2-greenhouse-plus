@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.7.8
+Date: 2026-10-25
+  Changes:
+    - Fixed that sand and greenhouse glass was immediately available rather than unlocked with the
+      greenhouse tech.
+  Compatibility:
+    - Simple Seablock:
+      - Reduced cost of researching greenhouses to match that of the agricultural tower tech.
+      - Doubled growth speed and increased yield by a factor of 7.5x for the growable trees so they
+        gain parity with the greenhouses. (Since only a quarter of the wood has to be diverted
+        towards seed production with my mod, a 15x bonus is enough to compensate for the removal
+        of the 20x charcoal bonus multiplier. And the default output of 0.5 wood/s pr. greenhouse
+        is already very close to what this mod intends for production rates).
+---------------------------------------------------------------------------------------------------
 Version: 1.7.7
 Date: 2026-10-24
   Bugfixes:

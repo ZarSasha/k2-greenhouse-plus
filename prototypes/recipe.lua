@@ -257,6 +257,7 @@ local EnhancedWoodDistillationRecipe = {
 local sandRecipe = {
     type = "recipe",
     name = PREFIX .. "sand",
+    enabled = false,
     energy_required = 0.8,
     ingredients = {
         { type = "item", name = "stone",          amount = 1 }
@@ -275,6 +276,7 @@ local glassRecipe =  {
    type = "recipe",
    name = PREFIX .. "glass",
    categories = {"smelting"},
+   enabled = false,
    energy_required = 3.2,
    ingredients = {
        { type = "item", name = PREFIX .. "sand",  amount = 1 }
