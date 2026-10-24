@@ -3,13 +3,6 @@
 --  ┃┃┣┫ ┃ ┣┫━━┃┃┃┃┃┃┣┫ ┃ ┣ ┗┓
 --  ┻┛┛┗ ┻ ┛┗  ┗┛┣┛┻┛┛┗ ┻ ┗┛┗┛
 ---------------------------------------------------------------------------------------------------
-require "shared"
-require "functions"
----------------------------------------------------------------------------------------------------
--- HELPER FUNCTIONS
----------------------------------------------------------------------------------------------------
-local function unlock(Recipe) return {type = "unlock-recipe", recipe = Recipe} end
-
 ---------------------------------------------------------------------------------------------------
 -- COMPATIBILITY FOR ARIG + ANY PLANET START
 ---------------------------------------------------------------------------------------------------
@@ -17,9 +10,9 @@ local function unlock(Recipe) return {type = "unlock-recipe", recipe = Recipe} e
 
 if ENABLED.DISTILLATION and mods["planetaris-arig"] and mods["any-planet-start"]
 and settings.startup["aps-planet"].value == "arig" then
-    table.insert(
-        data.raw.technology["oil-processing"].effects, 3, unlock(PREFIX.."wood-distillation")
-    )
+    table.insert(data.raw.technology["oil-processing"].effects, 3, {
+        type = "unlock-recipe", recipe = PREFIX.."wood-distillation"
+    })
 end
 
 ---------------------------------------------------------------------------------------------------
@@ -53,9 +46,20 @@ if mods["SimpleSeablock"] then
     local distillation_2 = data.raw.recipe[PREFIX.."wood-distillation-enhanced"]
     distillation_2.maximum_productivity = 9999
 
+    -- Applies up to 10 levels of 10% mining productivity bonus to a recipe.
+    local function addMiningProductivity(recipe)
+        for i = 1, 10 do
+            local miningProductivity = data.raw.technology["mining-productivity-" .. tostring(i)]
+            if miningProductivity == nil then break end -- no more to go through
+            local miningProductivity_effects_0 = miningProductivity.effects
+            miningProductivity_effects_0[#miningProductivity_effects_0 + 1] =
+                {type = "change-recipe-productivity", recipe = recipe, change = 0.1}
+        end
+    end
+
     -- Makes distillation recipes benefit from mining productivity.
-    AddMiningProductivity(PREFIX.."wood-distillation")
-    AddMiningProductivity(PREFIX.."wood-distillation-enhanced")
+    addMiningProductivity(PREFIX.."wood-distillation")
+    addMiningProductivity(PREFIX.."wood-distillation-enhanced")
 
     --- ADDITIONAL COMPATIBILITY FOR BOB'S ORES ---
 

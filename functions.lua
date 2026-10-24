@@ -31,15 +31,4 @@ function ItemExists(ModName, Item)
     end
 end
 
--- Applies mining productivity bonus to a recipe.
-function AddMiningProductivity(recipe)
-    for i = 1, 10 do
-        local miningProductivity = data.raw.technology["mining-productivity-" .. tostring(i)]
-        if miningProductivity == nil then break end -- no more to go through
-        local miningProductivity_effects_0 = miningProductivity.effects
-        miningProductivity_effects_0[#miningProductivity_effects_0 + 1] =
-            {type = "change-recipe-productivity", recipe = recipe, change = 0.1}
-    end
-end
-
 ---------------------------------------------------------------------------------------------------
