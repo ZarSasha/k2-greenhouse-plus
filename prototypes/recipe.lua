@@ -336,6 +336,7 @@ if SPACE_AGE then
     -- Removes surface condition requirement so tree seeds can be produced anywhere.
     seed_rec.surface_conditions = nil
 end
+
 ---------------------------------------------------------------------------------------------------
 -- END NOTES
 ---------------------------------------------------------------------------------------------------
