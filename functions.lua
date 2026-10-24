@@ -32,7 +32,7 @@ function ItemExists(ModName, Item)
 end
 
 -- Applies mining productivity bonus to a recipe.
-function addMiningProductivity(recipe)
+function AddMiningProductivity(recipe)
     for i = 1, 10 do
         local miningProductivity = data.raw.technology["mining-productivity-" .. tostring(i)]
         if miningProductivity == nil then break end -- no more to go through
