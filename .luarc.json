@@ -13,7 +13,6 @@
         "util",
         "defines",
         "game",
-        "overridden",
-        "minutes"
+        "seconds"
     ]
 }
