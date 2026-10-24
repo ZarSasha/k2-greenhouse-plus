@@ -33,7 +33,8 @@ end
 -- really no issue with that.
 
 if mods["SimpleSeablock"] then
-    -- Nerfs charcoal recipe, increases crafting time to match recipe from this mod.
+    -- The greenhouse is plenty powerful, so this nerfs the charcoal recipe and increases its
+    -- crafting time to match the carbonization recipe from this mod.
     local wood_to_coal = data.raw.recipe["wood-to-coal"]
     wood_to_coal.energy_required = 6.4 * (20/8)
     wood_to_coal.ingredients = {{type = "item", name = "wood", amount = 20}}
@@ -44,25 +45,29 @@ if mods["SimpleSeablock"] then
         carbonization.hidden = true
     end
 
-    -- Allows much higher productivity bonuses.
+    -- Allows virtually unlimited productivity bonuses for distillation recipes.
     local distillation_1 = data.raw.recipe[PREFIX.."wood-distillation"]
     distillation_1.maximum_productivity = 9999
     local distillation_2 = data.raw.recipe[PREFIX.."wood-distillation-enhanced"]
     distillation_2.maximum_productivity = 9999
 
-    -- Adds diamond to distillation recipe results if Bob Ores does that for coal.
+    -- Allows distillation recipes to also yield diamonds if Bob Ores is configured to yield gems
+    -- from non-gem ores.
     if mods["bobores"] and settings.startup["bobmods-ores-gemsfromotherores"].value then
-        local diamond_chance =
+        local diamonds =
             settings.startup["bobmods-ores-gemprobability"].value * -- default: 0.05
             settings.startup["bobmods-gems-diamondratio"].value *   -- default: 0.2
             (15/2) -- recipe takes 15 wood, the equivalent of 7.5 coal
+        if diamonds == 0 then return end
+        local diamonds_integer = math.floor(diamonds)
+        local diamonds_fraction = diamonds - diamonds_integer
         table.insert(distillation_1.results, {
-            type = "item", name = "bob-diamond-ore", amount = 1,
-            independent_probability = diamond_chance
+            type = "item", name = "bob-diamond-ore", amount = diamonds_integer,
+            extra_count_fraction = diamonds_fraction
         })
         table.insert(distillation_2.results, {
-            type = "item", name = "bob-diamond-ore", amount = 1,
-            independent_probability = diamond_chance
+            type = "item", name = "bob-diamond-ore", amount = diamonds_integer,
+            extra_count_fraction = diamonds_fraction
         })
     end
 end
