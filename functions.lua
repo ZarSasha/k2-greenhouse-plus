@@ -17,6 +17,15 @@ function TableContainsValue(tbl, element)
     return false
 end
 
+-- Rounds a number with the desired level of precision.
+function RoundNumber(num, decimals)
+    decimals = 10 ^ (decimals or 0)
+    num = num * decimals
+    if num >= 0 then num = math.floor(num + 0.5) else num = math.ceil(num - 0.5) end
+    return num / decimals
+end
+
+
 ---------------------------------------------------------------------------------------------------
 -- FACTORIO-SPECIFIC FUNCTIONS
 ---------------------------------------------------------------------------------------------------
