@@ -51,7 +51,7 @@ if mods["SimpleSeablock"] then
     local distillation_2 = data.raw.recipe[PREFIX.."wood-distillation-enhanced"]
     distillation_2.maximum_productivity = 9999
 
-    -- ADDITIONAL COMPATIBILITY FOR BOB'S ORES WITH GEMS FROM NON-GEM ORES --
+    --- ADDITIONAL COMPATIBILITY FOR BOB'S ORES ---
 
     -- Allows distillation recipes to also yield diamonds if Bob Ores is configured to yield gems
     -- from non-gem ores.
@@ -83,7 +83,5 @@ if mods["SimpleSeablock"] then
         end
     end
 end
-
--- Note: Other greenhouse mods must account for seed extraction, but not this one.
 
 ---------------------------------------------------------------------------------------------------
