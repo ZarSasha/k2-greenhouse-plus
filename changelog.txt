@@ -1,16 +1,16 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.7.6
-Date: 2026-10-23
+Date: 2026-10-24
   Compatibility:
     - Simple Seablock:
-      - Carbonization recipe: Hides the recipe and instead modifies the charcoal recipe from the
-        mod above to match in regards to speed and output, since the greenhouse provides plenty
-        wood.
-      - Distillation recipes:
-        - Increases cap on productivity bonus to 9999.
-        - If Bob's Ores is also installed and gems from other ores are enabled, diamonds will be
-          produced in small amounts with the distillation recipes, just like it is the case for
-          the charcoal recipe.
+      - Carbonization recipe: Will be hidden. Instead, the charcoal recipe from the mod above will
+        have its speed and output modified to match the recipe from this mod, since the greenhouse
+        provides plenty wood for the desired level of coal production.
+      - Distillation recipes: Will have their cap on productivity bonus raised to 9999, and they
+        get to benefit from mining productivity like the charcoal recipe from the mod above.
+    - Simple Seablock + Bob's Ores:
+      - Distillation recipes: If gems from other ores are enabled, diamonds will be produced in
+        small amounts as well, according to the settings of that mod.
 ---------------------------------------------------------------------------------------------------
 Version: 1.7.5
 Date: 2026-10-21

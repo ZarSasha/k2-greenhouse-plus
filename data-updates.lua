@@ -51,6 +51,10 @@ if mods["SimpleSeablock"] then
     local distillation_2 = data.raw.recipe[PREFIX.."wood-distillation-enhanced"]
     distillation_2.maximum_productivity = 9999
 
+    -- Makes distillation recipes benefit from mining productivity.
+    AddMiningProductivity(PREFIX.."wood-distillation")
+    AddMiningProductivity(PREFIX.."wood-distillation-enhanced")
+
     --- ADDITIONAL COMPATIBILITY FOR BOB'S ORES ---
 
     -- Allows distillation recipes to also yield diamonds if Bob Ores is configured to yield gems
