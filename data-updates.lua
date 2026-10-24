@@ -51,7 +51,7 @@ if mods["SimpleSeablock"] then
     -- 20x charcoal bonus multiplier that was nerfed. The default output for the greenouse is
     -- also nearly perfectly balanced already.)
     local tree_plant = data.raw.plant["tree-plant"]
-    tree_plant.growth_ticks = 5 * minutes -- default: 10
+    tree_plant.growth_ticks = 5 * 60 * seconds -- default: 10 minutes
     for _, result in pairs(tree_plant.minable.results) do
         if result.name == "wood" then
             result = {type = "item", name = "wood", amount = 30} -- default: 4
