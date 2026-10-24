@@ -73,22 +73,22 @@ if mods["SimpleSeablock"] then
         if diamonds > 0 and diamonds <= 1 then
             table.insert(distillation_1.results, {
                 type = "item", name = "bob-diamond-ore", amount = 1,
-                independent_probability = RoundNumber(diamonds, 4)
+                independent_probability = RoundNumber(diamonds, 5)
             })
             table.insert(distillation_2.results, {
                 type = "item", name = "bob-diamond-ore", amount = 1,
-                independent_probability = RoundNumber(diamonds, 4)
+                independent_probability = RoundNumber(diamonds, 5)
             })
         elseif diamonds > 1 then
             local diamonds_integer = math.floor(diamonds)
             local diamonds_fraction = diamonds - diamonds_integer
             table.insert(distillation_1.results, {
                 type = "item", name = "bob-diamond-ore", amount = diamonds_integer,
-                extra_count_fraction = RoundNumber(diamonds_fraction, 4)
+                extra_count_fraction = RoundNumber(diamonds_fraction, 5)
             })
             table.insert(distillation_2.results, {
                 type = "item", name = "bob-diamond-ore", amount = diamonds_integer,
-                extra_count_fraction = RoundNumber(diamonds_fraction, 4)
+                extra_count_fraction = RoundNumber(diamonds_fraction, 5)
             })
         end
     end
