@@ -30,7 +30,7 @@ if mods["SimpleSeablock"] then
 
     -- Doubles smelting time.
     local wood_to_coal = data.raw.recipe["wood-to-coal"]
-    wood_to_coal.energy_required = 6.4 -- 3.2 at double speed
+    wood_to_coal.energy_required = 4.0 -- 2.0 at double speed
 
 
     -- Hides and disables own recipe.
@@ -47,7 +47,7 @@ if mods["SimpleSeablock"] then
 
     -- Adjusts distillation recipe.
     local distillation_1 = data.raw.recipe[PREFIX.."wood-distillation"]
-    distillation_1.energy_required = 6.4
+    distillation_1.energy_required = 5.12
     distillation_1.ingredients = {
         { type = "item",  name = "wood",          amount = 15 / 5 }
     }
@@ -60,7 +60,7 @@ if mods["SimpleSeablock"] then
 
     -- Adjusts enhanced distillation recipe.
     local distillation_2 = data.raw.recipe[PREFIX.."wood-distillation-enhanced"]
-    distillation_2.energy_required = 6.4
+    distillation_2.energy_required = 5.12
     distillation_2.ingredients = {
         { type = "item",  name = "wood",          amount = 15 / 5 }
     }
