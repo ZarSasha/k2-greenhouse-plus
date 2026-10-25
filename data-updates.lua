@@ -28,93 +28,95 @@ if mods["SimpleSeablock"] then
     -- have to be adapted or disabled depending on settings. Making charcoal will require more
     -- machines and more energy, but there is really no issue with that.
 
+    -- Reduces cost of researching greenhouse tech.
+    if ENABLED.TREE_GREENHOUSE then
+        local greenhouse_tech = data.raw.technology[PREFIX.."greenhouse-tech"]
+        greenhouse_tech.unit.count = 30
+        greenhouse_tech.unit.time  =  5
+    end
+
     -- Increases smelting time a bit.
     local wood_to_coal = data.raw.recipe["wood-to-coal"]
     wood_to_coal.energy_required = 4.0 -- was 3.2
 
-
     -- Hides and disables own recipe.
-    local carbonization = data.raw.recipe[PREFIX.."wood-carbonization"]
-    if carbonization ~= nil then
+    if ENABLED.CARBONIZATION then
+        local carbonization = data.raw.recipe[PREFIX.."wood-carbonization"]
         carbonization.enabled = false
         carbonization.hidden = true
     end
 
-    -- Reduces cost of researching greenhouse tech.
-    local greenhouse_tech = data.raw.technology[PREFIX.."greenhouse-tech"]
-    greenhouse_tech.unit.count = 30
-    greenhouse_tech.unit.time  =  5
-
     -- Adjusts distillation recipe so they take longer and gets a 20x bonus.
-    local distillation_1 = data.raw.recipe[PREFIX.."wood-distillation"]
-    distillation_1.energy_required = 8
-    distillation_1.ingredients = {
-        { type = "item",  name = "wood",          amount = 15 / 5 }
-    }
-    distillation_1.results = {
-        { type = "fluid", name = "crude-oil",     amount = 20 * 4, fluidbox_index = 2 },
-        { type = "fluid", name = "petroleum-gas", amount = 10 * 4, fluidbox_index = 1 },
-        { type = "item",  name = "coal",          amount =  4 * 4 }
-    }
-    distillation_1.maximum_productivity = 9999
+    if ENABLED.DISTILLATION then
+        local distillation_1 = data.raw.recipe[PREFIX.."wood-distillation"]
+        distillation_1.energy_required = 8
+        distillation_1.ingredients = {
+            { type = "item",  name = "wood",          amount = 15 / 5 }
+        }
+        distillation_1.results = {
+            { type = "fluid", name = "crude-oil",     amount = 20 * 4, fluidbox_index = 2 },
+            { type = "fluid", name = "petroleum-gas", amount = 10 * 4, fluidbox_index = 1 },
+            { type = "item",  name = "coal",          amount =  4 * 4 }
+        }
+        distillation_1.maximum_productivity = 9999
 
-    -- Adjusts enhanced distillation recipe so they take longer and gets a 20x bonus.
-    local distillation_2 = data.raw.recipe[PREFIX.."wood-distillation-enhanced"]
-    distillation_2.energy_required = 8
-    distillation_2.ingredients = {
-        { type = "item",  name = "wood",          amount = 15 / 5 }
-    }
-    distillation_2.results = {
-        { type = "fluid", name = "crude-oil",     amount = 20 * 4, fluidbox_index = 2 },
-        { type = "fluid", name = "petroleum-gas", amount =  5 * 4, fluidbox_index = 1 },
-        { type = "item",  name = "coal",          amount =  3 * 4}
-    }
-    distillation_2.maximum_productivity = 9999
+        local distillation_2 = data.raw.recipe[PREFIX.."wood-distillation-enhanced"]
+        distillation_2.energy_required = 8
+        distillation_2.ingredients = {
+            { type = "item",  name = "wood",          amount = 15 / 5 }
+        }
+        distillation_2.results = {
+            { type = "fluid", name = "crude-oil",     amount = 20 * 4, fluidbox_index = 2 },
+            { type = "fluid", name = "petroleum-gas", amount =  5 * 4, fluidbox_index = 1 },
+            { type = "item",  name = "coal",          amount =  3 * 4}
+        }
+        distillation_2.maximum_productivity = 9999
 
-    -- Applies up to 10 levels of 10% mining productivity bonus to a recipe.
-    local function addMiningProductivity(recipe, pos)
-        for i = 1, 10 do
-            local miningProductivity = data.raw.technology["mining-productivity-" .. tostring(i)]
-            if miningProductivity == nil then break end -- no more to go through
-            table.insert(miningProductivity.effects, pos, {
-                type = "change-recipe-productivity", recipe = recipe, change = 0.1
-            })
+        -- Applies up to 10 levels of 10% mining productivity bonus to a recipe.
+        local function addMiningProductivity(recipe, pos)
+            for i = 1, 10 do
+                local miningProductivity = data.raw.technology["mining-productivity-"..tostring(i)]
+                if miningProductivity == nil then break end -- no more to go through
+                table.insert(miningProductivity.effects, pos, {
+                    type = "change-recipe-productivity", recipe = recipe, change = 0.1
+                })
+            end
         end
-    end
 
-    -- Makes distillation recipes benefit from mining productivity, up to 100% from 10 levels.
-    addMiningProductivity(PREFIX.."wood-distillation", 2)
-    addMiningProductivity(PREFIX.."wood-distillation-enhanced", 3)
+        -- Makes distillation recipes benefit from mining productivity, up to 100% from 10 levels.
+        addMiningProductivity(PREFIX.."wood-distillation", 2)
+        addMiningProductivity(PREFIX.."wood-distillation-enhanced", 3)
 
-    --- ADDITIONAL COMPATIBILITY FOR BOB'S ORES ---
+        --- ADDITIONAL COMPATIBILITY FOR BOB'S ORES ---
 
-    -- Allows distillation recipes to also yield diamonds if Bob Ores is configured to yield gems
-    -- from non-gem ores.
-    if mods["bobores"] and settings.startup["bobmods-ores-gemsfromotherores"].value then
-        local diamonds =
-            settings.startup["bobmods-ores-gemprobability"].value * -- default: 0.05
-            settings.startup["bobmods-gems-diamondratio"].value *   -- default: 0.2
-            3*10 -- Recipes require 3 wood, 10 times the amount of coal can be produced from them
-        if diamonds > 0 and diamonds <= 1 then
-            table.insert(distillation_1.results, {
-                type = "item", name = "bob-diamond-ore", amount = 1,
-                independent_probability = RoundNumber(diamonds, 5)
-            })
-            table.insert(distillation_2.results, {
-                type = "item", name = "bob-diamond-ore", amount = 1,
-                independent_probability = RoundNumber(diamonds, 5)
-            })
-        elseif diamonds > 1 then
-            local diamonds_integer = math.floor(diamonds)
-            local diamonds_fraction = diamonds - diamonds_integer
-            table.insert(distillation_1.results, {
-                type = "item", name = "bob-diamond-ore", amount = diamonds_integer,
-                extra_count_fraction = RoundNumber(diamonds_fraction, 5)
-            })
-            table.insert(distillation_2.results, {
-                type = "item", name = "bob-diamond-ore", amount = diamonds_integer,
-                extra_count_fraction = RoundNumber(diamonds_fraction, 5)
-            })
+        -- Allows distillation recipes to also yield diamonds if Bob Ores is configured to yield
+        -- gems from non-gem ores.
+        if mods["bobores"] and settings.startup["bobmods-ores-gemsfromotherores"].value then
+            local diamonds =
+                settings.startup["bobmods-ores-gemprobability"].value * -- default: 0.05
+                settings.startup["bobmods-gems-diamondratio"].value *   -- default: 0.2
+                3*10 -- Recipes require 3 wood, coal output is multiplied by 10
+            if diamonds > 0 and diamonds <= 1 then
+                table.insert(distillation_1.results, {
+                    type = "item", name = "bob-diamond-ore", amount = 1,
+                    independent_probability = RoundNumber(diamonds, 5)
+                })
+                table.insert(distillation_2.results, {
+                    type = "item", name = "bob-diamond-ore", amount = 1,
+                    independent_probability = RoundNumber(diamonds, 5)
+                })
+            elseif diamonds > 1 then
+                local diamonds_integer = math.floor(diamonds)
+                local diamonds_fraction = diamonds - diamonds_integer
+                table.insert(distillation_1.results, {
+                    type = "item", name = "bob-diamond-ore", amount = diamonds_integer,
+                    extra_count_fraction = RoundNumber(diamonds_fraction, 5)
+                })
+                table.insert(distillation_2.results, {
+                    type = "item", name = "bob-diamond-ore", amount = diamonds_integer,
+                    extra_count_fraction = RoundNumber(diamonds_fraction, 5)
+                })
+            end
         end
     end
 end
