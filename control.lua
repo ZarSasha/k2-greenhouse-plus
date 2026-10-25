@@ -1,3 +1,4 @@
+--[[
 script.on_configuration_changed(function(data)
     -- Iterate through all surfaces in the save file
 
@@ -25,3 +26,4 @@ script.on_configuration_changed(function(data)
         end
     end
 end)
+]]

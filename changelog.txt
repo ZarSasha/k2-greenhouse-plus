@@ -7,11 +7,10 @@ Date: 2026-10-25
   Compatibility:
     - Simple Seablock:
       - Reduced cost of researching greenhouses to match that of the agricultural tower tech.
-      - Doubled growth speed and increased yield by a factor of 7.5x for the growable trees so they
-        gain parity with the greenhouses. (Since only a quarter of the wood has to be diverted
-        towards seed production with my mod, a 15x bonus is enough to compensate for the removal
-        of the 20x charcoal bonus multiplier. And the default output of 0.5 wood/s pr. greenhouse
-        is already very close to what this mod intends for production rates).
+      - Pyrolysis recipes: For now, unnerfed the charcoal recipe and gave the same 20x bonus
+        multiplier to the distillation recipes. Doubled crafting time for the former so a
+        steel furnace outputs 3.125 coal/s, increased it for the latter so they output 2.5 & 5.625
+        coal/s (aside from other outputs).
 ---------------------------------------------------------------------------------------------------
 Version: 1.7.7
 Date: 2026-10-24
