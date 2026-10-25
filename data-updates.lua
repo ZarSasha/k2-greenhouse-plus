@@ -28,9 +28,9 @@ if mods["SimpleSeablock"] then
     -- have to be adapted or disabled depending on settings. Making charcoal will require more
     -- machines and more energy, but there is really no issue with that.
 
-    -- Doubles smelting time.
+    -- Increases smelting time a bit.
     local wood_to_coal = data.raw.recipe["wood-to-coal"]
-    wood_to_coal.energy_required = 4.0 -- 2.0 at double speed
+    wood_to_coal.energy_required = 4.0 -- was 3.2
 
 
     -- Hides and disables own recipe.
@@ -45,9 +45,9 @@ if mods["SimpleSeablock"] then
     greenhouse_tech.unit.count = 30
     greenhouse_tech.unit.time  =  5
 
-    -- Adjusts distillation recipe.
+    -- Adjusts distillation recipe so they take longer and gets a 20x bonus.
     local distillation_1 = data.raw.recipe[PREFIX.."wood-distillation"]
-    distillation_1.energy_required = 5.12
+    distillation_1.energy_required = 8
     distillation_1.ingredients = {
         { type = "item",  name = "wood",          amount = 15 / 5 }
     }
@@ -58,9 +58,9 @@ if mods["SimpleSeablock"] then
     }
     distillation_1.maximum_productivity = 9999
 
-    -- Adjusts enhanced distillation recipe.
+    -- Adjusts enhanced distillation recipe so they take longer and gets a 20x bonus.
     local distillation_2 = data.raw.recipe[PREFIX.."wood-distillation-enhanced"]
-    distillation_2.energy_required = 5.12
+    distillation_2.energy_required = 8
     distillation_2.ingredients = {
         { type = "item",  name = "wood",          amount = 15 / 5 }
     }
