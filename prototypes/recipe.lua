@@ -330,13 +330,8 @@ if SPACE_AGE and ENABLED.DISTILLATION then data:extend({
 -- SPACE AGE: TREE PROCESSING
 ---------------------------------------------------------------------------------------------------
 if SPACE_AGE then
-    local seed_rec = data.raw.recipe["tree-seed"]
-    -- Reduces cost of wood for the extraction of tree seeds from 2 to 1.
-    seed_rec.ingredients = {{type = "item", name = "wood", amount = 1}}
-    -- Reduces processing time from 2 to 1, to match similar recipes.
-    seed_rec.energy_required = 1
     -- Removes surface condition requirement so tree seeds can be produced anywhere.
-    seed_rec.surface_conditions = nil
+    data.raw.recipe["tree-seed"].surface_conditions = nil
 end
 
 ---------------------------------------------------------------------------------------------------

@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.7.9
+Date: 2026-10-25
+  Balancing:
+    - Removed the buffs to seed extraction, since this mod doesn't actually need it, and it can
+      cause unintended balance issues with other mods.
+---------------------------------------------------------------------------------------------------
 Version: 1.7.8
 Date: 2026-10-25
   Changes:
