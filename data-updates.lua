@@ -29,9 +29,11 @@ if mods["SimpleSeablock"] then
     -- machines and more energy, but there is really no issue with that.
 
     -- Reduces cost of researching greenhouse tech.
-    local greenhouse_tech = data.raw.technology[PREFIX.."greenhouse-tech"]
-    greenhouse_tech.unit.count = 30
-    greenhouse_tech.unit.time  =  5
+    if ENABLED.TREE_GREENHOUSE then
+        local greenhouse_tech = data.raw.technology[PREFIX.."greenhouse-tech"]
+        greenhouse_tech.unit.count = 30
+        greenhouse_tech.unit.time  =  5
+    end
 
     -- Increases smelting time a bit.
     local wood_to_coal = data.raw.recipe["wood-to-coal"]
