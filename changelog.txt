@@ -11,7 +11,8 @@ Date: 2026-10-25
         multiplier to the distillation recipes. Increased crafting time for the former so a
         steel furnace outputs 5 coal/s, increased it for the latter so they output 2 & 6 coal/s
         (aside from other outputs).
-      - Note: The greenhouse for trees should have its output reduced by a factor of roughly 20x.
+      - Note: The greenhouse for trees should have its output reduced by a factor of roughly 20x
+        for this mod, to about 0.025 wood/s. Have yet to investigate trees on other planets.
 ---------------------------------------------------------------------------------------------------
 Version: 1.7.7
 Date: 2026-10-24
