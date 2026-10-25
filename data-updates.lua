@@ -28,11 +28,11 @@ if mods["SimpleSeablock"] then
     -- have to be adapted or disabled depending on settings. Making charcoal will require more
     -- machines and more energy, but there is really no issue with that.
 
-    -- The greenhouse is plenty powerful, so this nerfs the charcoal recipe and increases its
-    -- crafting time to match the carbonization recipe from this mod.
+    -- Increases smelting time a bit.
     local wood_to_coal = data.raw.recipe["wood-to-coal"]
-    wood_to_coal.energy_required = 6.4 * (20/8)
-    wood_to_coal.ingredients = {{type = "item", name = "wood", amount = 20}}
+    wood_to_coal.energy_required = 4.0 -- was 3.2
+
+
     -- Hides and disables own recipe.
     local carbonization = data.raw.recipe[PREFIX.."wood-carbonization"]
     if carbonization ~= nil then
@@ -40,10 +40,35 @@ if mods["SimpleSeablock"] then
         carbonization.hidden = true
     end
 
-    -- Allows virtually unlimited productivity bonuses for distillation recipes.
+    -- Reduces cost of researching greenhouse tech.
+    local greenhouse_tech = data.raw.technology[PREFIX.."greenhouse-tech"]
+    greenhouse_tech.unit.count = 30
+    greenhouse_tech.unit.time  =  5
+
+    -- Adjusts distillation recipe so they take longer and gets a 20x bonus.
     local distillation_1 = data.raw.recipe[PREFIX.."wood-distillation"]
+    distillation_1.energy_required = 8
+    distillation_1.ingredients = {
+        { type = "item",  name = "wood",          amount = 15 / 5 }
+    }
+    distillation_1.results = {
+        { type = "fluid", name = "crude-oil",     amount = 20 * 4, fluidbox_index = 2 },
+        { type = "fluid", name = "petroleum-gas", amount = 10 * 4, fluidbox_index = 1 },
+        { type = "item",  name = "coal",          amount =  4 * 4 }
+    }
     distillation_1.maximum_productivity = 9999
+
+    -- Adjusts enhanced distillation recipe so they take longer and gets a 20x bonus.
     local distillation_2 = data.raw.recipe[PREFIX.."wood-distillation-enhanced"]
+    distillation_2.energy_required = 8
+    distillation_2.ingredients = {
+        { type = "item",  name = "wood",          amount = 15 / 5 }
+    }
+    distillation_2.results = {
+        { type = "fluid", name = "crude-oil",     amount = 20 * 4, fluidbox_index = 2 },
+        { type = "fluid", name = "petroleum-gas", amount =  5 * 4, fluidbox_index = 1 },
+        { type = "item",  name = "coal",          amount =  3 * 4}
+    }
     distillation_2.maximum_productivity = 9999
 
     -- Applies up to 10 levels of 10% mining productivity bonus to a recipe.
@@ -69,7 +94,7 @@ if mods["SimpleSeablock"] then
         local diamonds =
             settings.startup["bobmods-ores-gemprobability"].value * -- default: 0.05
             settings.startup["bobmods-gems-diamondratio"].value *   -- default: 0.2
-            (15/2) -- recipe takes 15 wood, the equivalent of 7.5 coal
+            3*10 -- Recipes require 3 wood, 10 times the amount of coal can be produced from them
         if diamonds > 0 and diamonds <= 1 then
             table.insert(distillation_1.results, {
                 type = "item", name = "bob-diamond-ore", amount = 1,

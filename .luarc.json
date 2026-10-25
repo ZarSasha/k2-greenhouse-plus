@@ -12,7 +12,6 @@
         "assembling_machine_circuit_wire_max_distance",
         "util",
         "defines",
-        "game",
-        "overridden"
+        "game"
     ]
 }

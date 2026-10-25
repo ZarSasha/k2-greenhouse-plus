@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.7.8
+Date: 2026-10-25
+  Changes:
+    - Fixed that sand and greenhouse glass was immediately available rather than unlocked with the
+      greenhouse tech.
+  Compatibility:
+    - Simple Seablock:
+      - Reduced cost of researching greenhouses to match that of the agricultural tower tech.
+      - Pyrolysis recipes: For now, unnerfed the charcoal recipe and gave the same 20x bonus
+        multiplier to the distillation recipes. Increased crafting time for the former so a
+        steel furnace outputs 5 coal/s, increased it for the latter so they output 2 & 6 coal/s
+        (aside from other outputs).
+      - Note: The greenhouse for trees should have its output reduced by a factor of roughly 20x
+        for this mod, to about 0.025 wood/s. Have yet to investigate trees on other planets.
+---------------------------------------------------------------------------------------------------
 Version: 1.7.7
 Date: 2026-10-24
   Bugfixes:
