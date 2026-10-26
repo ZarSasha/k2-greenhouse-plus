@@ -87,7 +87,7 @@ if ENABLED.DISTILLATION then
         { type = "item",  name = "coal",          amount =  4 * 4 }
     }
     distillation_1.maximum_productivity = 9999
-    addMiningProductivity(distillation_1, 2)
+    addMiningProductivity(PREFIX.."wood-distillation", 2)
 
     -- Adjusts enhanced distillation recipe so it takes longer and gets a 20x bonus.
     local distillation_2 = data.raw.recipe[PREFIX.."wood-distillation-enhanced"]
@@ -101,7 +101,7 @@ if ENABLED.DISTILLATION then
         { type = "item",  name = "coal",          amount =  3 * 4}
     }
     distillation_2.maximum_productivity = 9999
-    addMiningProductivity(distillation_2, 3)
+    addMiningProductivity(PREFIX.."wood-distillation-enhanced", 3)
 
     --- ADDITIONAL COMPATIBILITY FOR BOB'S ORES ---
 
