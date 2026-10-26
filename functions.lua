@@ -40,4 +40,14 @@ function ItemExists(ModName, Item)
     end
 end
 
+-- Removes recipe unlock effect from technology.
+function RemoveRecipeUnlockFromTech(tech, recipeName)
+    for index, effect in pairs(tech.effects) do
+        local effectModifier = effect
+        if effectModifier.type == "unlock-recipe" and effectModifier.recipe == recipeName then
+            table.remove(tech.effects, index)
+        end
+    end
+end
+
 ---------------------------------------------------------------------------------------------------
