@@ -2,7 +2,8 @@
 Version: 1.7.11
 Date: 2026-10-26
   Compatibility:
-    - Simple Seablock: Greatly improved code and fixed various issues.
+    - Simple Seablock: Improved code and fixed various issues. Now unlocks the other greenhouses
+      for Slipstacks and Sunnycombs when discovering Gleba instead of with the agriculture tech.
       - Bob's Ores: Reduced optional output of diamonds by a factor of 10 and simplified the code.
 ---------------------------------------------------------------------------------------------------
 Version: 1.7.10
