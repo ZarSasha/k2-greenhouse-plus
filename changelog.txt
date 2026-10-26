@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.7.11
+Date: 2026-10-26
+  Compatibility:
+    - Simple Seablock: Greatly improved code and fixed various issues.
+      - Bob's Ores: Reduced optional output of diamonds by a factor of 10 and simplified the code.
+---------------------------------------------------------------------------------------------------
 Version: 1.7.10
 Date: 2026-10-25
   Bugfixes:
