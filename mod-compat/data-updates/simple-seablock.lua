@@ -79,12 +79,13 @@ if ENABLED.CARBONIZATION then
     carbonization.hidden = true
 end
 
--- Doubles crafting time, removes 20x bonus multiplier.
+-- Doubles crafting time, removes 20x bonus multiplier. Set output amount to 1 so no fix is
+-- needed for Bob's Ores.
 local wood_to_coal  = data.raw.recipe["wood-to-coal"]
-wood_to_coal.energy_required = 6.4 -- was 3.2
-wood_to_coal.ingredients = {{type = "item", name = "wood", amount = 8}}
+wood_to_coal.energy_required = 1.6 -- was 3.2
+wood_to_coal.ingredients = {{type = "item", name = "wood", amount = 2}}
 for _, result in pairs(wood_to_coal.results) do
-    if result.name == "coal" then result.amount = 4 end
+    if result.name == "coal" then result.amount = 1 end
 end
 
 --- DISTILLATION RECIPES ---
