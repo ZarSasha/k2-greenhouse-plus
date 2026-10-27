@@ -82,7 +82,7 @@ end
 -- Doubles crafting time, removes 20x bonus multiplier.
 local wood_to_coal  = data.raw.recipe["wood-to-coal"]
 wood_to_coal.energy_required = 6.4 -- was 3.2
-wood_to_coal.ingredients = {type = "item", name = "wood", amount = 8}
+wood_to_coal.ingredients = {{type = "item", name = "wood", amount = 8}}
 for _, result in pairs(wood_to_coal.results) do
     if result.name == "coal" then result.amount = 4 end
 end
