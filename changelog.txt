@@ -3,7 +3,7 @@ Version: 1.7.12
 Date: 2026-11-01
   Balancing:
     - Buffed the crafting speed of the carbonization recipe so it can at least in some way keep up
-      with the distillation recipes, which are faster and had their yields buffed not long ago.
+      with the distillation recipes, which were faster and had their yields buffed not long ago.
   Compatibility:
     - Simple Seablock: Boldly overrides the 20x charcoal bonus multiplier by increasing the yields
       of trees (4 -> 42 wood pr. harvest, which is also the answer) and adjusting various recipes
