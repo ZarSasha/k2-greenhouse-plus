@@ -73,14 +73,15 @@ end
 
 --- CHARCOAL/CARBONIZATION RECIPE ---
 
+-- Disables and hides the carbonization recipe, since the mod already has a charcoal recipe.
 if ENABLED.CARBONIZATION then
     local carbonization = data.raw.recipe[PREFIX.."wood-carbonization"]
     carbonization.enabled = false
     carbonization.hidden = true
 end
 
--- Adjusts crafting time, removes 20x bonus multiplier. Sets output amount to 1 so no fix is
--- needed for Bob's Ores.
+-- Adjusts crafting time and removes the 20x bonus multiplier. Sets the output amount to 1 so no
+-- fix is needed for Bob's Ores.
 local wood_to_coal  = data.raw.recipe["wood-to-coal"]
 wood_to_coal.energy_required = RoundNumber(16/15,5)
 wood_to_coal.ingredients = {{type = "item", name = "wood", amount = 2}}
@@ -92,20 +93,21 @@ end
 
 if ENABLED.DISTILLATION then
 
-    -- Adjusts distillation recipe to potentially gain higher productivity.
     local distillation_1 = data.raw.recipe[PREFIX.."wood-distillation"]
-    distillation_1.maximum_productivity = 9999
-    addMiningProductivity(PREFIX.."wood-distillation", 2)
-
-    -- Adjusts enhanced distillation recipe to potentially gain higher productivity.
     local distillation_2 = data.raw.recipe[PREFIX.."wood-distillation-enhanced"]
+
+    -- Essentially removes productivity cap on the distillation recipes.
+    distillation_1.maximum_productivity = 9999
     distillation_2.maximum_productivity = 9999
+
+    -- Makes distillation recipes benefit from up to 10 levels of mining productivity research.
+    addMiningProductivity(PREFIX.."wood-distillation", 2)
     addMiningProductivity(PREFIX.."wood-distillation-enhanced", 3)
 
     --- ADDITIONAL COMPATIBILITY FOR BOB'S ORES ---
 
-    -- Allows distillation recipes to also yield diamonds (a maximum of 1 pr. wood, regardless
-    -- of output of coal) if Bob Ores is configured to yield gems from non-gem ores.
+    -- Allows the distillation recipes to also yield diamonds if Bob Ores is configured to yield
+    -- gems from non-gem ores.
     if mods["bobores"] and settings.startup["bobmods-ores-gemsfromotherores"].value then
         local diamonds =
             settings.startup["bobmods-ores-gemprobability"].value * -- default: 0.05
