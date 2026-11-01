@@ -174,10 +174,10 @@ local WoodCarbonizationRecipe = {
     enabled = true, -- Unlocked right from the start.
     energy_required = 6.4, -- 3.2 at double speed (electric furnace)
     ingredients = {
-        { type = "item", name = "wood", amount = 8 }
+        { type = "item", name = "wood", amount = 12 }
     },
     results = {
-        { type = "item", name = "coal", amount = 4 }
+        { type = "item", name = "coal", amount =  6 }
     },
     allow_productivity = true,
     auto_recycle = false
