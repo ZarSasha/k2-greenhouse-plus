@@ -46,8 +46,8 @@ end
 --- DRIFTWOOD ---
 
 -- Increases yields from foraging for wood by 20x.
-local forage = data.raw.recipe["driftwood-forage"]
-forage.energy_required = 0.5
+local foraging = data.raw.recipe["driftwood-forage"]
+foraging.energy_required = 0.5
 
 --- GREENHOUSE TECH ---
 
