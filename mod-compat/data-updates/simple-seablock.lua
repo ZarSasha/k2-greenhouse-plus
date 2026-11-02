@@ -43,6 +43,12 @@ end
 -- Note: This increases the output of the tree farms by 20x (9.2 -> 184 wood/min -> 92 coal/min),
 -- thus eliminating the need for the charcoal bonus multiplier.
 
+--- DRIFTWOOD ---
+
+-- Increases yields from foraging for wood by 20x.
+local foraging = data.raw.recipe["driftwood-forage"]
+foraging.energy_required = 0.5
+
 --- GREENHOUSE TECH ---
 
 -- Reduces cost of researching greenhouse tech to match of the agricultural tower.
