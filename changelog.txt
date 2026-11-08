@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.7.14
+Date: 2026-11-08
+  Localisation:
+    - Fixed that comments where left on many entries of the Chinese translation. Apparently, the
+      comment sign only works at the start of a line!
+---------------------------------------------------------------------------------------------------
 Version: 1.7.13
 Date: 2026-11-02
   Compatibility:
